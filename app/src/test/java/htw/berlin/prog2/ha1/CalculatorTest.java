@@ -56,7 +56,35 @@ class CalculatorTest {
 
         assertEquals(expected, actual);
     }
-//2x Tests zu gefunden Fehlern aus untersch. Methoden -> Commit 
+
+    //Teilaufgabe 2.1
+    @Test
+    @DisplayName("should display only one 0 when typing in a 0")
+    void testDoubleZero() {
+        Calculator calc = new Calculator();
+        
+        calc.pressDigitKey(0);
+
+        String expected = "0";
+        String actual = calc.readScreen();
+
+        assertEquals(expected, actual);
+    }
+
+    //Teilaufgabe 2.2
+    @Test
+    @DisplayName("should display 'Error' when pressing inversion key for a 0")
+    void testZeroInversion() {
+        Calculator calc = new Calculator();
+
+        calc.pressUnaryOperationKey("1/x");
+
+        String expected = "Error";
+        String actual = calc.readScreen();
+
+        assertEquals(expected, actual);
+    }
+
 //2 Bugfixes schreiben, damit letzten 2 Tests grün werden -> Commit
 
 }
