@@ -59,13 +59,14 @@ class CalculatorTest {
 
     //Teilaufgabe 2.1
     @Test
-    @DisplayName("should display only one 0 when typing in a 0")
-    void testDoubleZero() {
+    @DisplayName("should display an error after getting the square of zero")
+    void testSquareOfZero() {
         Calculator calc = new Calculator();
         
         calc.pressDigitKey(0);
+        calc.pressUnaryOperationKey("√");
 
-        String expected = "0";
+        String expected = "Error";
         String actual = calc.readScreen();
 
         assertEquals(expected, actual);
@@ -84,8 +85,6 @@ class CalculatorTest {
 
         assertEquals(expected, actual);
     }
-
-//2 Bugfixes schreiben, damit letzten 2 Tests grün werden -> Commit
 
 }
 
