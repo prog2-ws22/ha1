@@ -74,13 +74,21 @@ class CalculatorTest {
 
     //Teilaufgabe 2.2
     @Test
-    @DisplayName("should display 'Error' when pressing inversion key for a 0")
-    void testZeroInversion() {
+    @DisplayName("should display result after adding three numbers, pressing 'C' and adding another number")
+    void testCEKey() {
         Calculator calc = new Calculator();
 
-        calc.pressUnaryOperationKey("1/x");
+        calc.pressDigitKey(1);
+        calc.pressBinaryOperationKey("+");
+        calc.pressDigitKey(2);
+        calc.pressBinaryOperationKey("+");
+        calc.pressDigitKey(3);
+        calc.pressClearKey();
+        calc.pressBinaryOperationKey("+");
+        calc.pressDigitKey(4);
+        calc.pressEqualsKey();
 
-        String expected = "Error";
+        String expected = "7";
         String actual = calc.readScreen();
 
         assertEquals(expected, actual);
