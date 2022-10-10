@@ -40,6 +40,24 @@ class CalculatorTest {
         assertEquals(expected, actual);
     }
 
-    //TODO hier weitere Tests erstellen
+    //Teilaufgabe 1
+    @Test
+    @DisplayName("should display result after subtracting two positive numbers")
+    void testSubtraction() {
+        Calculator calc = new Calculator();
+        
+        calc.pressDigitKey(5);
+        calc.pressBinaryOperationKey("-");
+        calc.pressDigitKey(2);
+        calc.pressEqualsKey();
+
+        String expected = "3";
+        String actual = calc.readScreen();
+
+        assertEquals(expected, actual);
+    }
+//2x Tests zu gefunden Fehlern aus untersch. Methoden -> Commit 
+//2 Bugfixes schreiben, damit letzten 2 Tests grün werden -> Commit
+
 }
 
