@@ -41,18 +41,17 @@ class CalculatorTest {
     }
 
     @Test
-    @DisplayName("should display result after multiplying two positive multi digit numbers")
-    void testPositiveMultiplication() {
+    @DisplayName("should display result after adding a negative and a positive number")
+    void testNegativeAddition() {
         Calculator calc = new Calculator();
 
         calc.pressDigitKey(2);
-        calc.pressDigitKey(0);
-        calc.pressBinaryOperationKey("x");
+        calc.pressNegativeKey();
+        calc.pressBinaryOperationKey("+");
         calc.pressDigitKey(2);
-        calc.pressDigitKey(0);
         calc.pressEqualsKey();
 
-        String expected = "400";
+        String expected = "0";
         String actual = calc.readScreen();
 
         assertEquals(expected, actual);
