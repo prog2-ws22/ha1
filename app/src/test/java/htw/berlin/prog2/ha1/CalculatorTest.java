@@ -45,19 +45,17 @@ class CalculatorTest {
     @Test
     @DisplayName("should display result after subracting two numbers")
     void testSubtraction() {
-    Calculator calc = new Calculator();
+        Calculator calc = new Calculator();
 
-    calc.pressDigitKey(4);
-    calc.pressBinaryOperationKey("-");
-    calc.pressDigitKey(2);
-    calc.pressEqualsKey();
+        calc.pressDigitKey(4);
+        calc.pressBinaryOperationKey("-");
+        calc.pressDigitKey(2);
+        calc.pressEqualsKey();
 
-    String expected = "2";
-    String actual = calc.readScreen();
+        String expected = "2";
+        String actual = calc.readScreen();
 
-    assertEquals(expected, actual);
-
-
+        assertEquals(expected, actual);
     }
 }
 
