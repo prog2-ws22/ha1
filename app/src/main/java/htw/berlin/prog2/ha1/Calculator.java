@@ -8,7 +8,7 @@ package htw.berlin.prog2.ha1;
  */
 public class Calculator {
 
-    private String screen = "0";
+    private String screen = "0"; //testcomment
 
     private double latestValue;
 
