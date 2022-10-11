@@ -41,5 +41,23 @@ class CalculatorTest {
     }
 
     //TODO hier weitere Tests erstellen
+    @Test
+    @DisplayName("should display result after getting dot five dot zero")
+    void testPressDotKey(){
+        Calculator calc = new Calculator();
+        calc.pressDigitKey(5);
+        calc.pressDotKey();
+        calc.pressDigitKey(0);
+
+        String expected = "5.0";
+        String actual = calc.readScreen();
+
+        assertEquals(expected, actual);
+    }
+
+
+
+
+
 }
 
