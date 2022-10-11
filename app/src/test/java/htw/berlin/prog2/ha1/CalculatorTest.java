@@ -56,7 +56,8 @@ class CalculatorTest {
 
         assertEquals(expected, actual);
     }
-
+    @Test
+    @DisplayName("should display result pressing the clear button")
     void testClearKey() {
         Calculator calc = new Calculator();
 
@@ -66,6 +67,56 @@ class CalculatorTest {
         calc.pressClearKey();
 
         String expected = "0";
+        String actual = calc.readScreen();
+
+        assertEquals(expected, actual);
+    }
+
+    @Test
+    @DisplayName("should display 0 | pressing the clear button")
+    void testOneDividedByX() {
+        Calculator calc = new Calculator();
+
+        calc.pressDigitKey(2);
+        calc.pressBinaryOperationKey("1/x");
+        calc.pressClearKey();
+
+        String expected = "0.5";
+        String actual = calc.readScreen();
+
+        assertEquals(expected, actual);
+    }
+
+    @Test
+    @DisplayName("should display result minus second digit")
+    void testPressEqualsMultipleTimes() {
+        Calculator calc = new Calculator();
+
+        calc.pressDigitKey(2);
+        calc.pressBinaryOperationKey("-");
+        calc.pressDigitKey(2);
+        calc.pressClearKey();
+        calc.pressClearKey();
+
+        String expected = "-2";
+        String actual = calc.readScreen();
+
+        assertEquals(expected, actual);
+    }
+
+    @Test
+    @DisplayName("should display result negative digit times digit")
+    void testMultiplyWithNegativeNumber() {
+        Calculator calc = new Calculator();
+
+        calc.pressDigitKey(2);
+        calc.pressNegativeKey();
+        calc.pressBinaryOperationKey("x");
+        calc.pressDigitKey(5);
+        calc.pressClearKey();
+
+
+        String expected = "-10";
         String actual = calc.readScreen();
 
         assertEquals(expected, actual);
