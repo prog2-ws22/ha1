@@ -53,7 +53,7 @@ class CalculatorTest {
         calc.pressDigitKey(2);
         calc.pressEqualsKey();
 
-        String expected = "-17";
+        String expected = "-31";
         String actual = calc.readScreen();
 
         assertEquals(expected, actual);
