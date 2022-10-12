@@ -67,5 +67,21 @@ class CalculatorTest {
 
         assertEquals(expected, actual);
     }
+    @Test
+    void testDecimalNumbers(){
+        var calc = new Calculator();
+
+        calc.pressDigitKey(3);
+        calc.pressDotKey();
+        calc.pressDigitKey(2);
+        calc.pressDotKey();
+        calc.pressDigitKey(5);
+        calc.pressDigitKey(5);
+
+        String expected = "3.255";
+        String actual = calc.readScreen();
+
+        assertEquals(expected, actual);
+    }
 }
 
