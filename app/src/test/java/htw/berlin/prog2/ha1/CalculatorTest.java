@@ -9,7 +9,6 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 class CalculatorTest {
 
     @Test
-    @DisplayName("should display result after adding two positive multi-digit numbers")
     void testPositiveAddition() {
         Calculator calc = new Calculator();
 
@@ -25,9 +24,7 @@ class CalculatorTest {
 
         assertEquals(expected, actual);
     }
-
     @Test
-    @DisplayName("should display result after getting the square root of two")
     void testSquareRoot() {
         Calculator calc = new Calculator();
 
@@ -39,7 +36,52 @@ class CalculatorTest {
 
         assertEquals(expected, actual);
     }
+    @Test
+    void testPositiveMultiply(){
+        var calc = new Calculator();
 
-    //TODO hier weitere Tests erstellen
+        calc.pressDigitKey(1);
+        calc.pressDigitKey(0);
+        calc.pressBinaryOperationKey("x");
+        calc.pressDigitKey(1);
+        calc.pressDigitKey(0);
+        calc.pressEqualsKey();
+
+        String expected = "100";
+        String actual = calc.readScreen();
+
+        assertEquals(expected, actual);
+    }
+    @Test
+    void testClear(){
+        var calc = new Calculator();
+        calc.pressDigitKey(7);
+        calc.pressBinaryOperationKey("+");
+        calc.pressDigitKey(9);
+        calc.pressClearKey();
+        calc.pressDigitKey(1);
+        calc.pressEqualsKey();
+
+        String expected = "8";
+        String actual = calc.readScreen();
+
+        assertEquals(expected, actual);
+    }
+    @Test
+    void testDotsInDecimalNumber(){
+        var calc = new Calculator();
+
+        calc.pressDigitKey(3);
+        calc.pressDotKey();
+        calc.pressDigitKey(2);
+        calc.pressDotKey();
+        calc.pressDigitKey(5);
+        calc.pressDigitKey(5);
+
+        String expected = "3.255";
+        String actual = calc.readScreen();
+
+        assertEquals(expected, actual);
+    }
 }
 

@@ -7,7 +7,7 @@ package htw.berlin.prog2.ha1;
  * Enthält mit Absicht noch diverse Bugs oder unvollständige Funktionen.
  */
 public class Calculator {
-
+    private boolean hasCleared = false;
     private String screen = "0";
 
     private double latestValue;
@@ -46,8 +46,12 @@ public class Calculator {
      */
     public void pressClearKey() {
         screen = "0";
-        latestOperation = "";
-        latestValue = 0.0;
+        if(hasCleared){
+            latestValue = 0.0;
+            latestOperation = "";
+            hasCleared = false;
+        }
+        hasCleared = true;
     }
 
     /**
@@ -93,7 +97,7 @@ public class Calculator {
      * Beim zweimaligem Drücken, oder wenn bereits ein Trennzeichen angezeigt wird, passiert nichts.
      */
     public void pressDotKey() {
-        if(!screen.endsWith(".")) screen = screen + ".";
+        if(!screen.contains(".")) screen = screen + ".";
     }
 
     /**
