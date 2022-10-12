@@ -55,8 +55,27 @@ class CalculatorTest {
     calc.pressEqualsKey();
 
     String expected = "45";
-    String actual =calc.readScreen();
+    String actual = calc.readScreen();
 
-    assertEquals(expected, actual);}
+    assertEquals(expected, actual);
+    }
+
+    @Test
+    @DisplayName("should display result after subtracting a negative Number from a multi-Digit positive number")
+    void testNegativeFromPositiveSubtraction(){
+    Calulator calc = new Calculator();
+
+    calc.pressDigitKey(1);
+    calc.pressDigitKey(5);
+    calc.pressBinaryOperationKey("-");
+    calc.pressNegativeKey();
+    calc.pressDigitKey(3);
+    calc.pressEqualsKey();
+
+    String expected = "18";
+    String actural = calc.readScreen();
+
+    assertEquals(expected, actual);
+    }
 }
 
