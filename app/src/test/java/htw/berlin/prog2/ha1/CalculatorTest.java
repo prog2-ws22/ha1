@@ -63,8 +63,8 @@ class CalculatorTest {
     Teilaufgabe 2:
      */
     @Test
-    @DisplayName("should display an error, because division by 0")
-    void testDivision() {
+    @DisplayName("should display an error -> division by 0")
+    void testDivisionByZero() {
         Calculator calc = new Calculator();
 
         calc.pressDigitKey(5);
