@@ -68,7 +68,7 @@ class CalculatorTest {
         assertEquals(expected, actual);
     }
     @Test
-    void testDecimalNumbers(){
+    void testDotsInDecimalNumber(){
         var calc = new Calculator();
 
         calc.pressDigitKey(3);
