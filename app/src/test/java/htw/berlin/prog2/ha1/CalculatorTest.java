@@ -59,6 +59,26 @@ class CalculatorTest {
 
         assertEquals(expected, actual);
     }
+    /*
+    Teilaufgabe 2:
+     */
+    @Test
+    @DisplayName("should display an error, because division by 0")
+    void testDivision() {
+        Calculator calc = new Calculator();
+
+        calc.pressDigitKey(5);
+        calc.pressDigitKey(9);
+        calc.pressBinaryOperationKey("/");
+        calc.pressDigitKey(0);
+        calc.pressEqualsKey();
+
+        String expected = "Error";
+        String actual = calc.readScreen();
+
+        assertEquals(expected, actual);
+    }
+
 
 
 }
