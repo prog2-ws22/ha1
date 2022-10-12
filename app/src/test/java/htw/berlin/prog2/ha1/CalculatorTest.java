@@ -52,5 +52,20 @@ class CalculatorTest {
 
         assertEquals(expected, actual);
     }
+    @Test
+    void testClear(){
+        var calc = new Calculator();
+        calc.pressDigitKey(7);
+        calc.pressBinaryOperationKey("+");
+        calc.pressDigitKey(9);
+        calc.pressClearKey();
+        calc.pressDigitKey(1);
+        calc.pressEqualsKey();
+
+        String expected = "8";
+        String actual = calc.readScreen();
+
+        assertEquals(expected, actual);
+    }
 }
 
