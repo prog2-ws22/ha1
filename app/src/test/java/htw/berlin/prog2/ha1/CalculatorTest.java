@@ -41,5 +41,22 @@ class CalculatorTest {
     }
 
     //TODO hier weitere Tests erstellen
+
+    @Test
+    @DisplayName("should display result after multiplying two negative numbers")
+    void testNegativeMultiplikation(){
+    Calculator calc = new Calculato();
+
+    calc.pressNegativeKey();
+    calc.pressDigitKey(9);
+    calc.pressBinaryOperationKey("X");
+    calc.pressNegativeKey();
+    calc.pressDigitKey(5);
+    calc.pressEqualsKey();
+
+    String expected = "45";
+    String actual =calc.readScreen();
+
+    assertEquals(expected, actual);}
 }
 
