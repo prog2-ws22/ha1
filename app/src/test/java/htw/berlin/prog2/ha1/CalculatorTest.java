@@ -41,5 +41,63 @@ class CalculatorTest {
     }
 
     //TODO hier weitere Tests erstellen
+
+
+
+    @Test
+    @DisplayName("should display result after subtract two positive multi-digit numbers")
+    void testMinus() {
+        Calculator calc = new Calculator();
+        calc.pressDigitKey(2);
+        calc.pressBinaryOperationKey("-");
+        calc.pressDigitKey(2);
+        calc.pressEqualsKey();
+
+        String expected = "0";
+        String actual = calc.readScreen();
+        assertEquals(expected, actual);
+    }
+
+    @Test
+    @DisplayName("should display result after multiply two positive multi-digit numbers")
+    void testMultiplication(){
+        Calculator calc = new Calculator();
+        calc.pressDigitKey(3);
+        calc.pressBinaryOperationKey("x");
+        calc.pressDigitKey(2);
+        calc.pressEqualsKey();
+        String expected = "6";
+        String actual = calc.readScreen();
+        assertEquals(expected, actual);
+    }
+    @Test
+    @DisplayName("should display result after multiply two positive multi-digit numbers")
+    void testDivision(){
+        Calculator calc = new Calculator();
+        calc.pressDigitKey(4);
+        calc.pressBinaryOperationKey("/");
+        calc.pressDigitKey(3);
+        calc.pressEqualsKey();
+        String expected = "1.33333333";
+        String actual = calc.readScreen();
+        assertEquals(expected, actual);
+    }
+
+    @Test
+    @DisplayName("should display result 20% from 48")
+    void testPercent(){
+        Calculator calc = new Calculator();
+        calc.pressDigitKey(4);
+        calc.pressDigitKey(8);
+        calc.pressUnaryOperationKey("%");
+        calc.pressBinaryOperationKey("x");
+        calc.pressDigitKey(2);
+        calc.pressDigitKey(0);
+        calc.pressEqualsKey();
+        String expected = "9.6";
+        String actual = calc.readScreen();
+        assertEquals(expected, actual);
+    }
+
 }
 
