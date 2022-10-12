@@ -45,7 +45,7 @@ class CalculatorTest {
     @Test
     @DisplayName("should display result after multiplying two negative numbers")
     void testNegativeMultiplikation(){
-    Calculator calc = new Calculato();
+    Calculator calc = new Calculator();
 
     calc.pressNegativeKey();
     calc.pressDigitKey(9);
