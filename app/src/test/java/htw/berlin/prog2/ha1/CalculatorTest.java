@@ -43,7 +43,7 @@ class CalculatorTest {
     //TODO hier weitere Tests erstellen
 
     @Test
-    @DisplayName("should change value everytime clicking =")
+    @DisplayName("should change value everytime clicking = ")
     void testEquals(){
         Calculator calc = new Calculator();
 
