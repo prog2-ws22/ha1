@@ -30,10 +30,14 @@ public class Calculator {
      */
     public void pressDigitKey(int digit) {
         if(digit > 9 || digit < 0) throw new IllegalArgumentException();
-
-        if(screen.equals("0") || latestValue == Double.parseDouble(screen)) screen = "";
-
-        screen = screen + digit;
+        if(screen.equals("-")){
+            screen = screen + digit;
+        }else if(screen.equals("0") || latestValue == Double.parseDouble(screen)) {
+            screen = "";
+            screen = screen + digit;
+        }else{
+            screen = screen + digit;
+        }
     }
 
     /**
@@ -104,7 +108,14 @@ public class Calculator {
      * entfernt und der Inhalt fortan als positiv interpretiert.
      */
     public void pressNegativeKey() {
-        screen = screen.startsWith("-") ? screen.substring(1) : "-" + screen;
+        if(Double.parseDouble(screen)<0){
+            screen = screen.substring(1);
+        }else if(Double.parseDouble(screen)>0){
+            screen = "-" + screen;
+        }else if(screen.equals("0")){
+            screen = "-";
+        }
+        //screen = screen.startsWith("-") ? screen.substring(1) : "-" + screen;
     }
 
     /**

@@ -42,7 +42,7 @@ class CalculatorTest {
 
     //TODO hier weitere Tests erstellen
     @Test
-    @DisplayName("should display result after subtracting two negative numbers")
+    @DisplayName("should display result after subtracting two numbers")
     void testSubtraction() {
         Calculator calc = new Calculator();
 
@@ -58,7 +58,7 @@ class CalculatorTest {
     }
 
     @Test
-    @DisplayName("should display result after adding a positive number to a negative number")
+    @DisplayName("should display result after adding a positive number to a negative number of which the minus was pressed first")
     void testAddPositiveToNegative() {
         Calculator calc = new Calculator();
 
