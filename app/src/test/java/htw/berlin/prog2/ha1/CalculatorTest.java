@@ -57,5 +57,26 @@ class CalculatorTest {
 
         assertEquals(expected,actual);
     }
+
+    @Test
+    @DisplayName("should display result after adding 3 multi digit numbers")
+    void testMultipleBinaryOperation(){
+        Calculator calc = new Calculator();
+
+        calc.pressDigitKey(9);
+        calc.pressDigitKey(0);
+        calc.pressBinaryOperationKey("+");
+        calc.pressDigitKey(1);
+        calc.pressDigitKey(0);
+        calc.pressBinaryOperationKey("+");
+        calc.pressDigitKey(5);
+        calc.pressDigitKey(0);
+        calc.pressEqualsKey();
+
+        String expected = "150";
+        String actual = calc.readScreen();
+
+        assertEquals(expected,actual);
+    }
 }
 
