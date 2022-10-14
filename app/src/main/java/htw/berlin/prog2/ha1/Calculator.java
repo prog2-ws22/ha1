@@ -105,8 +105,13 @@ public class Calculator {
      * @param i
      */
     public void pressNegativeKey(int i) {
+        if (i > 9 || i < 0) ;
 
-        screen = screen.startsWith("-") ? screen.substring(1) : "-" + screen;
+        if (screen.equals("0") || latestValue == Double.parseDouble(screen)) screen = "";
+
+        screen = screen + i;
+    }
+        /** screen = screen.contains("-") ? screen.substring(1) : "-" + screen;
     }
 
     /**
