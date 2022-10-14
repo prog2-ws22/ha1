@@ -102,8 +102,10 @@ public class Calculator {
      * aktualisiert und die Inhalt fortan als negativ interpretiert.
      * Zeigt der Bildschirm bereits einen negativen Wert mit führendem Minus an, dann wird dieses
      * entfernt und der Inhalt fortan als positiv interpretiert.
+     * @param i
      */
-    public void pressNegativeKey() {
+    public void pressNegativeKey(int i) {
+
         screen = screen.startsWith("-") ? screen.substring(1) : "-" + screen;
     }
 
