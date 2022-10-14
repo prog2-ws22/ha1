@@ -41,10 +41,24 @@ class CalculatorTest {
     }
 
     //TODO hier weitere Tests erstellen
+    @Test // grüner Test
+    @DisplayName("should display result after mutiplying two positive numbers")
+    void testEquals() {
+        Calculator calc = new Calculator();
 
+        calc.pressDigitKey(2);
+        calc.pressBinaryOperationKey("x");
+        calc.pressDigitKey(6);
+        calc.pressEqualsKey();
+
+        String expected = "12";
+        String actual = calc.readScreen();
+
+        assertEquals(expected, actual);
 
 
     }
+}
 
 
 
