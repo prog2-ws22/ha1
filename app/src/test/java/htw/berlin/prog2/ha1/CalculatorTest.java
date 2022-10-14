@@ -76,8 +76,8 @@ class CalculatorTest {
         assertEquals(expected, actual);
     }
     @Test
-    @DisplayName("should display result after adding two negative multi-digit numbers")
-    void testAddition() {
+    @DisplayName("should display result after adding multiple Dots")
+    void testDotKey() {
         Calculator calc = new Calculator();
 
         calc.pressDigitKey(2);
