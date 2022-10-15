@@ -41,5 +41,32 @@ class CalculatorTest {
     }
 
     //TODO hier weitere Tests erstellen
+
+
+    //grüner Test
+    @Test
+    @DisplayName("should change percentage to decimal")
+    void testChangePercentageToDecimal() {
+        Calculator calc = new Calculator();
+
+        //calc.pressDigitKey(33);
+        calc.pressDigitKey(3);
+        calc.pressDigitKey(3);
+        //calc.pressBinaryOperationKey(%);
+        //calc.pressBinaryOperationsKey("%");
+        //calc.pressUnaryOperationKey(%);
+        calc.pressUnaryOperationKey("%");
+        //calc.pressEqualsKey();
+
+        String expected = "0.33";
+        String actual = calc.readScreen();
+
+        assertEquals(expected, actual);
+    }
+
+
+
+
+
 }
 
