@@ -9,22 +9,28 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 class CalculatorTest {
 
     @Test
-    @DisplayName("should display result after adding two positive multi-digit numbers")
+    @DisplayName("should display 16 after summing two positiv numbers")
     void testPositiveAddition() {
         Calculator calc = new Calculator();
 
-        calc.pressDigitKey(2);
-        calc.pressDigitKey(0);
+        calc.pressDigitKey(8);
         calc.pressBinaryOperationKey("+");
-        calc.pressDigitKey(2);
-        calc.pressDigitKey(0);
-        calc.pressEqualsKey();
+        calc.pressDigitKey(7);
+        calc.pressClearKey();   // löscht gesamten Wert und nicht nur den zuvor gespeicherten
+        calc.pressDigitKey(8);
 
-        String expected = "40";
+
+
+
+
+        String expected = "16";
         String actual = calc.readScreen();
 
         assertEquals(expected, actual);
-    }
+
+     }
+
+        /*
 
     @Test
     @DisplayName("should display result after getting the square root of two")
@@ -33,6 +39,7 @@ class CalculatorTest {
 
         calc.pressDigitKey(2);
         calc.pressUnaryOperationKey("√");
+        calc.pressClearKey();
 
         String expected = "1.41421356";
         String actual = calc.readScreen();
@@ -40,6 +47,32 @@ class CalculatorTest {
         assertEquals(expected, actual);
     }
 
+         */
+
+   /*
+   @Test
+    @DisplayName("should display result after getting the percental of two")
+    void testpercental() {
+        Calculator calc = new Calculator();
+
+        calc.pressDigitKey(2);
+        calc.pressUnaryOperationKey("%");
+
+        String expected = "0.02";
+        String actual = calc.readScreen();
+
+        assertEquals(expected, actual);
+    }
+    */
+
+
+
+
+
+
+
+
     //TODO hier weitere Tests erstellen
+
 }
 

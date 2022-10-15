@@ -8,7 +8,10 @@ package htw.berlin.prog2.ha1;
  */
 public class Calculator {
 
+
+
     private String screen = "0";
+
 
     private double latestValue;
 
@@ -62,6 +65,7 @@ public class Calculator {
     public void pressBinaryOperationKey(String operation)  {
         latestValue = Double.parseDouble(screen);
         latestOperation = operation;
+
     }
 
     /**
@@ -122,7 +126,23 @@ public class Calculator {
             case "-" -> latestValue - Double.parseDouble(screen);
             case "x" -> latestValue * Double.parseDouble(screen);
             case "/" -> latestValue / Double.parseDouble(screen);
+
             default -> throw new IllegalArgumentException();
+
+          /*  try
+            {
+                pressDigitKey(8);
+                pressBinaryOperationKey("/");
+                pressDigitKey(0);
+                pressEqualsKey();
+            }
+            catch (Exception e)
+            {
+                System.err.println("Error");
+            }
+
+           */
+
         };
         screen = Double.toString(result);
         if(screen.endsWith(".0")) screen = screen.substring(0,screen.length()-2);
