@@ -88,5 +88,25 @@ class CalculatorTest {
     }
 
 
+    @Test
+    @DisplayName("should display error after dividing numbers with 0")
+    void testDivideByZero() {
+        Calculator calc = new Calculator();
+
+        calc.pressDigitKey(7);
+        calc.pressDigitKey(4);
+        calc.pressBinaryOperationKey("/");
+        calc.pressDigitKey(0);
+        calc.pressEqualsKey();
+
+        String expected = "error"; //Expected :error Actual   :Infinity
+        String actual = calc.readScreen();
+
+        assertEquals(expected, actual);
+    }
+
+
+
+
 }
 
