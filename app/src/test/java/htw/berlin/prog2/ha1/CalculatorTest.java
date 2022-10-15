@@ -27,6 +27,24 @@ class CalculatorTest {
     }
 
     @Test
+    @DisplayName("should display result after subtracting two positive multi-digit numbers")
+    void testMinus() {
+        Calculator calc = new Calculator();
+
+        calc.pressDigitKey(2);
+        calc.pressDigitKey(0);
+        calc.pressBinaryOperationKey("-");
+        calc.pressDigitKey(2);
+        calc.pressDigitKey(0);
+        calc.pressEqualsKey();
+
+        String expected = "0";
+        String actual = calc.readScreen();
+
+        assertEquals(expected, actual);
+    }
+
+    @Test
     @DisplayName("should display result after getting the square root of two")
     void testSquareRoot() {
         Calculator calc = new Calculator();
@@ -64,6 +82,7 @@ class CalculatorTest {
         calc.pressDigitKey(2);
         calc.pressBinaryOperationKey("x");
         calc.pressDigitKey(2);
+        calc.pressEqualsKey();
         calc.pressClearKey();
 
         String expected = "0";
@@ -78,8 +97,7 @@ class CalculatorTest {
         Calculator calc = new Calculator();
 
         calc.pressDigitKey(2);
-        calc.pressBinaryOperationKey("1/x");
-        calc.pressEqualsKey();
+        calc.pressUnaryOperationKey("1/x");
 
         String expected = "0.5";
         String actual = calc.readScreen();
@@ -95,8 +113,8 @@ class CalculatorTest {
         calc.pressDigitKey(2);
         calc.pressBinaryOperationKey("-");
         calc.pressDigitKey(2);
-        calc.pressClearKey();
-        calc.pressClearKey();
+        calc.pressEqualsKey();
+        calc.pressEqualsKey();
 
         String expected = "-2";
         String actual = calc.readScreen();
