@@ -41,5 +41,72 @@ class CalculatorTest {
     }
 
     //TODO hier weitere Tests erstellen
+
+
+    //grüner Test
+    @Test
+    @DisplayName("should change percentage to decimal")
+    void testChangePercentageToDecimal() {
+        Calculator calc = new Calculator();
+
+        //calc.pressDigitKey(33);
+        calc.pressDigitKey(3);
+        calc.pressDigitKey(3);
+        //calc.pressBinaryOperationKey(%);
+        //calc.pressBinaryOperationsKey("%");
+        //calc.pressUnaryOperationKey(%);
+        calc.pressUnaryOperationKey("%");
+        //calc.pressEqualsKey();
+
+        String expected = "0.33";
+        String actual = calc.readScreen();
+
+        assertEquals(expected, actual);
+    }
+
+
+    //roter Test
+    @Test
+    @DisplayName("should multiply decimal numbers and only show 2 digits after the comma")
+    void testMultiplyDecimalNumbers() {
+        Calculator calc = new Calculator();
+
+        calc.pressDigitKey(3);
+        //calc.pressDotKey(.);
+        calc.pressDotKey();
+        calc.pressDigitKey(2);
+        calc.pressBinaryOperationKey("x");
+        calc.pressDigitKey(3);
+        calc.pressDotKey();
+        calc.pressDigitKey(2);
+        calc.pressEqualsKey();
+
+        String expected = "10.24"; //Expected :10.24 Actual   :10.2400000
+        String actual = calc.readScreen();
+
+        assertEquals(expected, actual);
+    }
+
+
+    @Test
+    @DisplayName("should display error after dividing numbers with 0")
+    void testDivideByZero() {
+        Calculator calc = new Calculator();
+
+        calc.pressDigitKey(7);
+        calc.pressDigitKey(4);
+        calc.pressBinaryOperationKey("/");
+        calc.pressDigitKey(0);
+        calc.pressEqualsKey();
+
+        String expected = "error"; //Expected :error Actual   :Infinity
+        String actual = calc.readScreen();
+
+        assertEquals(expected, actual);
+    }
+
+
+
+
 }
 
