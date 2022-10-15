@@ -73,13 +73,13 @@ class CalculatorTest {
     }
 
     @Test
-    @DisplayName("should display 0 | pressing the clear button")
+    @DisplayName("should display one divided by digit")
     void testOneDividedByX() {
         Calculator calc = new Calculator();
 
         calc.pressDigitKey(2);
         calc.pressBinaryOperationKey("1/x");
-        calc.pressClearKey();
+        calc.pressEqualsKey();
 
         String expected = "0.5";
         String actual = calc.readScreen();
