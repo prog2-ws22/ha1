@@ -41,5 +41,24 @@ class CalculatorTest {
     }
 
     //TODO hier weitere Tests erstellen
+
+    @Test
+    @DisplayName("should display result after typing a decimal number")
+    void testDotKey() {
+        Calculator calc = new Calculator();
+
+        calc.pressDigitKey(2);
+        calc.pressDotKey();
+        calc.pressDigitKey(4);
+        calc.pressDigitKey(7);
+        calc.pressDigitKey(1);
+
+        String expected = "2.471";
+        String actual = calc.readScreen();
+
+        assertEquals(expected, actual);
+
+    }
 }
+
 
