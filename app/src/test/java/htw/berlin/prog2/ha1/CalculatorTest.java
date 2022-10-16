@@ -137,6 +137,57 @@ class CalculatorTest {
 
         assertEquals(expected, actual);
     }
+
+    @Test
+    @DisplayName("Test of digit dot digit")
+    void testDotKey() {
+        Calculator calc = new Calculator();
+
+        calc.pressDigitKey(2);
+        calc.pressDotKey();
+        calc.pressDigitKey(6);
+        calc.pressBinaryOperationKey("x");
+        calc.pressDigitKey(2);
+        calc.pressEqualsKey();
+
+        String expected = "5.2";
+        String actual = calc.readScreen();
+
+        assertEquals(expected, actual);
+    }
+
+    @Test
+    @DisplayName("Test sqaure root of negative digit")
+    void testNegativeSquareRoot() {
+        Calculator calc = new Calculator();
+
+        calc.pressDigitKey(2);
+        calc.pressNegativeKey();
+        calc.pressUnaryOperationKey("√");
+
+        String expected = "ERROR";
+        String actual = calc.readScreen();
+
+        assertEquals(expected, actual);
+    }
+
+    @Test
+    @DisplayName("should display result two added digits und then the square root")
+    void testAdditionPlusSquareRoot() {
+        Calculator calc = new Calculator();
+
+        calc.pressDigitKey(2);
+        calc.pressBinaryOperationKey("+");
+        calc.pressDigitKey(2);
+        calc.pressEqualsKey();
+        calc.pressUnaryOperationKey("√");
+
+
+        String expected = "2.0";
+        String actual = calc.readScreen();
+
+        assertEquals(expected, actual);
+    }
     @Test
     @DisplayName("should display result negative digit times digit")
     void testMultiplyWithNegativeNumber() {
@@ -146,7 +197,7 @@ class CalculatorTest {
         calc.pressNegativeKey();
         calc.pressBinaryOperationKey("x");
         calc.pressDigitKey(5);
-        calc.pressClearKey();
+        calc.pressEqualsKey();
 
 
         String expected = "-10";
