@@ -40,6 +40,22 @@ class CalculatorTest {
         assertEquals(expected, actual);
     }
 
-    //TODO hier weitere Tests erstellen
+    // TODO hier weitere Tests erstellen
+    @Test
+    @DisplayName("should display result after multiplying two numbers")
+    void testMultiply() {
+        Calculator calc = new Calculator();
+
+        calc.pressDigitKey(2);
+        calc.pressBinaryOperationKey("x");
+        calc.pressDigitKey(5);
+        calc.pressDigitKey(4);
+        calc.pressEqualsKey();
+
+        String expected = "108";
+        String actual = calc.readScreen();
+
+        assertEquals(expected, actual);
+    }
 }
 
