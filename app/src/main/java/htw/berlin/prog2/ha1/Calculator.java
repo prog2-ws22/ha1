@@ -18,7 +18,8 @@ public class Calculator {
      * @return den aktuellen Bildschirminhalt als String
      */
     public String readScreen() {
-        return screen;
+      if(screen.equals("Infinity")) {screen= "Error";}
+      return screen;
     }
 
     /**
@@ -127,5 +128,7 @@ public class Calculator {
         screen = Double.toString(result);
         if(screen.endsWith(".0")) screen = screen.substring(0,screen.length()-2);
         if(screen.contains(".") && screen.length() > 11) screen = screen.substring(0, 10);
+
     }
+
 }
