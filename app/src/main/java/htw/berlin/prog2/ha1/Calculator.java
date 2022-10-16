@@ -80,7 +80,7 @@ public class Calculator {
         latestValue = Double.parseDouble(screen);
         latestOperation = operation;
         //First correction
-        if(countEquals > 0) {
+       /** if(countEquals > 0) {
             var result = switch (latestOperation) {
                 case "√" -> latestResult + latestValue;
                 case "%" -> latestResult - latestValue;
@@ -88,7 +88,7 @@ public class Calculator {
                 default -> throw new IllegalArgumentException();
             };
             screen = Double.toString(result);
-        }else {
+        }else { */
             var result = switch (operation) {
                 case "√" -> Math.sqrt(Double.parseDouble(screen));
                 case "%" -> Double.parseDouble(screen) / 100;
@@ -96,9 +96,9 @@ public class Calculator {
                 default -> throw new IllegalArgumentException();
             };
             screen = Double.toString(result);
-        }
+        //}
         latestResult = Double.parseDouble(screen);
-        countEquals++;
+        //countEquals++;
         if(screen.contains(".") && screen.length() > 11) screen = screen.substring(0, 10);
 
     }

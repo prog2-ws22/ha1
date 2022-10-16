@@ -123,6 +123,21 @@ class CalculatorTest {
     }
 
     @Test
+    @DisplayName("should display result of multiple unary operation digit")
+    void testPressUnaryOperationKayMultipleTimes() {
+        Calculator calc = new Calculator();
+
+        calc.pressDigitKey(2);
+        calc.pressUnaryOperationKey("1/x");
+        calc.pressUnaryOperationKey("1/x");
+
+
+        String expected = "2.0";
+        String actual = calc.readScreen();
+
+        assertEquals(expected, actual);
+    }
+    @Test
     @DisplayName("should display result negative digit times digit")
     void testMultiplyWithNegativeNumber() {
         Calculator calc = new Calculator();
