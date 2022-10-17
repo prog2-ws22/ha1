@@ -72,17 +72,17 @@ class CalculatorTest {
     @Test
     @DisplayName("Display result after subtruct tow positiv digital")
             void TestSubtruct(){
-    Calculator s = new Calculator();
+    Calculator h = new Calculator();
 
-        s.pressDigitKey(2);
-        s.pressDigitKey(0);
-        s.pressBinaryOperationKey("-");
-        s.pressDigitKey(1);
-        s.pressDigitKey(1);
-        s.pressEqualsKey();
+        h.pressDigitKey(2);
+        h.pressDigitKey(0);
+        h.pressBinaryOperationKey("-");
+        h.pressDigitKey(1);
+        h.pressDigitKey(1);
+        h.pressEqualsKey();
 
     String expected = "10";
-    String actual = s.readScreen();
+    String actual = h.readScreen();
 
     assertEquals(expected, actual);
     }
