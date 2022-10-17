@@ -42,5 +42,38 @@ class CalculatorTest {
 
     //TODO hier weitere Tests erstellen
 
+    @Test
+    @DisplayName("should display result after multiplying two positive numbers")
+    void testNegativeMultiplikation(){
+    Calculator calc = new Calculator();
+
+    calc.pressDigitKey(9);
+    calc.pressBinaryOperationKey("X");
+    calc.pressDigitKey(5);
+    calc.pressEqualsKey();
+
+    String expected = "45";
+    String actual = calc.readScreen();
+
+    assertEquals(expected, actual);
+    }
+
+    @Test
+    @DisplayName("should display result after subtracting a negative Number from a multi-Digit positive number")
+    void testNegativeFromPositiveSubtraction(){
+    Calculator calc = new Calculator();
+
+    calc.pressDigitKey(1);
+    calc.pressDigitKey(5);
+    calc.pressBinaryOperationKey("-");
+    calc.pressNegativeKey();
+    calc.pressDigitKey(3);
+    calc.pressEqualsKey();
+
+    String expected = "18";
+    String actual = calc.readScreen();
+
+    assertEquals(expected, actual);
+    }
 }
 
