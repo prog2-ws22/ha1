@@ -79,6 +79,24 @@ class CalculatorTest {
         assertEquals(expected, actual);
 
     }
+    //RED TEST
+    @Test
+    @DisplayName("should display result after adding a negative number and a positive number")
+
+    void testAddNegativeNumber(){
+
+    Calculator calc = new Calculator();
+    calc.pressNegativeKey();
+    calc.pressDigitKey(2);
+    calc.pressBinaryOperationKey("+");
+    calc.pressDigitKey(2);
+    calc.pressEqualsKey();
+
+    String expected = "0";
+    String actual = calc.readScreen();
+    assertEquals(expected, actual);
+
+    }
 
 
     //TODO hier weitere Tests erstellen
