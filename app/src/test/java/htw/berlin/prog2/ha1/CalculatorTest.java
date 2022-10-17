@@ -76,6 +76,21 @@ class CalculatorTest {
         String actual = calc.readScreen();
         assertEquals(expected,actual);
     }
+    //Teilaufgabe 2
+    @Test
+    @DisplayName("error after dividing 0 through 0")
+    void testDividingThroughZero(){
+
+        Calculator calc = new Calculator();
+
+        calc.pressDigitKey(0);
+        calc.pressBinaryOperationKey("/");
+        calc.pressDigitKey(0);
+
+        String expected = "Error";
+        String actual = calc.readScreen();
+        assertEquals(expected,actual);
+    }
 
 }
 
