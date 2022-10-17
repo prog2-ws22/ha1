@@ -96,8 +96,8 @@ public class Calculator {
      */
     public void pressDotKey() {
         if(!screen.endsWith(".")) screen = screen + ".";
+        if (readScreen().contains(".") == false) screen = screen + ".";
     }
-
     /**
      * Empfängt den Befehl der gedrückten Vorzeichenumkehrstaste ("+/-").
      * Zeigt der Bildschirm einen positiven Wert an, so wird ein "-" links angehängt, der Bildschirm
