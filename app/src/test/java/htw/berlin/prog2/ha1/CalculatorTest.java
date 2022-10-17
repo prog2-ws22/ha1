@@ -89,5 +89,22 @@ class CalculatorTest {
 
         assertEquals(expected, actual);
     }
+
+    @Test
+    @DisplayName("should ignore the second dot input")
+    void testFurtherDotInput() {
+        Calculator calc = new Calculator();
+
+        calc.pressDigitKey(2);
+        calc.pressDotKey();
+        calc.pressDigitKey(2);
+        calc.pressDotKey();
+        calc.pressDigitKey(2);
+
+        String expected = "2.22";
+        String actual = calc.readScreen();
+
+        assertEquals(expected, actual);
+    }
 }
 
