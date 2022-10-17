@@ -43,7 +43,7 @@ class CalculatorTest {
         assertEquals(expected, actual);
     }
 
-    //TODO hier weitere Tests erstellen
+    //Teilaufgabe ha1   1.grüner Test
     @Test
     @DisplayName("should display result after minus two positive multi-digit numbers")
     void testPositiveMinus() {
@@ -61,6 +61,7 @@ class CalculatorTest {
 
         assertEquals(expected, actual);
     }
+    //Teilaufgabe1 ha1 2.grüner Test
     @Test
     @DisplayName("should display result after division two positive multi-digit numbers")
     void testPositiveDivision() {
@@ -76,6 +77,7 @@ class CalculatorTest {
 
         assertEquals(expected, actual);
     }
+    //Teilaufgabe2 ha1. 1. roter Test
     @Test
     @DisplayName("should display result after division eine positive mit null multi-digit numbers")
     void testNullDivision() {
@@ -91,6 +93,7 @@ class CalculatorTest {
 
         assertEquals(expected, actual);
     }
+    //Teilaufgabe2 ha1 roter Test
     @Test
     @DisplayName("should display result after negative minus zwei positive  multi-digit numbers")
     void testNegativeMinus() {
