@@ -41,5 +41,18 @@ class CalculatorTest {
     }
 
     //TODO hier weitere Tests erstellen
+    @Test
+    @DisplayName("should give the right answer for modulus 4 :")
+    void testParse(){
+        Calculator c = new Calculator();
+
+        c.pressDigitKey(4);
+        c.pressUnaryOperationKey("%");
+
+        String expected = "0.04";
+        String actual = c.readScreen();
+
+        assertEquals(expected, actual);
+    }
 }
 
