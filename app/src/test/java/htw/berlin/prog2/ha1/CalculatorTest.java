@@ -54,5 +54,37 @@ class CalculatorTest {
 
         assertEquals(expected, actual);
     }
+
+    @Test
+    @DisplayName("it should give the result tow devidied by tow ")
+    void testSum(){
+        Calculator n = new Calculator();
+
+        n.pressDigitKey(2);
+        n.pressUnaryOperationKey("1/X");
+
+        String expected = "0.6";
+        String actual = n.readScreen();
+
+        assertEquals(expected, actual);
+
+    }
+    @Test
+    @DisplayName("Display result after subtruct tow positiv digital")
+            void TestSubtruct(){
+    Calculator s = new Calculator();
+
+        s.pressDigitKey(2);
+        s.pressDigitKey(0);
+        s.pressBinaryOperationKey("-");
+        s.pressDigitKey(1);
+        s.pressDigitKey(1);
+        s.pressEqualsKey();
+
+    String expected = "10";
+    String actual = s.readScreen();
+
+    assertEquals(expected, actual);
+    }
 }
 
