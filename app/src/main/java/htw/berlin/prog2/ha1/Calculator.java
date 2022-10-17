@@ -14,6 +14,8 @@ public class Calculator {
 
     private String latestOperation = "";
 
+    private String remember;
+
     /**
      * @return den aktuellen Bildschirminhalt als String
      */
@@ -128,4 +130,18 @@ public class Calculator {
         if(screen.endsWith(".0")) screen = screen.substring(0,screen.length()-2);
         if(screen.contains(".") && screen.length() > 11) screen = screen.substring(0, 10);
     }
+
+
+    /**
+    * Memory Function
+    */
+     public void pressMplusKey() { // die Taste M+
+        remember = readScreen();
+    }
+
+    public void pressMRKey() { // die Taste MR
+        screen = remember;
+    }
+
+
 }
