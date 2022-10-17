@@ -72,5 +72,22 @@ class CalculatorTest {
 
         assertEquals(expected, actual);
     }
+
+    @Test
+    @DisplayName("should erase the remembered value")
+    void testEraseRememberedValue() {
+        Calculator calc = new Calculator();
+
+        calc.pressDigitKey(8);
+        calc.pressMplusKey();
+        calc.pressClearKey();
+        calc.pressMCKey();
+        calc.pressMRKey();
+
+        String expected = "0";
+        String actual = calc.readScreen();
+
+        assertEquals(expected, actual);
+    }
 }
 
