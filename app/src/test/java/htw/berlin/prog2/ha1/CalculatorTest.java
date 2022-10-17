@@ -81,5 +81,24 @@ class CalculatorTest {
 
         assertEquals(expected, actual);
     }
+    @Test
+    @DisplayName("should save 4 to memory add 2 and then add recalled 4 with the result of 10")
+    void testMemeoryPlusAndMemoryRecall() {
+        Calculator calc = new Calculator();
+
+        calc.pressDigitKey(4);
+        calc.pressUnaryOperationKey("M+");
+        calc.pressBinaryOperationKey("+");
+        calc.pressDigitKey(2);
+        calc.pressEqualsKey();
+        calc.pressBinaryOperationKey("+");
+        calc.pressUnaryOperationKey("MR");
+        calc.pressEqualsKey();
+
+        String expected = "10";
+        String actual = calc.readScreen();
+
+        assertEquals(expected, actual);
+    }
 }
 

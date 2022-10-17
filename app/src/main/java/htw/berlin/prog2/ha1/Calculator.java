@@ -1,5 +1,7 @@
 package htw.berlin.prog2.ha1;
 
+import java.util.Objects;
+
 /**
  * Eine Klasse, die das Verhalten des Online Taschenrechners imitiert, welcher auf
  * https://www.online-calculator.com/ aufgerufen werden kann (ohne die Memory-Funktionen)
@@ -11,7 +13,7 @@ public class Calculator {
     private String screen = "0";
 
     private double latestValue;
-
+    private double memoryValue;
     private String latestOperation = "";
 
     /**
@@ -65,16 +67,21 @@ public class Calculator {
     }
 
     /**
-     * Empfängt den Wert einer gedrückten unären Operationstaste, also eine der drei Operationen
-     * Quadratwurzel, Prozent, Inversion, welche nur einen Operanden benötigen.
+     * Empfängt den Wert einer gedrückten unären Operationstaste, also eine der 5 Operationen
+     * Quadratwurzel, Prozent, Inversion, Speichern, Laden welche nur einen Operanden benötigen.
      * Beim Drücken der Taste wird direkt die Operation auf den aktuellen Zahlenwert angewendet und
-     * der Bildschirminhalt mit dem Ergebnis aktualisiert.
-     * @param operation "√" für Quadratwurzel, "%" für Prozent, "1/x" für Inversion
+     * der Bildschirminhalt mit dem Ergebnis aktualisiert, wenn es sich nicht um das Speichern eines Zahlenwertes handelt.
+     * @param operation "√" für Quadratwurzel, "%" für Prozent, "1/x" für Inversion, "M+" für das Speichern eines Zahlenwertes, "MR" für das Laden des zuletzt gespeicherten Zahlenwertes
      */
     public void pressUnaryOperationKey(String operation) {
         latestValue = Double.parseDouble(screen);
-        latestOperation = operation;
+        if (!operation.equals("M+")&&!operation.equals("MR")){
+            latestOperation = operation;
+        }
+
         var result = switch(operation) {
+            case "M+"  -> memoryValue = Double.parseDouble(screen);
+            case "MR"  -> memoryValue;
             case "√" -> Math.sqrt(Double.parseDouble(screen));
             case "%" -> Double.parseDouble(screen) / 100;
             case "1/x" -> 1 / Double.parseDouble(screen);
@@ -117,7 +124,6 @@ public class Calculator {
      * und das Ergebnis direkt angezeigt.
      */
     public void pressEqualsKey() {
-        boolean err;
         var result = switch(latestOperation) {
             case "+" -> latestValue + Double.parseDouble(screen);
             case "-" -> latestValue - Double.parseDouble(screen);
@@ -126,7 +132,7 @@ public class Calculator {
             default -> throw new IllegalArgumentException();
         };
 
-        if (latestOperation =="/" && Double.parseDouble(screen) == 0) screen = "ERROR";
+        if (Objects.equals(latestOperation, "/") && Double.parseDouble(screen) == 0) screen = "ERROR";
         else screen = Double.toString(result);
         if(screen.endsWith(".0")) screen = screen.substring(0,screen.length()-2);
         if(screen.contains(".") && screen.length() > 11) screen = screen.substring(0, 10);
