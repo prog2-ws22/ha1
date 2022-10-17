@@ -40,6 +40,27 @@ class CalculatorTest {
         assertEquals(expected, actual);
     }
 
+
+    // GREEN TEST
+    @Test
+    @DisplayName("should display result after adding a positive number to a result")
+
+    void testAddAfterDisplayingResult(){
+
+        Calculator calc = new Calculator();
+        calc.pressDigitKey(2);
+        calc.pressBinaryOperationKey("+");
+        calc.pressDigitKey(2);
+        calc.pressEqualsKey();
+        calc.pressBinaryOperationKey("+");
+        calc.pressDigitKey(2);
+        calc.pressEqualsKey();
+        calc.pressEqualsKey();
+        String expected = "10";
+        String actual = calc.readScreen();
+        assertEquals(expected, actual);
+
+    }
     //TODO hier weitere Tests erstellen
 }
 
