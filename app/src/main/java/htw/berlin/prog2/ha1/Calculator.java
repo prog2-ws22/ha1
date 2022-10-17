@@ -14,6 +14,8 @@ public class Calculator {
 
     private String latestOperation = "";
 
+    private String remember;
+
     /**
      * @return den aktuellen Bildschirminhalt als String
      */
@@ -93,9 +95,8 @@ public class Calculator {
      * Beim zweimaligem Drücken, oder wenn bereits ein Trennzeichen angezeigt wird, passiert nichts.
      */
     public void pressDotKey() {
-        if(!screen.endsWith(".")) screen = screen + ".";
+        if(readScreen().contains(".") == false) screen = screen + ".";
     }
-
     /**
      * Empfängt den Befehl der gedrückten Vorzeichenumkehrstaste ("+/-").
      * Zeigt der Bildschirm einen positiven Wert an, so wird ein "-" links angehängt, der Bildschirm
@@ -127,5 +128,21 @@ public class Calculator {
         screen = Double.toString(result);
         if(screen.endsWith(".0")) screen = screen.substring(0,screen.length()-2);
         if(screen.contains(".") && screen.length() > 11) screen = screen.substring(0, 10);
+    }
+
+
+    /**
+    * Memory Function
+    */
+     public void pressMplusKey() { // die Taste M+
+        remember = readScreen();
+    }
+
+    public void pressMRKey() { // die Taste MR
+        screen = remember;
+    }
+
+    public void pressMCKey() { // die Taste MC
+        remember = "0";
     }
 }
