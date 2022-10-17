@@ -54,7 +54,6 @@ class CalculatorTest {
 
         String expected ="0";
         String actual = calc.readScreen();
-
         assertEquals(expected, actual);
 
     }
