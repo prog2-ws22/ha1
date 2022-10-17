@@ -58,5 +58,39 @@ class CalculatorTest {
 
         assertEquals(expected, actual);
     }
+
+    //Teilaufgabe 2, Test für Kettenaufgaben bei denen Punkt vor Strich beachtet werden sollte
+    @Test
+    @DisplayName("Punkt vor Strich sollte bei einer Kettenaufgabe beachtet werden.")
+    void testKettenaufgabe() {
+        Calculator calc = new Calculator();
+        calc.pressDigitKey(3);
+        calc.pressBinaryOperationKey("+");
+        calc.pressDigitKey(2);
+        calc.pressBinaryOperationKey("x");
+        calc.pressDigitKey(4);
+        calc.pressEqualsKey();
+
+        String expected = "11";
+        String actual = calc.readScreen();
+
+        assertEquals(expected, actual);
+    }
+
+    //Teilaufgabe 2, Test für 0 als Divisor
+    @Test
+    @DisplayName("Error sollte als Ergebnis angezeigt werden, wenn durch 0 dividiert wird.")
+    void testDivid0() {
+        Calculator calc = new Calculator();
+        calc.pressDigitKey(4);
+        calc.pressBinaryOperationKey("/");
+        calc.pressDigitKey(0);
+        calc.pressEqualsKey();
+
+        String expected = "Error";
+        String actual = calc.readScreen();
+
+        assertEquals(expected, actual);
+    }
 }
 
