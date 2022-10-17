@@ -41,8 +41,13 @@ class CalculatorTest {
     }
 
     //TODO hier weitere Tests erstellen
+
+    /*
+    Teilaufgabe 1: Schreiben Sie einen neuen zusätzlichen Test, der eine bisher nicht getestete Funktionalität abdeckt,
+    die bereits funktioniert und der daher direkt grün wird.
+   */
     @Test
-    @DisplayName("should display result after subtracting two numbers")
+    @DisplayName("should display result after subtracting two single-digit numbers")
     void testPositiveSubtraction() {
         Calculator calc = new Calculator();
 
@@ -52,6 +57,26 @@ class CalculatorTest {
         calc.pressEqualsKey();
 
         String expected = "1";
+        String actual = calc.readScreen();
+
+        assertEquals(expected, actual);
+    }
+
+    /*
+    Teilaufgabe 2: Schreiben Sie zwei weitere zusätzliche Tests, die zwei unterschiedliche Fehlerkategorien aufdecken
+    (d.h. deren Fehlerursachen in unterschiedlichen Methoden liegen) und somit fehlschlagen.
+     */
+    @Test
+    @DisplayName("should display ERROR after division by zero")
+    void testZeroDivision() {
+        Calculator calc = new Calculator();
+
+        calc.pressDigitKey(2);
+        calc.pressBinaryOperationKey("/");
+        calc.pressDigitKey(0);
+        calc.pressEqualsKey();
+
+        String expected = "ERROR";
         String actual = calc.readScreen();
 
         assertEquals(expected, actual);
