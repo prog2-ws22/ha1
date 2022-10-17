@@ -56,5 +56,21 @@ class CalculatorTest {
 
         assertEquals(expected, actual);
     }
+
+    @Test
+    @DisplayName("should call and display a remembered value")
+    void testCallRememberedValue() {
+        Calculator calc = new Calculator();
+
+        calc.pressDigitKey(8);
+        calc.pressMplusKey();
+        calc.pressClearKey();
+        calc.pressMRKey();
+
+        String expected = "8";
+        String actual = calc.readScreen();
+
+        assertEquals(expected, actual);
+    }
 }
 
