@@ -60,18 +60,19 @@ class CalculatorTest {
 
 
     @Test
-    @DisplayName("should display result after subtracting a negative Number from a multi-Digit positive number")
+    @DisplayName("should display result after subtracting a positive Number from a decimal negative number")
     void testNegativeFromPositiveSubtraction(){
     Calculator calc = new Calculator();
 
+    calc.pressBinaryOperationKey("-");
     calc.pressDigitKey(1);
+    calc.pressDotKey();
     calc.pressDigitKey(5);
     calc.pressBinaryOperationKey("-");
     calc.pressDigitKey(3);
-    calc.pressNegativeKey();
     calc.pressEqualsKey();
 
-    String expected = "18";
+    String expected = "-4.5";
     String actual = calc.readScreen();
 
     assertEquals(expected, actual);
