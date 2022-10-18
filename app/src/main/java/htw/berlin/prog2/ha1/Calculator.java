@@ -31,10 +31,15 @@ public class Calculator {
     public void pressDigitKey(int digit) {
         if(digit > 9 || digit < 0) throw new IllegalArgumentException();
 
-        if(screen.equals("0") || latestValue == Double.parseDouble(screen)) screen = "";
+        if(screen.equals("0") || latestValue == Double.parseDouble(screen))if(screen.equals("-0")){
+            int s = Integer.parseInt(screen);
+            screen = String.valueOf(s - digit);
+            return;
+        } screen = "";
 
         screen = screen + digit;
     }
+
 
     /**
      * Empfängt den Befehl der C- bzw. CE-Taste (Clear bzw. Clear Entry).
@@ -62,6 +67,9 @@ public class Calculator {
     public void pressBinaryOperationKey(String operation)  {
         if ( operation == "-" && screen == "0"){
             pressNegativeKey();
+            if ( screen == "-0"){
+                operation = "-";
+            }
             return;
         }
         latestValue = Double.parseDouble(screen);
