@@ -89,7 +89,7 @@ class CalculatorTest {
         assertEquals(expected, actual);
     }
     @Test
-    @DisplayName("should display result after using the clearing Taste ")
+    @DisplayName("should display result after using the clearing Taste")
     void testC() {
         Calculator calc = new Calculator();
 
