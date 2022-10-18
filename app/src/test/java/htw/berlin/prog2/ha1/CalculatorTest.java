@@ -93,7 +93,7 @@ class CalculatorTest {
     }
 
     @Test
-    @DisplayName("test division by zero")
+    @DisplayName("division by zero")
     void testDivisionByZero(){
         Calculator calc = new Calculator();
 
