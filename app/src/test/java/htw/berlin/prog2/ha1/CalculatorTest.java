@@ -79,17 +79,17 @@ void testSubtractionPositiv() {
 }
 
 @Test
-@DisplayName("Should display Error if u square a negative Digit")
+@DisplayName("Should display nth Root ")
 void squareNegativeDigit()
 {
     Calculator calc = new Calculator();
 
-    calc.pressDigitKey(25);
-    calc.pressNegativeKey();
-    calc.pressUnaryOperationKey("√");
+    calc.pressDigitKey(3);
+    calc.pressBinaryOperationKey("√n");
+    calc.pressDigitKey(1);
     calc.pressEqualsKey();
 
-    String expected = "Error";
+    String expected = "3";
     String actual = calc.readScreen();
 
     assertEquals(expected, actual);
