@@ -82,14 +82,14 @@ class CalculatorTest {
     void testClearNumber() {
         Calculator calc = new Calculator();
 
-        calc.pressDigitKey(6);
+        calc.pressDigitKey(8);
         calc.pressBinaryOperationKey("+");
-        calc.pressDigitKey(4);
+        calc.pressDigitKey(3);
         calc.pressClearKey();
         calc.pressDigitKey(2);
         calc.pressEqualsKey();
 
-        String expected = "2";
+        String expected = "10";
         String actual = calc.readScreen();
 
         assertEquals(expected, actual);
