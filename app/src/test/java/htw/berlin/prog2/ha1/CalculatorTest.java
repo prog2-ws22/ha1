@@ -61,14 +61,13 @@ class CalculatorTest {
     @Test
     @DisplayName("should display result after getting root of zero")
     void testRootOfNegativeNumbers() {
-        Calculator calc = new Calculator();
+        Calculator calc = new Calculator();calc.pressNegativeKey();
 
-
+        calc.pressDigitKey(5);
         calc.pressNegativeKey();
-        calc.pressDigitKey(4);
-        calc.pressBinaryOperationKey("√");
+        calc.pressUnaryOperationKey("√");
         calc.pressEqualsKey();
-        String expected = "error";
+        String expected = "Error";
         String actual = calc.readScreen();
         assertEquals(expected, actual);
     }
@@ -77,8 +76,9 @@ class CalculatorTest {
     void testDivisionByZero () {
         Calculator calc = new Calculator();
         calc.pressDigitKey(2);
-        calc.pressUnaryOperationKey("/");
+        calc.pressBinaryOperationKey("/");
         calc.pressDigitKey(0);
+        calc.pressEqualsKey();
         String expected = "Error";
         String actual = calc.readScreen();
 
