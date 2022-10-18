@@ -74,6 +74,12 @@ public class Calculator {
     public void pressUnaryOperationKey(String operation) {
         latestValue = Double.parseDouble(screen);
         latestOperation = operation;
+
+        if(latestValue < 0 && latestOperation.equals("√")){
+            screen = "ERROR";
+            return;
+
+        }
         var result = switch(operation) {
             case "√" -> Math.sqrt(Double.parseDouble(screen));
             case "%" -> Double.parseDouble(screen) / 100;
@@ -115,8 +121,19 @@ public class Calculator {
      * Wird die Taste weitere Male gedrückt (ohne andere Tasten dazwischen), so wird die letzte
      * Operation (ggf. inklusive letztem Operand) erneut auf den aktuellen Bildschirminhalt angewandt
      * und das Ergebnis direkt angezeigt.
+     * Wird die Wurzel einer negativen Zahl gezogen, wird "Error" ausgegeben.
      */
     public void pressEqualsKey() {
+
+        if(latestOperation.equals("/") && Double.parseDouble(screen) == 0.0){
+            screen = "ERROR";
+            return;
+        }
+        if(latestValue < 0 && latestOperation.equals("√")){
+            screen = "ERROR";
+            return;
+
+        }
         var result = switch(latestOperation) {
             case "+" -> latestValue + Double.parseDouble(screen);
             case "-" -> latestValue - Double.parseDouble(screen);
@@ -127,5 +144,6 @@ public class Calculator {
         screen = Double.toString(result);
         if(screen.endsWith(".0")) screen = screen.substring(0,screen.length()-2);
         if(screen.contains(".") && screen.length() > 11) screen = screen.substring(0, 10);
+
     }
 }
