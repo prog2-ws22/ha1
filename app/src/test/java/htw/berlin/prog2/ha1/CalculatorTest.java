@@ -62,7 +62,7 @@ class CalculatorTest {
 
 
     @Test
-    @DisplayName("sollte Zahlen addieren und Subtrahieren können")
+    @DisplayName("sollte Zahlen addieren und Subtrahieren können ohne zwischendurch das Zwischenergebnis auszugeben")
     void testPositiveAndNegative() {
         Calculator calc = new Calculator();
 
@@ -87,15 +87,19 @@ class CalculatorTest {
 
         calc.pressDigitKey(3);
         calc.pressDotKey();
-        calc.pressDigitKey(2);
-        calc.pressBinaryOperationKey("*");
+        calc.pressDigitKey(3);
+        calc.pressDigitKey(3);
+        calc.pressDigitKey(3);
+        calc.pressBinaryOperationKey("/");
         calc.pressDigitKey(6);
         calc.pressDotKey();
-        calc.pressDigitKey(5);
+        calc.pressDigitKey(7);
+        calc.pressDigitKey(8);
+        calc.pressDigitKey(9);
         calc.pressEqualsKey();
 
 
-        String expected = "20.8";
+        String expected = "0.49094123";
         String actual = calc.readScreen();
 
         assertEquals(expected, actual);
