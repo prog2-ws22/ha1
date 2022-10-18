@@ -12,8 +12,15 @@ public class Calculator {
 
     private double latestValue;
 
+    private double latestDigit;
+
     private String latestOperation = "";
 
+    private double latestResult = 0.0;
+
+    private int countEquals = 0;
+
+    private boolean negativeKey = false;
     /**
      * @return den aktuellen Bildschirminhalt als String
      */
@@ -30,9 +37,9 @@ public class Calculator {
      */
     public void pressDigitKey(int digit) {
         if(digit > 9 || digit < 0) throw new IllegalArgumentException();
+        latestDigit = digit;
 
         if(screen.equals("0") || latestValue == Double.parseDouble(screen)) screen = "";
-
         screen = screen + digit;
     }
 
@@ -48,6 +55,8 @@ public class Calculator {
         screen = "0";
         latestOperation = "";
         latestValue = 0.0;
+        latestResult = 0.0;
+        countEquals = 0;
     }
 
     /**
@@ -74,14 +83,20 @@ public class Calculator {
     public void pressUnaryOperationKey(String operation) {
         latestValue = Double.parseDouble(screen);
         latestOperation = operation;
-        var result = switch(operation) {
-            case "√" -> Math.sqrt(Double.parseDouble(screen));
-            case "%" -> Double.parseDouble(screen) / 100;
-            case "1/x" -> 1 / Double.parseDouble(screen);
-            default -> throw new IllegalArgumentException();
-        };
-        screen = Double.toString(result);
-        if(screen.contains(".") && screen.length() > 11) screen = screen.substring(0, 10);
+            if(negativeKey == true && operation.equals("√")) {
+              screen = "Error";
+            }else {
+                var result = switch (operation) {
+                    case "√" -> Math.sqrt(Double.parseDouble(screen));
+                    case "%" -> Double.parseDouble(screen) / 100;
+                    case "1/x" -> 1 / Double.parseDouble(screen);
+                    default -> throw new IllegalArgumentException();
+                };
+                screen = Double.toString(result);
+                latestResult = Double.parseDouble(screen);
+                countEquals++;
+                if (screen.contains(".") && screen.length() > 11) screen = screen.substring(0, 10);
+            }
 
     }
 
@@ -105,27 +120,48 @@ public class Calculator {
      */
     public void pressNegativeKey() {
         screen = screen.startsWith("-") ? screen.substring(1) : "-" + screen;
+        if (negativeKey == true) {
+            negativeKey = false;
+        } else {
+            negativeKey = true;
+        }
     }
 
-    /**
-     * Empfängt den Befehl der gedrückten "="-Taste.
-     * Wurde zuvor keine Operationstaste gedrückt, passiert nichts.
-     * Wurde zuvor eine binäre Operationstaste gedrückt und zwei Operanden eingegeben, wird das
-     * Ergebnis der Operation angezeigt. Falls hierbei eine Division durch Null auftritt, wird "Error" angezeigt.
-     * Wird die Taste weitere Male gedrückt (ohne andere Tasten dazwischen), so wird die letzte
-     * Operation (ggf. inklusive letztem Operand) erneut auf den aktuellen Bildschirminhalt angewandt
-     * und das Ergebnis direkt angezeigt.
-     */
-    public void pressEqualsKey() {
-        var result = switch(latestOperation) {
-            case "+" -> latestValue + Double.parseDouble(screen);
-            case "-" -> latestValue - Double.parseDouble(screen);
-            case "x" -> latestValue * Double.parseDouble(screen);
-            case "/" -> latestValue / Double.parseDouble(screen);
-            default -> throw new IllegalArgumentException();
-        };
-        screen = Double.toString(result);
-        if(screen.endsWith(".0")) screen = screen.substring(0,screen.length()-2);
-        if(screen.contains(".") && screen.length() > 11) screen = screen.substring(0, 10);
+        /**
+         * Empfängt den Befehl der gedrückten "="-Taste.
+         * Wurde zuvor keine Operationstaste gedrückt, passiert nichts.
+         * Wurde zuvor eine binäre Operationstaste gedrückt und zwei Operanden eingegeben, wird das
+         * Ergebnis der Operation angezeigt. Falls hierbei eine Division durch Null auftritt, wird "Error" angezeigt.
+         * Wird die Taste weitere Male gedrückt (ohne andere Tasten dazwischen), so wird die letzte
+         * Operation (ggf. inklusive letztem Operand) erneut auf den aktuellen Bildschirminhalt angewandt
+         * und das Ergebnis direkt angezeigt.
+         */
+        public void pressEqualsKey() {
+            //First correction
+            if (countEquals > 0) {
+                var result = switch (latestOperation) {
+                    case "+" -> latestResult + latestDigit;
+                    case "-" -> latestResult - latestDigit;
+                    case "x" -> latestResult * latestDigit;
+                    case "/" -> latestResult / latestDigit;
+                    default -> throw new IllegalArgumentException();
+                };
+                screen = Double.toString(result);
+
+            } else {
+                var result = switch (latestOperation) {
+                    case "+" -> latestValue + Double.parseDouble(screen);
+                    case "-" -> latestValue - Double.parseDouble(screen);
+                    case "x" -> latestValue * Double.parseDouble(screen);
+                    case "/" -> latestValue / Double.parseDouble(screen);
+                    default -> throw new IllegalArgumentException();
+                };
+                    screen = Double.toString(result);
+            }
+            latestResult = Double.parseDouble(screen);
+            countEquals++;
+            if (screen.endsWith(".0")) screen = screen.substring(0, screen.length() - 2);
+            if (screen.contains(".") && screen.length() > 11) screen = screen.substring(0, 10);
+        }
     }
-}
+
