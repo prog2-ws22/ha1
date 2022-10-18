@@ -80,7 +80,7 @@ void testSubtractionPositiv() {
 
 @Test
 @DisplayName("Should display nth Root ")
-void squareNegativeDigit()
+void nthsquare()
 {
     Calculator calc = new Calculator();
 
@@ -93,7 +93,6 @@ void squareNegativeDigit()
     String actual = calc.readScreen();
 
     assertEquals(expected, actual);
-
 
 }
 
