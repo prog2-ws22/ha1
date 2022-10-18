@@ -63,7 +63,7 @@ class CalculatorTest {
     }
     // RED TEST
     @Test
-    @DisplayName("should display result after multiplying two negative numbers")
+    @DisplayName("should display result after multiplying a negative number and a positive number")
 
     void testMultiplyNegativeNumber(){
 
@@ -72,27 +72,28 @@ class CalculatorTest {
         calc.pressDigitKey(2);
         calc.pressBinaryOperationKey("x");
         calc.pressDigitKey(2);
+        calc.pressEqualsKey();
 
-
-        String expected = "4";
+        String expected = "-4";
         String actual = calc.readScreen();
         assertEquals(expected, actual);
 
     }
     //RED TEST
     @Test
-    @DisplayName("should display result after adding a negative number and a positive number")
+    @DisplayName("should display result after adding a negative and a positive number")
 
     void testAddNegativeNumber(){
 
     Calculator calc = new Calculator();
-    calc.pressNegativeKey();
-    calc.pressDigitKey(2);
+
+    calc.pressBinaryOperationKey("-");
+    calc.pressDigitKey(4);
     calc.pressBinaryOperationKey("+");
-    calc.pressDigitKey(2);
+    calc.pressDigitKey(7);
     calc.pressEqualsKey();
 
-    String expected = "0";
+    String expected = "3";
     String actual = calc.readScreen();
     assertEquals(expected, actual);
 
