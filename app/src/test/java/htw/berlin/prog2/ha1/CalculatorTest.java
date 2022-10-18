@@ -74,21 +74,16 @@ class CalculatorTest {
 
     //Teilaufgabe 2.2
     @Test
-    @DisplayName("should display result after adding three numbers, pressing 'C' and adding another number")
-    void testCEKey() {
+    @DisplayName("should display Error when dividing a number with zero")
+    void testDivisionWithZero() {
         Calculator calc = new Calculator();
 
-        calc.pressDigitKey(1);
-        calc.pressBinaryOperationKey("+");
-        calc.pressDigitKey(2);
-        calc.pressBinaryOperationKey("+");
         calc.pressDigitKey(3);
-        calc.pressClearKey();
-        calc.pressBinaryOperationKey("+");
-        calc.pressDigitKey(4);
+        calc.pressBinaryOperationKey("/");
+        calc.pressDigitKey(0);
         calc.pressEqualsKey();
 
-        String expected = "7";
+        String expected = "Error";
         String actual = calc.readScreen();
 
         assertEquals(expected, actual);
