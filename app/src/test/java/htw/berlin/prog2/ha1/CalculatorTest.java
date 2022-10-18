@@ -62,8 +62,9 @@ class CalculatorTest {
     @DisplayName("should display an error after getting the square of zero")
     void testSquareOfZero() {
         Calculator calc = new Calculator();
-        
-        calc.pressDigitKey(0);
+
+        calc.pressDigitKey(1);
+        calc.pressNegativeKey();
         calc.pressUnaryOperationKey("√");
 
         String expected = "Error";
