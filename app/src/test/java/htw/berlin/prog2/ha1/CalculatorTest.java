@@ -34,6 +34,7 @@ class CalculatorTest {
         calc.pressDigitKey(2);
         calc.pressUnaryOperationKey("√");
 
+
         String expected = "1.41421356";
         String actual = calc.readScreen();
 
@@ -41,5 +42,12 @@ class CalculatorTest {
     }
 
     //TODO hier weitere Tests erstellen
+
+
+
+
+
+
+
 }
 
