@@ -30,12 +30,12 @@ public class Calculator {
      */
     public void pressDigitKey(int digit) {
         if(digit > 9 || digit < 0) throw new IllegalArgumentException();
-
-        if(screen.equals("0") || latestValue == Double.parseDouble(screen))if(screen.equals("-0")){
+        if(screen.equals("-0")){
             int s = Integer.parseInt(screen);
             screen = String.valueOf(s - digit);
-            return;
-        } screen = "";
+            return;}
+        if(screen.equals("0") || latestValue == Double.parseDouble(screen)) {screen = "";}
+
 
         screen = screen + digit;
     }
@@ -86,6 +86,11 @@ public class Calculator {
     public void pressUnaryOperationKey(String operation) {
         latestValue = Double.parseDouble(screen);
         latestOperation = operation;
+        int s = Integer.parseInt(screen);
+        if (s < 0){
+            screen = "Error";
+            return;
+        }
         var result = switch(operation) {
             case "√" -> Math.sqrt(Double.parseDouble(screen));
             case "%" -> Double.parseDouble(screen) / 100;
@@ -134,6 +139,7 @@ public class Calculator {
             case "-" -> latestValue - Double.parseDouble(screen);
             case "x" -> latestValue * Double.parseDouble(screen);
             case "/" -> latestValue / Double.parseDouble(screen);
+            //case "Error"
             default -> throw new IllegalArgumentException();
         };
         screen = Double.toString(result);

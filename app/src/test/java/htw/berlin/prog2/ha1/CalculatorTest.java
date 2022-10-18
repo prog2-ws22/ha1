@@ -99,6 +99,31 @@ class CalculatorTest {
 
     }
 
+    //@Test
+    //@DisplayName("test for negative square Root")
+
+    //void testErrorForNegativeRoot(){
+
+      //  Calculator calc = new Calculator();
+
+        //calc.pressDigitKey(4);
+        //calc.pressDigitKey(9);
+        //calc.pressNegativeKey();
+        //calc.pressUnaryOperationKey("√");
+        //calc.pressEqualsKey();
+
+        //String expected = "Error";
+        //String actual = calc.readScreen();
+        //assertEquals(expected, actual);
+
+    //}
+
+
+
+
+
+
+
 
     //TODO hier weitere Tests erstellen
 }
