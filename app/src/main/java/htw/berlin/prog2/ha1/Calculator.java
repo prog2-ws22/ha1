@@ -30,11 +30,16 @@ public class Calculator {
      */
     public void pressDigitKey(int digit) {
         if(digit > 9 || digit < 0) throw new IllegalArgumentException();
+        if(screen.equals("-0")){
+            int s = Integer.parseInt(screen);
+            screen = String.valueOf(s - digit);
+            return;}
+        if(screen.equals("0") || latestValue == Double.parseDouble(screen)) {screen = "";}
 
-        if(screen.equals("0") || latestValue == Double.parseDouble(screen)) screen = "";
 
         screen = screen + digit;
     }
+
 
     /**
      * Empfängt den Befehl der C- bzw. CE-Taste (Clear bzw. Clear Entry).
@@ -60,6 +65,11 @@ public class Calculator {
      * @param operation "+" für Addition, "-" für Substraktion, "x" für Multiplikation, "/" für Division
      */
     public void pressBinaryOperationKey(String operation)  {
+        if ( operation == "-" && screen == "0"){
+            pressNegativeKey();
+
+            return;
+        }
         latestValue = Double.parseDouble(screen);
         latestOperation = operation;
     }
@@ -74,6 +84,11 @@ public class Calculator {
     public void pressUnaryOperationKey(String operation) {
         latestValue = Double.parseDouble(screen);
         latestOperation = operation;
+        int s = Integer.parseInt(screen);
+        if (s < 0){
+            screen = "Error";
+            return;
+        }
         var result = switch(operation) {
             case "√" -> Math.sqrt(Double.parseDouble(screen));
             case "%" -> Double.parseDouble(screen) / 100;
@@ -122,6 +137,7 @@ public class Calculator {
             case "-" -> latestValue - Double.parseDouble(screen);
             case "x" -> latestValue * Double.parseDouble(screen);
             case "/" -> latestValue / Double.parseDouble(screen);
+            //case "Error"
             default -> throw new IllegalArgumentException();
         };
         screen = Double.toString(result);

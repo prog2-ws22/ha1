@@ -40,6 +40,90 @@ class CalculatorTest {
         assertEquals(expected, actual);
     }
 
+
+    // GREEN TEST
+    @Test
+    @DisplayName("should display result after adding a positive number to a result")
+
+    void testAddAfterDisplayingResult(){
+
+        Calculator calc = new Calculator();
+        calc.pressDigitKey(2);
+        calc.pressBinaryOperationKey("+");
+        calc.pressDigitKey(2);
+        calc.pressEqualsKey();
+        calc.pressBinaryOperationKey("+");
+        calc.pressDigitKey(2);
+        calc.pressEqualsKey();
+        calc.pressEqualsKey();
+        String expected = "10";
+        String actual = calc.readScreen();
+        assertEquals(expected, actual);
+
+    }
+    // RED TEST
+    @Test
+    @DisplayName("should display result after multiplying a negative number and a positive number")
+
+    void testMultiplyNegativeNumber(){
+
+        Calculator calc = new Calculator();
+        calc.pressNegativeKey();
+        calc.pressDigitKey(2);
+        calc.pressBinaryOperationKey("x");
+        calc.pressDigitKey(2);
+        calc.pressEqualsKey();
+
+        String expected = "-4";
+        String actual = calc.readScreen();
+        assertEquals(expected, actual);
+
+    }
+    //RED TEST
+    @Test
+    @DisplayName("should display result after adding a negative and a positive number")
+
+    void testAddNegativeNumber(){
+
+    Calculator calc = new Calculator();
+
+    calc.pressBinaryOperationKey("-");
+    calc.pressDigitKey(4);
+    calc.pressBinaryOperationKey("+");
+    calc.pressDigitKey(7);
+    calc.pressEqualsKey();
+
+    String expected = "3";
+    String actual = calc.readScreen();
+    assertEquals(expected, actual);
+
+    }
+
+    @Test
+    @DisplayName("test for negative square Root")
+
+    void testErrorForNegativeRoot(){
+
+        Calculator calc = new Calculator();
+
+        calc.pressDigitKey(4);
+        calc.pressDigitKey(9);
+        //calc.pressNegativeKey();
+        calc.pressUnaryOperationKey("√");
+
+        String expected = "7.0";
+        String actual = calc.readScreen();
+        assertEquals(expected, actual);
+
+    }
+
+
+
+
+
+
+
+
     //TODO hier weitere Tests erstellen
 }
 
