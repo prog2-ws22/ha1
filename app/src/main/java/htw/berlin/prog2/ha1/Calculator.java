@@ -83,6 +83,7 @@ public class Calculator {
         screen = Double.toString(result);
         if(screen.contains(".") && screen.length() > 11) screen = screen.substring(0, 10);
 
+
     }
 
     /**
@@ -122,10 +123,12 @@ public class Calculator {
             case "-" -> latestValue - Double.parseDouble(screen);
             case "x" -> latestValue * Double.parseDouble(screen);
             case "/" -> latestValue / Double.parseDouble(screen);
+            case "%" -> latestValue / 100; //Reperatur 2
             default -> throw new IllegalArgumentException();
         };
         screen = Double.toString(result);
         if(screen.endsWith(".0")) screen = screen.substring(0,screen.length()-2);
         if(screen.contains(".") && screen.length() > 11) screen = screen.substring(0, 10);
+        if(screen.contains("Infinity")) screen = "Error"; //Reperatur 1
     }
 }
