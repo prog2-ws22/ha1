@@ -59,7 +59,7 @@ class CalculatorTest {
 
     @Test
     @DisplayName("Should display result")
-    void testMulti(){
+    void testMulti() {
         Calculator calc = new Calculator();
 
         calc.pressDigitKey(5);
@@ -73,5 +73,24 @@ class CalculatorTest {
 
     }
 
+    @Test
+    @DisplayName("Should display result")
+        void testDivi () {
+
+        Calculator calc = new Calculator();
+
+        calc.pressDigitKey(27);
+        calc.pressUnaryOperationKey("/");
+        calc.pressDigitKey(9);
+
+        String expected = "3";
+        String actual = calc.readScreen();
+
+        assertEquals(expected, actual);
+
+
+
+
+    }
 }
 
