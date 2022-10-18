@@ -41,7 +41,7 @@ class CalculatorTest {
     }
 
     //TODO hier weitere Tests erstellen
-    @Test // grüner Test
+    @Test // 1. grüner Test
     @DisplayName("should display result after mutiplying two positive numbers")
     void testMultiplying() {
         Calculator calc = new Calculator();
@@ -57,7 +57,23 @@ class CalculatorTest {
         assertEquals(expected, actual);
     }
 
-    }
+    @Test // 1. roter Test
+    @DisplayName("should change value everytime clicking = in a row after mutiplying, without changing the input ")
+    void testEquals() {
+        Calculator calc = new Calculator();
 
+        calc.pressDigitKey(8);
+        calc.pressBinaryOperationKey("x");
+        calc.pressDigitKey(2);
+        calc.pressEqualsKey();
+        calc.pressEqualsKey();
+        calc.pressEqualsKey();
+
+        String expected = "64";
+        String actual = calc.readScreen();
+
+        assertEquals(expected, actual);
+    }
+}
 
 
