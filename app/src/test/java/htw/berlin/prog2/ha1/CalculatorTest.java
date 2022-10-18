@@ -83,32 +83,32 @@ class CalculatorTest {
     void testNullDivision() {
         Calculator calc = new Calculator();
 
-        calc.pressDigitKey(0);
-        calc.pressBinaryOperationKey("/");
         calc.pressDigitKey(4);
+        calc.pressBinaryOperationKey("/");
+        calc.pressDigitKey(0);
         calc.pressEqualsKey();
 
-        String expected = "4";
+        String expected = "error";
         String actual = calc.readScreen();
 
         assertEquals(expected, actual);
     }
     //Teilaufgabe2 ha1 roter Test
+
     @Test
-    @DisplayName("should display result after negative minus zwei positive  multi-digit numbers")
-    void testNegativeMinus() {
+    @DisplayName("should display result after  the square root of negative numbers")
+    void testNegativeSquare() {
         Calculator calc = new Calculator();
+        calc.pressNegativeKey();
+        calc.pressDigitKey(9);
+        calc.pressUnaryOperationKey("√");
 
-        calc.pressDigitKey(5);
-        calc.pressBinaryOperationKey("-");
-        calc.pressDigitKey(10);
-        calc.pressEqualsKey();
-
-        String expected = "5";
+        String expected = "error";
         String actual = calc.readScreen();
 
         assertEquals(expected, actual);
     }
+
 
 }
 
