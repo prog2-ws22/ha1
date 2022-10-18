@@ -76,7 +76,7 @@ class CalculatorTest {
         String actual = calc.readScreen();
 
         assertEquals(expected, actual);
-        //Exception bei geteilt durch 0 wird nicht mit "ERROR" behandelt und es wird "INFINITY" angezeigt
+        //Vorher: bei geteilt durch 0 wird nicht mit "ERROR" behandelt und es wird "Infinity" angezeigt
     }
 
     @Test
@@ -84,14 +84,14 @@ class CalculatorTest {
     void testClearKey(){
         Calculator calc = new Calculator();
 
-        calc.pressDigitKey(2);
+        calc.pressDigitKey(5);
         calc.pressBinaryOperationKey("+");
         calc.pressClearKey();
         calc.pressBinaryOperationKey("-");
-        calc.pressDigitKey(1);
+        calc.pressDigitKey(2);
         calc.pressEqualsKey();
 
-        String expected = "1";
+        String expected = "3";
         String actual = calc.readScreen();
 
         assertEquals(expected, actual);
@@ -111,7 +111,7 @@ class CalculatorTest {
         String actual = calc.readScreen();
 
         assertEquals(expected, actual);
-        //Allgemein vertausch der Rechner den ersten und zweiten Summanten, da zum Zeitpunkt des Aufrufen des Operators (z.b. +) nur der erste eingegeben ist.
+        //Allgemein vertauscht der Rechner den ersten und zweiten Wert bei Rechenoperation, da zum Zeitpunkt des Aufrufen des Operators (z.b. +) nur der erste vorhanden und als Eingabe in die methode verfügbar ist.
         //Dadurch wird bei mehrfachem drücken der '=' Taste nach einer Rechenoperatio, der erste Wert mehrfach angewendet
     }
 
