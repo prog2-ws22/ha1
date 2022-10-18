@@ -74,6 +74,12 @@ public class Calculator {
     public void pressUnaryOperationKey(String operation) {
         latestValue = Double.parseDouble(screen);
         latestOperation = operation;
+
+        if(latestValue < 0 && latestOperation.equals("√")){
+            screen = "ERROR";
+            return;
+
+        }
         var result = switch(operation) {
             case "√" -> Math.sqrt(Double.parseDouble(screen));
             case "%" -> Double.parseDouble(screen) / 100;
@@ -121,6 +127,11 @@ public class Calculator {
         if(latestOperation.equals("/") && Double.parseDouble(screen) == 0.0){
             screen = "ERROR";
             return;
+        }
+        if(latestValue < 0 && latestOperation.equals("√")){
+            screen = "ERROR";
+            return;
+
         }
         var result = switch(latestOperation) {
             case "+" -> latestValue + Double.parseDouble(screen);

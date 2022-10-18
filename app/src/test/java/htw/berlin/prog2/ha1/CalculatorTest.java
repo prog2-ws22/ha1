@@ -79,8 +79,9 @@ class CalculatorTest {
     void testNegSquare(){
         Calculator calc = new Calculator();
 
-        calc.pressNegativeKey();
+
         calc.pressDigitKey(3);
+        calc.pressNegativeKey();
         calc.pressUnaryOperationKey("√");
         calc.pressEqualsKey();
 
