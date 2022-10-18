@@ -67,9 +67,7 @@ public class Calculator {
     public void pressBinaryOperationKey(String operation)  {
         if ( operation == "-" && screen == "0"){
             pressNegativeKey();
-            if ( screen == "-0"){
-                operation = "-";
-            }
+
             return;
         }
         latestValue = Double.parseDouble(screen);

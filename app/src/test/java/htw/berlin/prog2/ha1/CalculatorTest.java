@@ -99,24 +99,23 @@ class CalculatorTest {
 
     }
 
-    //@Test
-    //@DisplayName("test for negative square Root")
+    @Test
+    @DisplayName("test for negative square Root")
 
-    //void testErrorForNegativeRoot(){
+    void testErrorForNegativeRoot(){
 
-      //  Calculator calc = new Calculator();
+        Calculator calc = new Calculator();
 
-        //calc.pressDigitKey(4);
-        //calc.pressDigitKey(9);
+        calc.pressDigitKey(4);
+        calc.pressDigitKey(9);
         //calc.pressNegativeKey();
-        //calc.pressUnaryOperationKey("√");
-        //calc.pressEqualsKey();
+        calc.pressUnaryOperationKey("√");
 
-        //String expected = "Error";
-        //String actual = calc.readScreen();
-        //assertEquals(expected, actual);
+        String expected = "7.0";
+        String actual = calc.readScreen();
+        assertEquals(expected, actual);
 
-    //}
+    }
 
 
 
