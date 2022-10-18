@@ -99,7 +99,7 @@ class CalculatorTest {
         calc.pressClearKey();
         calc.pressDigitKey(5);
         calc.pressEqualsKey();
-
+// hhdhkd
         String expected = "7";
         String actual = calc.readScreen();
 
