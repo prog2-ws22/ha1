@@ -68,14 +68,14 @@ class CalculatorTest {
         calc.pressDigitKey(0);
         calc.pressEqualsKey();
 
-        String expected = "error";
+        String expected = "Error";
         String actual = calc.readScreen();
 
         assertEquals(expected, actual);
     }
 
     @Test
-    @DisplayName("should display error after dividing a positive multi-digit number by 0")
+    @DisplayName("should display error after taking the square root of a negative number")
     void testSquareRootOfNegative() {
         Calculator calc = new Calculator();
 
@@ -83,7 +83,7 @@ class CalculatorTest {
         calc.pressDigitKey(3);
         calc.pressUnaryOperationKey("√");
 
-        String expected = "error";
+        String expected = "Error";
         String actual = calc.readScreen();
 
         assertEquals(expected, actual);
