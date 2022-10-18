@@ -62,7 +62,41 @@ class CalculatorTest {
 
         assertEquals(expected, actual);
     }
+    @Test
+    @DisplayName("should display result after pressing the percentage key")
+    void testPressUnaryKey()  {
 
+        Calculator calc = new Calculator();
+
+        calc.pressDigitKey(62);
+        calc.pressUnaryOperationKey("%");
+
+
+
+        String expected = "0.62";
+        String actual = calc.readScreen();
+
+        assertEquals(expected, actual);
+    }
+    @Test
+    @DisplayName("should display result after subtracting two negative digit numbers")
+    void testPressNegativeKey()  {
+
+        Calculator calc = new Calculator();
+
+        calc.pressNegativeKey();
+        calc.pressDigitKey(2);
+        calc.pressDigitKey(0);
+        calc.pressBinaryOperationKey("-");
+        calc.pressDigitKey(3);
+        calc.pressDigitKey(0);
+        calc.pressEqualsKey();
+
+        String expected = "-50";
+        String actual = calc.readScreen();
+
+        assertEquals(expected, actual);
+    }
     }
 
 
