@@ -80,6 +80,7 @@ class CalculatorTest {
         Calculator calc = new Calculator();
 
         calc.pressDigitKey(1);
+        calc.pressDigitKey(1);
         calc.pressDotKey();
         calc.pressDigitKey(1);
         calc.pressBinaryOperationKey("+");
@@ -88,7 +89,7 @@ class CalculatorTest {
         calc.pressDigitKey(2);
         calc.pressEqualsKey();
 
-        String expected = "3.3";
+        String expected = "13.3";
         String actual = calc.readScreen();
 
         assertEquals(expected, actual);

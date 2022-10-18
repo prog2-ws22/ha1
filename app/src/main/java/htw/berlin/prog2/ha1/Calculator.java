@@ -139,8 +139,17 @@ public class Calculator {
         if(screen.endsWith(".0")) screen = screen.substring(0,screen.length()-2);
         if(screen.contains(".") && screen.length() > 11) screen = screen.substring(0, 10);
         if(screen.contains(".")){
-            for (int i = 9; Character.toString(screen.charAt(i)).equals("0"); i--) {
-                screen = screen.substring(0, i);
+            boolean only0 = true;
+            for (int i = screen.length()-1; !Character.toString(screen.charAt(i)).equals("."); i--) {
+                if(i == 0){
+                    return;
+                }
+                if(!Character.toString(screen.charAt(i)).equals("0")){
+                    only0 = false;
+                }
+                if(only0){
+                    screen = screen.substring(0, i);
+                }
             }
         }
     }
