@@ -41,5 +41,61 @@ class CalculatorTest {
     }
 
     //TODO hier weitere Tests erstellen
+    @Test
+    @DisplayName("only registers one dot for a number, even if dot is entered multiple time in a row")
+    void testPressDotMultipleTimes(){
+        Calculator calc = new Calculator();
+
+        calc.pressDigitKey(2);
+        calc.pressDotKey();
+        calc.pressDotKey();
+        calc.pressDotKey();
+        calc.pressDigitKey(3);
+        calc.pressBinaryOperationKey("+");
+        calc.pressDigitKey(3);
+        calc.pressEqualsKey();
+
+        String expected = "5.3";
+        String actual = calc.readScreen();
+
+        assertEquals(expected, actual);
+    }
+
+
+    @Test
+    @DisplayName("should display Error after dividing by the number zero")
+    void testDivisionByZero(){
+        Calculator calc = new Calculator();
+
+        calc.pressDigitKey(2);
+        calc.pressBinaryOperationKey("/");
+        calc.pressDigitKey(0);
+        calc.pressEqualsKey();
+
+        String expected = "ERROR";
+        String actual = calc.readScreen();
+
+        assertEquals(expected, actual);
+        //Exception bei geteilt durch 0 wird nicht mit "ERROR" behandelt und es wird "INFINITY" angezeigt
+    }
+
+    @Test
+    @DisplayName("should check if C / clear function only cleares teh last pressed key")
+    void testClearKey(){
+        Calculator calc = new Calculator();
+
+        calc.pressDigitKey(2);
+        calc.pressBinaryOperationKey("+");
+        calc.pressClearKey();
+        calc.pressBinaryOperationKey("-");
+        calc.pressDigitKey(1);
+        calc.pressEqualsKey();
+
+        String expected = "1";
+        String actual = calc.readScreen();
+
+        assertEquals(expected, actual);
+        //zwischengespeicherte Werte werden nicht beibehalten, sondern immer auch sofort gelöscht
+    }
 }
 
