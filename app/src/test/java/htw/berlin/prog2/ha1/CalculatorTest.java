@@ -64,13 +64,14 @@ class CalculatorTest {
     @DisplayName("should display result after adding two negative multi-digit numbers")
     void testNegativeAddition() {
         Calculator calc = new Calculator();
-
-        calc.pressNegativeKey(-2);
+        calc.pressDigitKey(2);
+        calc.pressNegativeKey();
         calc.pressBinaryOperationKey("+");
-        calc.pressNegativeKey(-1);
+        calc.pressDigitKey(2);
+        calc.pressNegativeKey();
         calc.pressEqualsKey();
 
-        String expected = "-3";
+        String expected = "-4";
         String actual = calc.readScreen();
 
         assertEquals(expected, actual);
@@ -90,6 +91,22 @@ class CalculatorTest {
 
         assertEquals(expected, actual);
     }
+    @Test
+    @DisplayName("should display ERROR ")
+    void testDivisionByNull() {
+        Calculator calc = new Calculator();
+
+        calc.pressDigitKey(4);
+        calc.pressBinaryOperationKey("/");
+        calc.pressDigitKey(0);
+        calc.pressEqualsKey();
+
+        String expected = "ERROR";
+        String actual = calc.readScreen();
+
+        assertEquals(expected, actual);
+    }
+
 
 
 }

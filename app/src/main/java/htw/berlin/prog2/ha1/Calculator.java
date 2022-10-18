@@ -13,6 +13,7 @@ public class Calculator {
     private double latestValue;
 
     private String latestOperation = "";
+    private boolean Ergebnis;
 
     /**
      * @return den aktuellen Bildschirminhalt als String
@@ -102,16 +103,10 @@ public class Calculator {
      * aktualisiert und die Inhalt fortan als negativ interpretiert.
      * Zeigt der Bildschirm bereits einen negativen Wert mit führendem Minus an, dann wird dieses
      * entfernt und der Inhalt fortan als positiv interpretiert.
-     * @param i
+     * @param
      */
-    public void pressNegativeKey(int i) {
-        if (i > 9 || i < 0) ;
-
-        if (screen.equals("0") || latestValue == Double.parseDouble(screen)) screen = "";
-
-        screen = screen + i;
-    }
-        /** screen = screen.contains("-") ? screen.substring(1) : "-" + screen;
+    public void pressNegativeKey() {
+        screen = screen.contains("-") ? screen.substring(1) : "-" + screen;
     }
 
     /**
@@ -134,5 +129,8 @@ public class Calculator {
         screen = Double.toString(result);
         if(screen.endsWith(".0")) screen = screen.substring(0,screen.length()-2);
         if(screen.contains(".") && screen.length() > 11) screen = screen.substring(0, 10);
+        if (screen.contains("Infinity")) screen = "ERROR";
+
     }
+
 }
