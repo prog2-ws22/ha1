@@ -9,21 +9,18 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 class CalculatorTest {
 
     @Test
-    @DisplayName("should display 16 after summing two positiv numbers")
+    @DisplayName("should display Error after dividing by 0")
     void testPositiveAddition() {
         Calculator calc = new Calculator();
 
         calc.pressDigitKey(8);
-        calc.pressBinaryOperationKey("+");
-        calc.pressDigitKey(7);
-        calc.pressClearKey();   // löscht gesamten Wert und nicht nur den zuvor gespeicherten
-        calc.pressDigitKey(8);
+        calc.pressBinaryOperationKey("/");
+        calc.pressDigitKey(0);
+        calc.pressEqualsKey();
 
 
 
-
-
-        String expected = "16";
+        String expected = "Error";
         String actual = calc.readScreen();
 
         assertEquals(expected, actual);
@@ -64,6 +61,8 @@ class CalculatorTest {
         assertEquals(expected, actual);
     }
     */
+
+
 
 
 
