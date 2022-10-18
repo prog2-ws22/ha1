@@ -165,7 +165,7 @@ class CalculatorTest {
         calc.pressNegativeKey();
         calc.pressUnaryOperationKey("√");
 
-        String expected = "ERROR";
+        String expected = "Error";
         String actual = calc.readScreen();
 
         assertEquals(expected, actual);

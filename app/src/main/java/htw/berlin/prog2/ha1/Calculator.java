@@ -84,7 +84,7 @@ public class Calculator {
         latestValue = Double.parseDouble(screen);
         latestOperation = operation;
             if(negativeKey == true && operation.equals("√")) {
-              screen = "ERROR";
+              screen = "Error";
             }else {
                 var result = switch (operation) {
                     case "√" -> Math.sqrt(Double.parseDouble(screen));
