@@ -70,11 +70,11 @@ class CalculatorTest {
         Calculator calc = new Calculator();
         calc.pressNegativeKey();
         calc.pressDigitKey(2);
-        calc.pressBinaryOperationKey("*");
+        calc.pressBinaryOperationKey("x");
         calc.pressDigitKey(2);
-        calc.pressEqualsKey();
 
-        String expected = "8";
+
+        String expected = "4";
         String actual = calc.readScreen();
         assertEquals(expected, actual);
 
