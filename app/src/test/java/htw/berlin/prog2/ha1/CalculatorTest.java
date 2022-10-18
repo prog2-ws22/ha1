@@ -43,7 +43,7 @@ class CalculatorTest {
     //TODO hier weitere Tests erstellen
 
     @Test
-    @DisplayName("sollte Zahlen Subtrahiren")
+    @DisplayName("sollte Zahlen Subtrahieren")
     void testNegativeSubtraktion() {
         Calculator calc = new Calculator();
 
@@ -52,9 +52,10 @@ class CalculatorTest {
         calc.pressBinaryOperationKey("-");
         calc.pressDigitKey(1);
         calc.pressDigitKey(5);
+        calc.pressNegativeKey();
         calc.pressEqualsKey();
 
-        String expected = "35";
+        String expected = "65";
         String actual = calc.readScreen();
 
         assertEquals(expected, actual);
@@ -85,21 +86,18 @@ class CalculatorTest {
     void testKommaMultiplikation() {
         Calculator calc = new Calculator();
 
-        calc.pressDigitKey(3);
-        calc.pressDotKey();
-        calc.pressDigitKey(3);
-        calc.pressDigitKey(3);
-        calc.pressDigitKey(3);
+        calc.pressNegativeKey();
+        calc.pressDigitKey(1);
+        calc.pressDigitKey(0);
+        calc.pressDigitKey(0);
         calc.pressBinaryOperationKey("/");
-        calc.pressDigitKey(6);
-        calc.pressDotKey();
-        calc.pressDigitKey(7);
-        calc.pressDigitKey(8);
-        calc.pressDigitKey(9);
+        calc.pressDigitKey(1);
+        calc.pressDigitKey(0);
+        calc.pressDigitKey(0);
         calc.pressEqualsKey();
 
 
-        String expected = "0.49094123";
+        String expected = "-1";
         String actual = calc.readScreen();
 
         assertEquals(expected, actual);
