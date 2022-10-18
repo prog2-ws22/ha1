@@ -51,8 +51,7 @@ public class Calculator {
      */
     public void pressClearKey() {
         screen = "0";
-      //  latestOperation = "";
-        latestValue = 0.0;
+
     }
 
     /**
