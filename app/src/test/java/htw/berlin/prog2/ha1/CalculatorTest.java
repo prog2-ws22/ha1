@@ -69,7 +69,7 @@ class CalculatorTest {
         calc.pressDigitKey(2);
         calc.pressDigitKey(5);
 
-        calc.pressUnaryOperationKey("/");
+        calc.pressBinaryOperationKey("/");
         calc.pressDigitKey(0);
         calc.pressEqualsKey();
 
