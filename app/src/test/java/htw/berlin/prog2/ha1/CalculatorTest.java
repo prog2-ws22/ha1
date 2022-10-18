@@ -15,12 +15,12 @@ class CalculatorTest {
 
         calc.pressDigitKey(2);
         calc.pressDigitKey(0);
-        calc.pressBinaryOperationKey("+");
-        calc.pressDigitKey(2);
+        calc.pressBinaryOperationKey("-");
+        calc.pressDigitKey(3);
         calc.pressDigitKey(0);
         calc.pressEqualsKey();
 
-        String expected = "40";
+        String expected = "-10";
         String actual = calc.readScreen();
 
         assertEquals(expected, actual);
@@ -33,13 +33,41 @@ class CalculatorTest {
 
         calc.pressDigitKey(2);
         calc.pressUnaryOperationKey("√");
-
-        String expected = "1.41421356";
+        calc.pressBinaryOperationKey("x");
+        calc.pressDigitKey(2);
+        calc.pressEqualsKey();
+        String expected = "2.82842712";
         String actual = calc.readScreen();
 
         assertEquals(expected, actual);
     }
 
     //TODO hier weitere Tests erstellen
-}
+
+
+       @Test
+       @DisplayName("should display result after clearing the screen")
+        void testPressClearKey()  {
+
+        Calculator calc = new Calculator();
+
+        calc.pressDigitKey(3);
+        calc.pressBinaryOperationKey("+");
+        calc.pressDigitKey(2);
+        calc.pressEqualsKey();
+        calc.pressClearKey();
+
+        String expected = "0";
+        String actual = calc.readScreen();
+
+        assertEquals(expected, actual);
+    }
+
+    }
+
+
+
+
+
+
 
