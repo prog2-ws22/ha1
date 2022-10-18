@@ -97,5 +97,23 @@ class CalculatorTest {
         assertEquals(expected, actual);
         //zwischengespeicherte Werte werden nicht beibehalten, sondern immer auch sofort gelöscht
     }
+    @Test
+    @DisplayName("'='-Key should be able to start operations multiple times in a row")
+    void testMultipleOperations(){
+        Calculator calc = new Calculator();
+
+        calc.pressDigitKey(2);
+        calc.pressBinaryOperationKey("+");
+        calc.pressDigitKey(3);
+        calc.pressEqualsKey();
+        calc.pressEqualsKey();
+        String expected = "8";
+        String actual = calc.readScreen();
+
+        assertEquals(expected, actual);
+        //Allgemein vertausch der Rechner den ersten und zweiten Summanten, da zum Zeitpunkt des Aufrufen des Operators (z.b. +) nur der erste eingegeben ist.
+        //Dadurch wird bei mehrfachem drücken der '=' Taste nach einer Rechenoperatio, der erste Wert mehrfach angewendet
+    }
+
 }
 
