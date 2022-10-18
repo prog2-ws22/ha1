@@ -4,6 +4,7 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotEquals;
 
 @DisplayName("Retro calculator")
 class CalculatorTest {
@@ -57,31 +58,34 @@ class CalculatorTest {
 
     @Test
     @DisplayName("it should give the result tow devidied by tow ")
-    void testSum(){
+     void testSum(){
         Calculator n = new Calculator();
 
-        n.pressDigitKey(2);
-        n.pressUnaryOperationKey("1/X");
-
-        String expected = "0.6";
+        n.pressDigitKey(1);
+        n.pressDigitKey(5);
+        n.pressBinaryOperationKey("/");
+        n.pressDigitKey(0);
+        n.pressEqualsKey();
+        n.imFallInfinity();
+        String expected = "Error";
         String actual = n.readScreen();
 
-        assertEquals(expected, actual);
-
+        assertEquals(expected,actual);
     }
     @Test
     @DisplayName("Display result after subtruct tow positiv digital")
             void TestSubtruct(){
-    Calculator h = new Calculator();
+     Calculator h = new Calculator();
 
+        h.pressDigitKey(1);
         h.pressDigitKey(2);
+        h.pressBinaryOperationKey("/");
         h.pressDigitKey(0);
-        h.pressBinaryOperationKey("-");
-        h.pressDigitKey(1);
-        h.pressDigitKey(1);
-        h.pressEqualsKey();
 
-    String expected = "10";
+        h.pressEqualsKey();
+        h.imFallInfinity();
+
+    String expected ="Error";
     String actual = h.readScreen();
 
     assertEquals(expected, actual);
