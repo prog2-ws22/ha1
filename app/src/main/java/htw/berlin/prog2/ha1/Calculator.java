@@ -79,6 +79,7 @@ public class Calculator {
             case "%" -> Double.parseDouble(screen) / 100;
             case "1/x" -> 1 / Double.parseDouble(screen);
             default -> throw new IllegalArgumentException();
+
         };
         screen = Double.toString(result);
         if(screen.contains(".") && screen.length() > 11) screen = screen.substring(0, 10);
@@ -104,7 +105,21 @@ public class Calculator {
      * entfernt und der Inhalt fortan als positiv interpretiert.
      */
     public void pressNegativeKey() {
+
         screen = screen.startsWith("-") ? screen.substring(1) : "-" + screen;
+        boolean isNegative;
+
+        if(screen.startsWith("-")){
+            isNegative = true;
+        }else{
+            isNegative =false;
+        }
+
+        if(isNegative = true){
+            //Ich möchte das - Speichern aber ich finde nichts dazu
+        }
+
+
     }
 
     /**
