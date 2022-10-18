@@ -74,6 +74,21 @@ class CalculatorTest {
 
         assertEquals(expected, actual);
     }
-}
 
+    @Test // 2. roter Test
+    @DisplayName("should display Error instead of NaN")
+    void testMultiplyingMinus() {
+        Calculator calc = new Calculator();
+
+        calc.pressDigitKey(5);
+        calc.pressNegativeKey();
+        calc.pressUnaryOperationKey("√");
+
+        String expected = "Error";
+        String actual = calc.readScreen();
+
+        assertEquals(expected, actual);
+    }
+
+}
 
