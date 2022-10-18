@@ -172,6 +172,25 @@ class CalculatorTest {
     }
 
     @Test
+    @DisplayName("Test divide multiple times by pressing equals")
+    void testDvivisionMultipleTimes() {
+        Calculator calc = new Calculator();
+
+        calc.pressDigitKey(8);
+        calc.pressBinaryOperationKey("/");
+        calc.pressDigitKey(2);
+        calc.pressEqualsKey();
+        calc.pressEqualsKey();
+
+
+        String expected = "2";
+        String actual = calc.readScreen();
+
+        assertEquals(expected, actual);
+    }
+
+
+    @Test
     @DisplayName("should display result two added digits und then the square root")
     void testAdditionPlusSquareRoot() {
         Calculator calc = new Calculator();

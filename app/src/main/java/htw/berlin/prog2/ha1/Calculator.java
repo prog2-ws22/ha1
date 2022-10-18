@@ -12,6 +12,8 @@ public class Calculator {
 
     private double latestValue;
 
+    private double latestDigit;
+
     private String latestOperation = "";
 
     private double latestResult = 0.0;
@@ -35,9 +37,9 @@ public class Calculator {
      */
     public void pressDigitKey(int digit) {
         if(digit > 9 || digit < 0) throw new IllegalArgumentException();
+        latestDigit = digit;
 
         if(screen.equals("0") || latestValue == Double.parseDouble(screen)) screen = "";
-
         screen = screen + digit;
     }
 
@@ -138,10 +140,10 @@ public class Calculator {
             //First correction
             if (countEquals > 0) {
                 var result = switch (latestOperation) {
-                    case "+" -> latestResult + latestValue;
-                    case "-" -> latestResult - latestValue;
-                    case "x" -> latestResult * latestValue;
-                    case "/" -> latestResult / latestValue;
+                    case "+" -> latestResult + latestDigit;
+                    case "-" -> latestResult - latestDigit;
+                    case "x" -> latestResult * latestDigit;
+                    case "/" -> latestResult / latestDigit;
                     default -> throw new IllegalArgumentException();
                 };
                 screen = Double.toString(result);
