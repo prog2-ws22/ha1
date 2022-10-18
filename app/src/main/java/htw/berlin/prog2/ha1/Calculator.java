@@ -123,6 +123,7 @@ public class Calculator {
             case "-" -> latestValue - Double.parseDouble(screen);
             case "x" -> latestValue * Double.parseDouble(screen);
             case "/" -> latestValue / Double.parseDouble(screen);
+           // case "%" -> latestValue / 100; //Reperatur 2
             default -> throw new IllegalArgumentException();
         };
         screen = Double.toString(result);
