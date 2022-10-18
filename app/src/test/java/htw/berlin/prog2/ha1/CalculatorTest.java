@@ -40,9 +40,25 @@ class CalculatorTest {
         assertEquals(expected, actual);
     }
 
-    //TODO hier weitere Tests erstellen
+    //Tests hier
 
-    //Test
-    //test test test chris
+    void testPositiveSubtraction(){
+        Calculator calc = new Calculator();
+
+        calc.pressDigitKey(1);
+        calc.pressDigitKey(0);
+        calc.pressBinaryOperationKey("-");
+        calc.pressDigitKey(5);
+        calc.pressEqualsKey();
+
+        String expected = "5";
+        String actual = calc.readScreen();
+
+        assertEquals(expected,actual);
+    }
+
+
+
+
 }
 
