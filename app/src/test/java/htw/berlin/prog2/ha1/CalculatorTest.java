@@ -43,22 +43,48 @@ class CalculatorTest {
     //TODO hier weitere Tests erstellen
     @Test
     @DisplayName("should display result after subtraction two positive multi-digit numbers")
-    void testpositivsubtraction() {
+    void testPositiveSubtraction() {
         Calculator calc = new Calculator();
-        calc.pressDigitKey(0);
+        calc.pressDigitKey(9);
         calc.pressDigitKey(0);
         calc.pressBinaryOperationKey("-");
-        calc.pressDigitKey(0);
+        calc.pressDigitKey(2);
         calc.pressDigitKey(0);
         calc.pressEqualsKey();
 
-        String expected ="0";
+        String expected ="70";
         String actual = calc.readScreen();
 
         assertEquals(expected, actual);
 
     }
+    @Test
+    @DisplayName("should display result after getting root of zero")
+    void testRootOfNegativeNumbers() {
+        Calculator calc = new Calculator();
 
+
+        calc.pressNegativeKey();
+        calc.pressDigitKey(4);
+        calc.pressBinaryOperationKey("√");
+        calc.pressEqualsKey();
+        String expected = "error";
+        String actual = calc.readScreen();
+        assertEquals(expected, actual);
+    }
+    @Test
+    @DisplayName("should display after division by 0")
+    void testDivisionByZero () {
+        Calculator calc = new Calculator();
+        calc.pressDigitKey(2);
+        calc.pressUnaryOperationKey("/");
+        calc.pressDigitKey(0);
+        String expected = "Error";
+        String actual = calc.readScreen();
+
+        assertEquals(expected, actual);
+
+    }
 
 
 
