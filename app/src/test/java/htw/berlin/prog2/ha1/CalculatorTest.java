@@ -74,7 +74,7 @@ class CalculatorTest {
 
     //Teilaufgabe 2.2
     @Test
-    @DisplayName("should display Error when dividing a number with zero")
+    @DisplayName("should display Error  when dividing a number with zero")
     void testDivisionWithZero() {
         Calculator calc = new Calculator();
 
