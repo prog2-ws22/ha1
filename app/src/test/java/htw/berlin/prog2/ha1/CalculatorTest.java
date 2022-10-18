@@ -42,7 +42,7 @@ class CalculatorTest {
 
     //TODO hier weitere Tests erstellen
     @Test
-    @DisplayName("should display result after adding two positive multi-digit numbers")
+    @DisplayName("should display result after multiplying two positive multi-digit numbers")
     void testPositiveMultiply() {
         Calculator calc = new Calculator();
 
@@ -52,6 +52,22 @@ class CalculatorTest {
         calc.pressEqualsKey();
 
         String expected = "10";
+        String actual = calc.readScreen();
+
+        assertEquals(expected, actual);
+    }
+
+    @Test
+    @DisplayName("should display result after dividing a bigger number to a smaller number")
+    void testNegativedivision() {
+        Calculator calc = new Calculator();
+
+        calc.pressDigitKey(7);
+        calc.pressBinaryOperationKey("-");
+        calc.pressDigitKey(8);
+        calc.pressEqualsKey();
+
+        String expected = "-1";
         String actual = calc.readScreen();
 
         assertEquals(expected, actual);
