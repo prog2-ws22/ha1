@@ -65,7 +65,7 @@ class CalculatorTest {
 
     @Test
     @DisplayName("should display result after dividing two positiv digit numbers ")
-    void testPressUnaryKey() {
+    void testPressBinaryKey() {
 
         Calculator calc = new Calculator();
 
@@ -103,6 +103,9 @@ class CalculatorTest {
 
 
 }
+
+
+
 
 
 
