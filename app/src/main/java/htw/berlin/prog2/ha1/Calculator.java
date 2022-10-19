@@ -34,7 +34,12 @@ public class Calculator {
         if(digit > 9 || digit < 0) throw new IllegalArgumentException();
 
         System.out.println("Press Digit Screen: " + screen + "      Press Digit LV: " + latestValue);
-        if(screen.equals("0") || latestValue.compareTo(new BigDecimal(screen)) == 0) screen = "";
+        try {
+            if (screen.equals("0") || latestValue.compareTo(new BigDecimal(screen)) == 0) screen = "";
+        }
+        catch(Exception e) {
+            System.out.println("if first call of methode this is expected... i guess"); //latestValue is NULL at the start
+        }
         System.out.println("Press Digit Screen after: " + screen);
         //BigDecimal screenbd = new BigDecimal(screen);
         screen = screen + digit; //screenbd.add(new BigDecimal(digit)).toString();
