@@ -1,5 +1,7 @@
 package htw.berlin.prog2.ha1;
 
+import java.math.BigDecimal;
+
 /**
  * Eine Klasse, die das Verhalten des Online Taschenrechners imitiert, welcher auf
  * https://www.online-calculator.com/ aufgerufen werden kann (ohne die Memory-Funktionen)
@@ -10,7 +12,7 @@ public class Calculator {
 
     private String screen = "0";
 
-    private double latestValue;
+    private BigDecimal latestValue;
 
     private String latestOperation = "";
 
@@ -31,7 +33,7 @@ public class Calculator {
     public void pressDigitKey(int digit) {
         if(digit > 9 || digit < 0) throw new IllegalArgumentException();
 
-        if(screen.equals("0") || latestValue == Double.parseDouble(screen)) screen = "";
+        if(screen.equals("0") || latestValue == new BigDecimal(screen)) screen = "";
 
         screen = screen + digit;
     }
@@ -47,7 +49,7 @@ public class Calculator {
     public void pressClearKey() {
         screen = "0";
         latestOperation = "";
-        latestValue = 0.0;
+        latestValue = new BigDecimal(0.0);
     }
 
     /**
@@ -60,7 +62,7 @@ public class Calculator {
      * @param operation "+" für Addition, "-" für Substraktion, "x" für Multiplikation, "/" für Division
      */
     public void pressBinaryOperationKey(String operation)  {
-        latestValue = Double.parseDouble(screen);
+        latestValue = new BigDecimal(screen);
         latestOperation = operation;
     }
 
@@ -72,7 +74,7 @@ public class Calculator {
      * @param operation "√" für Quadratwurzel, "%" für Prozent, "1/x" für Inversion
      */
     public void pressUnaryOperationKey(String operation) {
-        latestValue = Double.parseDouble(screen);
+        latestValue = new BigDecimal(screen);
         latestOperation = operation;
         var result = switch(operation) {
             case "√" -> Math.sqrt(Double.parseDouble(screen));
@@ -118,10 +120,10 @@ public class Calculator {
      */
     public void pressEqualsKey() {
         var result = switch(latestOperation) {
-            case "+" -> latestValue + Double.parseDouble(screen);
-            case "-" -> latestValue - Double.parseDouble(screen);
-            case "x" -> latestValue * Double.parseDouble(screen);
-            case "/" -> latestValue / Double.parseDouble(screen);
+            case "+" -> latestValue + new BigDecimal(screen);
+            case "-" -> latestValue - new BigDecimal(screen);
+            case "x" -> latestValue * new BigDecimal(screen);
+            case "/" -> latestValue / new BigDecimal(screen);
             default -> throw new IllegalArgumentException();
         };
         screen = Double.toString(result);
