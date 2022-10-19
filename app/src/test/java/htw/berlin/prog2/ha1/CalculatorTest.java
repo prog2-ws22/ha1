@@ -41,5 +41,62 @@ class CalculatorTest {
     }
 
     //TODO hier weitere Tests erstellen
+
+
+@Test
+@DisplayName("should display the result of subtracting two postive digits")
+void testSubtractionPositiv() {
+    Calculator calc = new Calculator();
+
+    calc.pressDigitKey(3);
+    calc.pressDigitKey(2);
+    calc.pressBinaryOperationKey("-");
+    calc.pressDigitKey(2);
+    calc.pressDigitKey(8);
+    calc.pressEqualsKey();
+
+    String expected = "4";
+    String actual = calc.readScreen();
+
+    assertEquals(expected, actual);
 }
 
+@Test
+@DisplayName("Should display Error after dividing by zero")
+    void dividingByZero(){
+        Calculator calc = new Calculator();
+        calc.pressDigitKey(1);
+        calc.pressBinaryOperationKey("/");
+        calc.pressDigitKey(0);
+        calc.pressEqualsKey();
+
+        String expected = "Error";
+        String actual = calc.readScreen();
+
+        assertEquals(expected,actual);
+
+
+}
+
+    @Test
+    @DisplayName("Should display Error if u square a negative Digit")
+    void squareNegativeDigit()
+    {
+        Calculator calc = new Calculator();
+
+        calc.pressDigitKey(2);
+        calc.pressDigitKey(5);
+        calc.pressNegativeKey();
+        calc.pressUnaryOperationKey("√");
+
+
+        String expected = "Error";
+        String actual = calc.readScreen();
+
+        assertEquals(expected, actual);
+
+
+    }
+
+
+}
