@@ -44,7 +44,7 @@ class CalculatorTest {
 
     @Test
     @DisplayName("should display result after multiplying two positive numbers")
-    void testNegativeMultiplikation(){
+    void testMultiplikation(){
     Calculator calc = new Calculator();
 
     calc.pressDigitKey(9);
@@ -60,22 +60,40 @@ class CalculatorTest {
 
 
     @Test
-    @DisplayName("should display result after subtracting a positive Number from a decimal negative number")
+    @DisplayName("should display result after adding three positive numbers")
     void testNegativeFromPositiveSubtraction(){
     Calculator calc = new Calculator();
 
-    calc.pressBinaryOperationKey("-");
-    calc.pressDigitKey(1);
-    calc.pressDotKey();
-    calc.pressDigitKey(5);
-    calc.pressBinaryOperationKey("-");
     calc.pressDigitKey(3);
+    calc.pressBinaryOperationKey("+");
+    calc.pressDigitKey(5);
+    calc.pressBinaryOperationKey("+");
+    calc.pressDigitKey(9);
     calc.pressEqualsKey();
 
-    String expected = "-4.5";
+
+    String expected = "17";
     String actual = calc.readScreen();
 
     assertEquals(expected, actual);
     }
+
+    @Test
+    @DisplayName("should display 'ERROR' after dividing by 0")
+    void testDividingByZero(){
+        Calculator calc = new Calculator();
+
+        calc.pressDigitKey(9);
+        calc.pressBinaryOperationKey("/");
+        calc.pressDigitKey(0);
+        calc.pressEqualsKey();
+
+        String expected = "ERROR";
+        String actual = calc.readScreen();
+
+        assertEquals(expected, actual);
+
+    }
+
 }
 
