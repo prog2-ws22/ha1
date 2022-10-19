@@ -41,5 +41,26 @@ class CalculatorTest {
     }
 
     //TODO hier weitere Tests erstellen
+    @Test
+    @DisplayName("should display the result with negative sign after division of a positive multi-digit number with an positiv one-digit decimal number")
+    void testNegativeKey() {
+
+        Calculator calc = new Calculator();
+
+        calc.pressDigitKey(2);
+        calc.pressDigitKey(4);
+        calc.pressBinaryOperationKey("/");
+        calc.pressDigitKey(2);
+        calc.pressDotKey();
+        calc.pressDigitKey(5);
+        calc.pressEqualsKey();
+        calc.pressNegativeKey();
+
+
+        String expected = "-9.6";
+        String actual = calc.readScreen();
+
+        assertEquals(expected, actual);
+    }
 }
 
