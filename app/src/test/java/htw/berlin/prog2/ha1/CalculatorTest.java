@@ -60,19 +60,19 @@ class CalculatorTest {
 
 
     @Test
-    @DisplayName("should display result after adding three positive numbers")
-    void testNegativeFromPositiveSubtraction(){
+    @DisplayName("should display result after clearing the screen during Calculation")
+    void testClearingDuringCalculation(){
     Calculator calc = new Calculator();
 
-    calc.pressDigitKey(3);
+    calc.pressDigitKey(1);
     calc.pressBinaryOperationKey("+");
-    calc.pressDigitKey(5);
-    calc.pressBinaryOperationKey("+");
-    calc.pressDigitKey(9);
+    calc.pressDigitKey(1);
+    calc.pressClearKey();
+    calc.pressDigitKey(2);
     calc.pressEqualsKey();
 
 
-    String expected = "17";
+    String expected = "3";
     String actual = calc.readScreen();
 
     assertEquals(expected, actual);
