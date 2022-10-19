@@ -45,9 +45,9 @@ class CalculatorTest {
     //TODO hier weitere Tests erstellen
 
 
-       @Test
-       @DisplayName("should display result after clearing the screen")
-        void testPressClearKey()  {
+    @Test
+    @DisplayName("should display result after clearing the screen")
+    void testPressClearKey() {
 
         Calculator calc = new Calculator();
 
@@ -62,25 +62,28 @@ class CalculatorTest {
 
         assertEquals(expected, actual);
     }
+
     @Test
-    @DisplayName("should display result after pressing the percentage key")
-    void testPressUnaryKey()  {
+    @DisplayName("should display result after dividing two positiv digit numbers ")
+    void testPressUnaryKey() {
 
         Calculator calc = new Calculator();
 
-        calc.pressDigitKey(62);
-        calc.pressUnaryOperationKey("%");
+        calc.pressDigitKey(2);
+        calc.pressBinaryOperationKey("/");
+        calc.pressDigitKey(0);
+        calc.pressEqualsKey();
 
 
-
-        String expected = "0.62";
+        String expected = "Error";
         String actual = calc.readScreen();
 
         assertEquals(expected, actual);
     }
+
     @Test
     @DisplayName("should display result after subtracting two negative digit numbers")
-    void testPressNegativeKey()  {
+    void testPressNegativeKey() {
 
         Calculator calc = new Calculator();
 
@@ -97,8 +100,9 @@ class CalculatorTest {
 
         assertEquals(expected, actual);
     }
-    }
 
+
+}
 
 
 
