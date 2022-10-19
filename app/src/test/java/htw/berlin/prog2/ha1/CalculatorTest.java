@@ -43,7 +43,7 @@ class CalculatorTest {
 
     //TODO hier weitere Tests erstellen
     @Test
-    @DisplayName("Test")
+    @DisplayName("The green test")
     void testPrecentage(){
 
         Calculator calc = new Calculator();
@@ -61,7 +61,7 @@ class CalculatorTest {
     }
 
     @Test
-    @DisplayName("Test")
+    @DisplayName("The red Test, which has been bug fixed")
     void testabstraction(){
 
         Calculator calc = new Calculator();
@@ -81,7 +81,7 @@ class CalculatorTest {
     }
 
     @Test
-    @DisplayName("Test")
+    @DisplayName("The red Test")
     void testabstractionnegative(){
 
         Calculator calc = new Calculator();
