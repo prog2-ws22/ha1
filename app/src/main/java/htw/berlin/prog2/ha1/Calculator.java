@@ -1,6 +1,6 @@
 package htw.berlin.prog2.ha1;
 
-import java.math.BigDecimal;
+import java.math.*;
 
 /**
  * Eine Klasse, die das Verhalten des Online Taschenrechners imitiert, welcher auf
@@ -33,9 +33,12 @@ public class Calculator {
     public void pressDigitKey(int digit) {
         if(digit > 9 || digit < 0) throw new IllegalArgumentException();
 
-        if(screen.equals("0") || latestValue == new BigDecimal(screen)) screen = "";
-
-        screen = screen + digit;
+        System.out.println("Press Digit Screen: " + screen + "      Press Digit LV: " + latestValue);
+        if(screen.equals("0") || latestValue.compareTo(new BigDecimal(screen)) == 0) screen = "";
+        System.out.println("Press Digit Screen after: " + screen);
+        //BigDecimal screenbd = new BigDecimal(screen);
+        screen = screen + digit; //screenbd.add(new BigDecimal(digit)).toString();
+        System.out.println("Press Digit Screen after after: " + screen);
     }
 
     /**
@@ -64,6 +67,7 @@ public class Calculator {
     public void pressBinaryOperationKey(String operation)  {
         latestValue = new BigDecimal(screen);
         latestOperation = operation;
+        System.out.println("Press Binary etc. Latest Value: " + latestValue + "     Operation: " + operation);
     }
 
     /**
@@ -76,13 +80,14 @@ public class Calculator {
     public void pressUnaryOperationKey(String operation) {
         latestValue = new BigDecimal(screen);
         latestOperation = operation;
+        MathContext mc = new MathContext(9);
         var result = switch(operation) {
-            case "√" -> Math.sqrt(Double.parseDouble(screen));
-            case "%" -> Double.parseDouble(screen) / 100;
-            case "1/x" -> 1 / Double.parseDouble(screen);
+            case "√" -> latestValue.sqrt(mc); //took inspiration from https://www.geeksforgeeks.org/bigdecimal-sqrt-method-in-java-with-examples/
+            case "%" -> latestValue.divide(new BigDecimal(100));
+            case "1/x" -> BigDecimal.ONE.divide(latestValue);
             default -> throw new IllegalArgumentException();
         };
-        screen = Double.toString(result);
+        screen = result.toString();
         if(screen.contains(".") && screen.length() > 11) screen = screen.substring(0, 10);
 
     }
@@ -119,13 +124,15 @@ public class Calculator {
      * und das Ergebnis direkt angezeigt.
      */
     public void pressEqualsKey() {
+        BigDecimal bdscreen = new BigDecimal(screen);
         var result = switch(latestOperation) {
-            case "+" -> latestValue.add(new BigDecimal(screen));
-            case "-" -> latestValue.subtract(new BigDecimal(screen));
-            case "x" -> latestValue.multiply(new BigDecimal(screen));
-            case "/" -> latestValue.divide(new BigDecimal(screen));
+            case "+" -> latestValue.add(bdscreen);
+            case "-" -> latestValue.subtract(bdscreen);
+            case "x" -> latestValue.multiply(bdscreen);
+            case "/" -> latestValue.divide(bdscreen);
             default -> throw new IllegalArgumentException();
         };
+        System.out.println("BDScreen: " + bdscreen + "     Screen: " + screen + "     Result: " + result);
         screen = result.toString();
         if(screen.endsWith(".0")) screen = screen.substring(0,screen.length()-2);
         if(screen.contains(".") && screen.length() > 11) screen = screen.substring(0, 10);
