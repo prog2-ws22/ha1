@@ -120,13 +120,13 @@ public class Calculator {
      */
     public void pressEqualsKey() {
         var result = switch(latestOperation) {
-            case "+" -> latestValue + new BigDecimal(screen);
-            case "-" -> latestValue - new BigDecimal(screen);
-            case "x" -> latestValue * new BigDecimal(screen);
-            case "/" -> latestValue / new BigDecimal(screen);
+            case "+" -> latestValue.add(new BigDecimal(screen));
+            case "-" -> latestValue.subtract(new BigDecimal(screen));
+            case "x" -> latestValue.multiply(new BigDecimal(screen));
+            case "/" -> latestValue.divide(new BigDecimal(screen));
             default -> throw new IllegalArgumentException();
         };
-        screen = Double.toString(result);
+        screen = result.toString();
         if(screen.endsWith(".0")) screen = screen.substring(0,screen.length()-2);
         if(screen.contains(".") && screen.length() > 11) screen = screen.substring(0, 10);
     }
