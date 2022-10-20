@@ -93,5 +93,20 @@ class CalculatorTest {
 
         assertEquals(expected,actual);
     }
+
+    @Test
+    @DisplayName("should display error after trying to divide by 0 without pressing equals button")
+    void testDivisionByZeroErrorBinaryKey(){
+        Calculator calc = new Calculator();
+        calc.pressDigitKey(9);
+        calc.pressDigitKey(0);
+        calc.pressBinaryOperationKey("/");
+        calc.pressDigitKey(0);
+        calc.pressBinaryOperationKey("+");
+        String expected = "Error";
+        String actual = calc.readScreen();
+
+        assertEquals(expected,actual);
+    }
 }
 
