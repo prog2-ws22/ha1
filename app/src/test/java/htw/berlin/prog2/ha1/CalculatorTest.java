@@ -41,5 +41,16 @@ class CalculatorTest {
     }
 
     //TODO hier weitere Tests erstellen
+
+    @Test
+    @DisplayName("should display result after substracting two positive numbers")
+    void calculatorCanDoFiveMinusTwo() {
+        Calculator calc = new Calculator();
+        calc.pressDigitKey(5);
+        calc.pressBinaryOperationKey("-");
+        calc.pressDigitKey(2);
+        calc.pressEqualsKey();
+        assertEquals("3", calc.readScreen());
+    }
 }
 
