@@ -86,7 +86,7 @@ class CalculatorTest {
 
     @Test
     @DisplayName("should display Error after division with 0")
-    //Abweichung zu Online-Taschenrechner
+    //Abweichung zu beschriebener Funktionalität pressEqualsKey() und Online-Taschenrechner: Division mit 0 zeigt nicht Error an//
     void testDivisionWithZero () {
 
         Calculator calc = new Calculator();
@@ -102,7 +102,6 @@ class CalculatorTest {
 
         assertEquals(expected, actual);
     }
-
 
 }
 
