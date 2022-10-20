@@ -62,5 +62,47 @@ class CalculatorTest {
 
         assertEquals(expected, actual);
     }
+
+    @Test
+    @DisplayName("should display the result of two multiplied one-digit number´s, but the second one-digit had been cleared and replaced by another one-digit number")
+    //Abweichung zu beschriebener Funktionalität pressClearKey() und Online-Taschenrechner: keine Zwischenspeicherung von Werten//
+    void testClearKey () {
+
+        Calculator calc = new Calculator();
+
+        calc.pressDigitKey(5);
+        calc.pressBinaryOperationKey("x");
+        calc.pressDigitKey(2);
+        calc.pressClearKey();
+        calc.pressDigitKey(8);
+        calc.pressEqualsKey();
+
+        String expected = ("40");
+        String actual = calc.readScreen();
+
+        assertEquals(expected, actual);
+
+    }
+
+    @Test
+    @DisplayName("should display Error after division with 0")
+    //Abweichung zu Online-Taschenrechner
+    void testDivisionWithZero () {
+
+        Calculator calc = new Calculator();
+
+        calc.pressDigitKey(3);
+        calc.pressDigitKey(5);
+        calc.pressBinaryOperationKey("/");
+        calc.pressDigitKey(0);
+        calc.pressEqualsKey();
+
+        String expected = "Error";
+        String actual = calc.readScreen();
+
+        assertEquals(expected, actual);
+    }
+
+
 }
 
