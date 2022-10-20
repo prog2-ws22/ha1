@@ -52,5 +52,32 @@ class CalculatorTest {
         calc.pressEqualsKey();
         assertEquals("3", calc.readScreen());
     }
+
+    @Test
+    @DisplayName("should display the point number correctly")
+    void calculatorCanDoNumbersWithDots() {
+        Calculator calc = new Calculator();
+        calc.pressDigitKey(5);
+        calc.pressDotKey();
+        calc.pressDigitKey(2);
+        calc.pressDotKey();
+        assertEquals("5.2", calc.readScreen());
+    }
+
+    @Test
+    @DisplayName("should calculate with multiple numbers")
+    void calculatorCanDoMultipleCalculations(){
+        Calculator calc = new Calculator();
+        calc.pressDigitKey(2);
+        calc.pressDotKey();
+        calc.pressDigitKey(4);
+        calc.pressBinaryOperationKey("+");
+        calc.pressDigitKey(5);
+        calc.pressBinaryOperationKey("-");
+        calc.pressDigitKey(3);
+        calc.pressEqualsKey();
+        assertEquals("4.4", calc.readScreen());
+
+    }
 }
 
