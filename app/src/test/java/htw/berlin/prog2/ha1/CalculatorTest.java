@@ -43,8 +43,8 @@ class CalculatorTest {
 
     //TODO hier weitere Tests erstellen
     @Test
-    @DisplayName("The green test")
-    void testPrecentage(){
+    @DisplayName("The green test. it should show the percentile of the added number")
+    void testPercentage(){
 
         Calculator calc = new Calculator();
 
@@ -61,8 +61,8 @@ class CalculatorTest {
     }
 
     @Test
-    @DisplayName("The red Test, which has been bug fixed")
-    void testabstraction(){
+    @DisplayName("The red Test, which has been bug fixed. it should show an Error after dividing from 0")
+    void testDivision(){
 
         Calculator calc = new Calculator();
 
@@ -80,22 +80,29 @@ class CalculatorTest {
 
     }
 
+
     @Test
-    @DisplayName("The red Test")
-    void testabstractionnegative(){
+    @DisplayName("The red Test,which has been bug fixed. it should only clear the previous value by clicking Clear Entry")
+    void testCleartest(){
 
         Calculator calc = new Calculator();
-
-        calc.pressDigitKey(-2);
-        calc.pressUnaryOperationKey("/");
+        calc.pressDigitKey(1);
+        calc.pressDigitKey(8);
+        calc.pressBinaryOperationKey("+");
+        calc.pressDigitKey(1);
+        calc.pressDigitKey(2);
+        calc.pressEqualsKey();
+        calc.pressBinaryOperationKey("-");
+        calc.pressDigitKey(5);
+        calc.pressClearKey();
         calc.pressDigitKey(2);
         calc.pressEqualsKey();
 
-        String expected = "-1";
+
+        String expected = "28";
         String actual = calc.readScreen();
 
         assertEquals(expected, actual);
-
     }
 
 }

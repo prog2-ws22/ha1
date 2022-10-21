@@ -18,6 +18,7 @@ public class Calculator {
      * @return den aktuellen Bildschirminhalt als String
      */
     public String readScreen() {
+
         return screen;
     }
 
@@ -45,9 +46,14 @@ public class Calculator {
      * im Ursprungszustand ist.
      */
     public void pressClearKey() {
-        screen = "0";
-        latestOperation = "";
-        latestValue = 0.0;
+
+        //2 rote Test - testClearTest
+        if(screen != "0") {
+            screen = "0";
+        }else {
+            latestOperation = "";
+            latestValue = 0.0;
+        }
     }
 
     /**
@@ -94,6 +100,7 @@ public class Calculator {
      * Beim zweimaligem Drücken, oder wenn bereits ein Trennzeichen angezeigt wird, passiert nichts.
      */
     public void pressDotKey() {
+
         if(!screen.endsWith(".")) screen = screen + ".";
     }
 
@@ -106,6 +113,7 @@ public class Calculator {
      */
     public void pressNegativeKey() {
         screen = screen.startsWith("-") ? screen.substring(1) : "-" + screen;
+
     }
 
     /**
@@ -129,9 +137,10 @@ public class Calculator {
         if (screen.endsWith(".0")) screen = screen.substring(0, screen.length() - 2);
         if (screen.contains(".") && screen.length() > 11) screen = screen.substring(0, 10);
 
-        if (screen.equals("Infinity")) screen = "Error";
+        if (screen.equals("Infinity")) screen = "Error"; // 1 rote Test - testDivision
+
+        }
 
     }
 
-    }
 
