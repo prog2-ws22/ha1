@@ -49,9 +49,16 @@ public class Calculator {
      * im Ursprungszustand ist.
      */
     public void pressClearKey() {
-        screen = "0";
-        latestOperation = "";
-        latestValue = 0.0;
+if(Double.parseDouble(screen) >0) {
+  latestValue = 0;
+} else if (Double.parseDouble(screen) == 0) {
+    latestValue = 0;
+    latestOperation = "";
+    screen = "0";
+
+}
+
+
     }
 
     /**
