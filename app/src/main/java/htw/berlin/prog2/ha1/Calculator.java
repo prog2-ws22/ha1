@@ -14,13 +14,13 @@ public class Calculator {
 
     private String latestOperation = "";
 
+    private String latestCommand;
 
     /**
      * @return den aktuellen Bildschirminhalt als String
      */
     public String readScreen() {
-        return screen;
-    }
+        return screen;}
 
     /**
      * Empfängt den Wert einer gedrückten Zifferntaste. Da man nur eine Taste auf einmal
@@ -36,6 +36,7 @@ public class Calculator {
         if (screen.equals("0") || latestValue == Double.parseDouble(screen)) screen = "";
 
         screen = screen + digit;
+        latestCommand = "pressedDigit";
     }
 
     /**
@@ -45,10 +46,17 @@ public class Calculator {
      * Wird daraufhin noch einmal die Taste gedrückt, dann werden auch zwischengespeicherte
      * Werte sowie der aktuelle Operationsmodus zurückgesetzt, so dass der Rechner wieder
      * im Ursprungszustand ist.
+     *
+     * Zusatz:
+     * @Author Dominic Hörig
+     * zusätzliche Funktionalität:
+     * Wird die Taste direkt nach der "=" Taste gedrückt, dann werden ebenfalls zwischengespeicherte
+     * Werte sowie der aktuelle Operationsmodus zurückgesetzt, so dass der Rechner wieder
+     * im Ursprungszustand ist.
      */
     public void pressClearKey() {
 
-        if (latestValue == 0.0) {
+        if (latestCommand.equals("pressedClear") || latestCommand.equals("pressedEquals") || latestValue == 0.0) {
 
             screen = "0";
             latestValue = 0.0;
@@ -58,6 +66,7 @@ public class Calculator {
 
             screen = "0";
         }
+        latestCommand = "pressedClear";
 
     }
 
@@ -74,6 +83,7 @@ public class Calculator {
     public void pressBinaryOperationKey(String operation) {
         latestValue = Double.parseDouble(screen);
         latestOperation = operation;
+        latestCommand = "pressedBinaryOperation";
     }
 
     /**
@@ -95,6 +105,7 @@ public class Calculator {
         };
         screen = Double.toString(result);
         if (screen.contains(".") && screen.length() > 11) screen = screen.substring(0, 10);
+        latestCommand = "pressedUnaryOperation";
 
     }
 
@@ -107,6 +118,7 @@ public class Calculator {
      */
     public void pressDotKey() {
         if (!screen.endsWith(".")) screen = screen + ".";
+        latestCommand = "pressedDotKey";
     }
 
     /**
@@ -118,6 +130,7 @@ public class Calculator {
      */
     public void pressNegativeKey() {
         screen = screen.startsWith("-") ? screen.substring(1) : "-" + screen;
+        latestCommand = "pressedNegative";
     }
 
     /**
@@ -149,5 +162,6 @@ public class Calculator {
             if (screen.contains(".") && screen.length() > 11) screen = screen.substring(0, 10);
         }
 
+        latestCommand = "pressedEquals";
     }
 }
