@@ -64,11 +64,13 @@ class CalculatorTest {
      */
     @Test
     @DisplayName("should display an error -> division by 0")
+    /*
+    pushen -> Nachricht: calc.pressDigitKey(9) rausgenommen
+     */
     void testDivisionByZero() {
         Calculator calc = new Calculator();
 
         calc.pressDigitKey(5);
-        calc.pressDigitKey(9);
         calc.pressBinaryOperationKey("/");
         calc.pressDigitKey(0);
         calc.pressEqualsKey();
@@ -81,13 +83,15 @@ class CalculatorTest {
 
     @Test
     @DisplayName("should display an Error -> root on a negative numbers is not possible")
+    /*
+    muss ich pushen -> Nachricht: calc.pressEqualsKey rausgenommen
+     */
     void testRootNumberOfNegativeNumbers() {
         Calculator calc = new Calculator();
 
         calc.pressDigitKey(5);
         calc.pressNegativeKey();
         calc.pressUnaryOperationKey("√");
-        calc.pressEqualsKey();
 
         String expected = "Error";
         String actual = calc.readScreen();
