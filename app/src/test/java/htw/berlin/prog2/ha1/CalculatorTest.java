@@ -77,5 +77,16 @@ class CalculatorTest {
 
         assertEquals(expected, actual);
     }
+
+    @Test
+    @DisplayName("eine ziffer und dann pressequals in der online version gibt einfach die zahl zurück")
+    void testEqualsWithoutOperation() {
+        Calculator calc = new Calculator();
+        calc.pressDigitKey(3);
+        calc.pressEqualsKey();
+        String expected = "3";
+        String actual = calc.readScreen();
+        assertEquals(expected, actual);
+    }
 }
 
