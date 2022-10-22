@@ -52,8 +52,34 @@ class CalculatorTest {
 
         assertEquals(expected, actual);
     }
+    @Test
+    @DisplayName("should display result error after divide a positive number by zero")
+    void testPositiveDivision() {
+        Calculator calc = new Calculator();
 
+        calc.pressDigitKey(3);
+        calc.pressBinaryOperationKey("/");
+        calc.pressDigitKey(0);
+        calc.pressEqualsKey();
+        String expected = "Error";
+        String actual = calc.readScreen();
 
+        assertEquals(expected, actual);
+    }
+    @Test
+    @DisplayName("should display result after adding one negative and one positive multi-digit numbers")
+    void testNegativeAddition() {
+        Calculator calc = new Calculator();
+
+        calc.pressDigitKey(-2);
+        calc.pressBinaryOperationKey("+");
+        calc.pressDigitKey(5);
+        calc.pressEqualsKey();
+        String expected = "3";
+        String actual = calc.readScreen();
+
+        assertEquals(expected, actual);
+    }
 
 }
 
