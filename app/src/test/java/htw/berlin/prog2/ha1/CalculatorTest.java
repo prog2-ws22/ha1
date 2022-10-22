@@ -60,6 +60,22 @@ class CalculatorTest {
         assertEquals(expected, actual);
     }
 
-    
+    @Test
+    @DisplayName("clear taste")
+    void testClearKey() {
+        Calculator calc = new Calculator();
+
+        calc.pressDigitKey(2);
+        calc.pressDigitKey(0);
+        calc.pressBinaryOperationKey("+");
+        calc.pressClearKey();
+        calc.pressDigitKey(1);
+        calc.pressEqualsKey();
+
+        String expected = "21";
+        String actual = calc.readScreen();
+
+        assertEquals(expected, actual);
+    }
 }
 
