@@ -41,5 +41,86 @@ class CalculatorTest {
     }
 
     //TODO hier weitere Tests erstellen
+    @Test
+    @DisplayName("should display the result with negative sign after division of a positive multi-digit number with an positiv one-digit decimal number")
+    void testNegativeKey() {
+
+        Calculator calc = new Calculator();
+
+        calc.pressDigitKey(2);
+        calc.pressDigitKey(4);
+        calc.pressBinaryOperationKey("/");
+        calc.pressDigitKey(2);
+        calc.pressDotKey();
+        calc.pressDigitKey(5);
+        calc.pressEqualsKey();
+        calc.pressNegativeKey();
+
+
+        String expected = "-9.6";
+        String actual = calc.readScreen();
+
+        assertEquals(expected, actual);
+    }
+
+    @Test
+    @DisplayName("check Clear-Function")
+    //Abweichung zu beschriebener Funktionalität pressClearKey() und Online-Taschenrechner: keine Zwischenspeicherung von Werten nach einmaliger Betätigung C-/CE//
+    void testClearKey () {
+
+        Calculator calc = new Calculator();
+
+        calc.pressDigitKey(5);
+        calc.pressBinaryOperationKey("x");
+        calc.pressDigitKey(2);
+        calc.pressClearKey();
+        calc.pressDigitKey(8);
+        calc.pressEqualsKey();
+
+        String expected = ("40");
+        String actual = calc.readScreen();
+
+        assertEquals(expected, actual);
+
+    }
+
+    @Test
+    @DisplayName("should display Error after division with 0")
+    //Abweichung zu beschriebener Funktionalität pressEqualsKey() und Online-Taschenrechner: Division mit 0 zeigt nicht Error an//
+    void testDivisionWithZero () {
+
+        Calculator calc = new Calculator();
+
+        calc.pressDigitKey(3);
+        calc.pressDigitKey(5);
+        calc.pressBinaryOperationKey("/");
+        calc.pressDigitKey(0);
+        calc.pressEqualsKey();
+
+        String expected = "Error";
+        String actual = calc.readScreen();
+
+        assertEquals(expected, actual);
+    }
+
+    @Test
+    @DisplayName("check Clear-Entry-Function")
+    void testClearKey2() {
+
+        Calculator calc = new Calculator();
+
+        calc.pressDigitKey(8);
+        calc.pressBinaryOperationKey("+");
+        calc.pressDigitKey(9);
+        calc.pressClearKey();
+        calc.pressClearKey();
+        calc.pressDigitKey(4);
+        calc.pressUnaryOperationKey("%");
+
+        String expected = ("0.04");
+        String actual = calc.readScreen();
+
+        assertEquals(expected, actual);
+    }
 }
 
