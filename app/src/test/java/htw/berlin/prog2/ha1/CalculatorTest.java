@@ -64,8 +64,8 @@ class CalculatorTest {
     }
 
     @Test
-    @DisplayName("should display the result of two multiplied one-digit number´s, but the second one-digit had been cleared and replaced by another one-digit number")
-    //Abweichung zu beschriebener Funktionalität pressClearKey() und Online-Taschenrechner: keine Zwischenspeicherung von Werten//
+    @DisplayName("check Clear-Function")
+    //Abweichung zu beschriebener Funktionalität pressClearKey() und Online-Taschenrechner: keine Zwischenspeicherung von Werten nach einmaliger Betätigung C-/CE//
     void testClearKey () {
 
         Calculator calc = new Calculator();
@@ -103,5 +103,24 @@ class CalculatorTest {
         assertEquals(expected, actual);
     }
 
+    @Test
+    @DisplayName("check Clear-Entry-Function")
+    void testClearKey2() {
+
+        Calculator calc = new Calculator();
+
+        calc.pressDigitKey(8);
+        calc.pressBinaryOperationKey("+");
+        calc.pressDigitKey(9);
+        calc.pressClearKey();
+        calc.pressClearKey();
+        calc.pressDigitKey(4);
+        calc.pressUnaryOperationKey("%");
+
+        String expected = ("0.04");
+        String actual = calc.readScreen();
+
+        assertEquals(expected, actual);
+    }
 }
 
