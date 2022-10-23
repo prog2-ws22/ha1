@@ -33,17 +33,17 @@ public class Calculator {
     public void pressDigitKey(int digit) {
         if(digit > 9 || digit < 0) throw new IllegalArgumentException();
 
-        System.out.println("Press Digit Screen: " + screen + "      Press Digit LV: " + latestValue);
+        //System.out.println("Press Digit Screen: " + screen + "      Press Digit LV: " + latestValue);
         try {
             if (screen.equals("0") || latestValue.compareTo(new BigDecimal(screen)) == 0) screen = "";
         }
         catch(Exception e) {
             System.out.println("if first call of method this is expected... i guess"); //latestValue is NULL at the start
         }
-        System.out.println("Press Digit Screen after: " + screen);
+        //System.out.println("Press Digit Screen after: " + screen);
         //BigDecimal screenbd = new BigDecimal(screen);
         screen = screen + digit; //screenbd.add(new BigDecimal(digit)).toString();
-        System.out.println("Press Digit Screen after after: " + screen);
+        //System.out.println("Press Digit Screen after after: " + screen);
     }
 
     /**
@@ -72,7 +72,7 @@ public class Calculator {
     public void pressBinaryOperationKey(String operation)  {
         latestValue = new BigDecimal(screen);
         latestOperation = operation;
-        System.out.println("Press Binary etc. Latest Value: " + latestValue + "     Operation: " + operation);
+        //System.out.println("Press Binary etc. Latest Value: " + latestValue + "     Operation: " + operation);
     }
 
     /**
@@ -130,7 +130,7 @@ public class Calculator {
      */
     public void pressEqualsKey() {
         BigDecimal bdscreen = new BigDecimal(screen);
-        System.out.println("BDScreen before: " + bdscreen);
+        //System.out.println("BDScreen before: " + bdscreen);
         var result = switch(latestOperation) {
             case "+" -> latestValue.add(bdscreen);
             case "-" -> latestValue.subtract(bdscreen);
@@ -139,7 +139,7 @@ public class Calculator {
 
             default -> throw new IllegalArgumentException();
         };
-        System.out.println("BDScreen: " + bdscreen + "     Screen: " + screen + "     Result: " + result);
+        //System.out.println("BDScreen: " + bdscreen + "     Screen: " + screen + "     Result: " + result);
         screen = result.toString();
         if(screen.endsWith(".0")) screen = screen.substring(0,screen.length()-2);
         if(screen.contains(".") && screen.length() > 11) screen = screen.substring(0, 10);
