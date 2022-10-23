@@ -61,7 +61,7 @@ class CalculatorTest {
     }
 
     @Test
-    @DisplayName("should display result after subtracting two positive multi-digit numbers")
+    @DisplayName("should display result after dividing one negative multi-digit number with another positive multi-digit number")
     void testNegativeDivision() {
         Calculator calc = new Calculator();
 
