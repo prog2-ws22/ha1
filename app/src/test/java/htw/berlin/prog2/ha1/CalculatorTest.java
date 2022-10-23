@@ -82,5 +82,23 @@ class CalculatorTest {
         assertEquals(expected, actual);
     }
 
+
+    @Test
+    @DisplayName("test pressing negative before digit")
+    void testNegativeBtn() {
+        Calculator calc = new Calculator();
+
+        calc.pressNegativeKey();
+        calc.pressDigitKey(2);
+        calc.pressBinaryOperationKey("+");
+        calc.pressDigitKey(2);
+        calc.pressEqualsKey();
+
+        String expected = "0";
+        String actual = calc.readScreen();
+
+        assertEquals(expected, actual);
+    }
+
 }
 
