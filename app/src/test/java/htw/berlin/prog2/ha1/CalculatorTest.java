@@ -43,7 +43,7 @@ class CalculatorTest {
     //TODO hier weitere Tests erstellen
     @Test
     @DisplayName("should display result after adding two negative numbers ")
-    void testNegativeAddition(){
+    void testNegativeAddition() {
         Calculator calc = new Calculator();
 
         calc.pressDigitKey(5);
@@ -54,6 +54,25 @@ class CalculatorTest {
         calc.pressEqualsKey();
 
         String expected = "-8";
+        String actual = calc.readScreen();
+
+        assertEquals(expected, actual);
+
+    }
+
+    @Test
+    @DisplayName("should display result after adding two negative numbers ")
+    void FailurtestNegativeAddition() {
+        Calculator calc = new Calculator();
+
+        calc.pressDigitKey(4);
+        calc.pressNegativeKey();
+        calc.pressBinaryOperationKey("+");
+        calc.pressDigitKey(4);
+        calc.pressNegativeKey();
+        calc.pressEqualsKey();
+
+        String expected = "-6";
         String actual = calc.readScreen();
 
         assertEquals(expected, actual);
