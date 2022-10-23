@@ -58,6 +58,21 @@ class CalculatorTest {
     }
 
 
+    @Test
+    @DisplayName("should display Error after a division by zero")
+    void testDivision() {
+        Calculator calc = new Calculator();
+
+        calc.pressDigitKey(8);
+        calc.pressBinaryOperationKey("/");
+        calc.pressDigitKey(0);
+        calc.pressEqualsKey();
+
+        String expected = "Error";
+        String actual = calc.readScreen();
+
+        assertEquals(expected, actual);
+    }
 
 }
 
