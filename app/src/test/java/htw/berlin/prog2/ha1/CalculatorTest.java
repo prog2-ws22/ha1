@@ -72,5 +72,21 @@ class CalculatorTest {
 
         assertEquals(expected, actual);
     }
+
+    @Test
+    @DisplayName("should display only one dot after pressing it multiple times")
+    void doubledot() {
+        Calculator calc = new Calculator();
+
+        calc.pressDigitKey(2);
+        calc.pressDotKey();
+        calc.pressDigitKey(2);
+        calc.pressDotKey();
+
+        String expected = "2.2";
+        String actual = calc.readScreen();
+
+        assertEquals(expected, actual);
+    }
 }
 
