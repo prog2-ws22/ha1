@@ -41,5 +41,22 @@ class CalculatorTest {
     }
 
     //TODO hier weitere Tests erstellen
+    //Erster Grüner Test
+    @Test
+    @DisplayName("should display result after multiplying two positive single-digit numbers")
+    void testPositiveMultiplikation() {
+        Calculator calc = new Calculator();
+
+        calc.pressDigitKey(1);
+        calc.pressBinaryOperationKey("x");
+        calc.pressDigitKey(2);
+        calc.pressEqualsKey();
+        String expected = "2";
+        String actual = calc.readScreen();
+
+        assertEquals(expected, actual);
+    } //Erster Gründer Test ende
+
+
 }
 
