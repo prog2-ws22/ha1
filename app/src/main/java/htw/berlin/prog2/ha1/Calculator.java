@@ -82,6 +82,7 @@ public class Calculator {
         };
         screen = Double.toString(result);
         if(screen.contains(".") && screen.length() > 11) screen = screen.substring(0, 10);
+        if(latestOperation.equals("1/x") && latestValue == 0) screen = "Error";
 
     }
 
