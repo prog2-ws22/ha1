@@ -96,12 +96,15 @@ class CalculatorTest {
     //Teilaufgabe2 ha1 roter Test
 
     @Test
-    @DisplayName("should display result after  the square root of negative numbers")
+    @DisplayName("should display result after  the getting square root of negative numbers")
     void testNegativeSquare() {
         Calculator calc = new Calculator();
         calc.pressNegativeKey();
+
         calc.pressDigitKey(9);
+        calc.pressNegativeKey();
         calc.pressUnaryOperationKey("√");
+        calc.pressEqualsKey();
 
         String expected = "error";
         String actual = calc.readScreen();
