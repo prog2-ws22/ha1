@@ -41,6 +41,7 @@ class CalculatorTest {
     }
 
     //TODO hier weitere Tests erstellen
+    //green test
     @Test
     @DisplayName("")
     void testMultiplikation() {
@@ -57,7 +58,7 @@ class CalculatorTest {
         assertEquals(expected, actual);
     }
 
-
+    //red test
     @Test
     @DisplayName("should display Error after a division by zero")
     void testDivision() {
@@ -73,6 +74,54 @@ class CalculatorTest {
 
         assertEquals(expected, actual);
     }
+
+    //green test
+    @Test
+    @DisplayName("")
+    void testClearKey() {
+        Calculator calc = new Calculator();
+
+        calc.pressDigitKey(8);
+        calc.pressBinaryOperationKey("+");
+        calc.pressDigitKey(2);
+        calc.pressClearKey();
+
+        String expected = "5";
+        String actual = calc.readScreen();
+
+        assertEquals(expected, actual);
+    }
+
+    //green test
+    @Test
+    @DisplayName("")
+    void testUnaryOperationKeyProzent() {
+        Calculator calc = new Calculator();
+
+        calc.pressDigitKey(4);
+        calc.pressUnaryOperationKey("%");
+
+        String expected = "0.04";
+        String actual = calc.readScreen();
+
+        assertEquals(expected, actual);
+    }
+
+    //green test
+    @Test
+    @DisplayName("")
+    void testUnaryOperationKeyInversion() {
+        Calculator calc = new Calculator();
+
+        calc.pressDigitKey(9);
+        calc.pressUnaryOperationKey("1/x");
+
+        String expected = "0.11111111";
+        String actual = calc.readScreen();
+
+        assertEquals(expected, actual);
+    }
+
 
 }
 
