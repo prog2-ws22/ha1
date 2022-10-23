@@ -57,6 +57,22 @@ class CalculatorTest {
         assertEquals(expected, actual);
     } //Erster Gründer Test ende
 
+    //Erster Roter test
+    @Test
+    @DisplayName("should display Error String if a Number is divided by 0")
+    void testDivisionByZero() {
+        Calculator calc = new Calculator();
+
+        calc.pressDigitKey(1);
+        calc.pressBinaryOperationKey("/");
+        calc.pressDigitKey(0);
+        calc.pressEqualsKey();
+
+        String expected = "Error";    //Fehlermeldung anstatt "error" kommt "Infinity" -> Nicht wie im online Taschenrechner
+        String actual = calc.readScreen();
+
+        assertEquals(expected, actual);
+    } //Erster Roter Test ende
 
 }
 
