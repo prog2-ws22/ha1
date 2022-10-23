@@ -60,7 +60,7 @@ class CalculatorTest {
     }
 
     @Test
-    @DisplayName("")
+    @DisplayName("should show the result of a subtraction with decimal numbers")
     void testFloatSubtraction() {
         Calculator calc = new Calculator();
 
@@ -74,6 +74,22 @@ class CalculatorTest {
         calc.pressEqualsKey();
 
         String expected = "0.9";
+        String actual = calc.readScreen();
+
+        assertEquals(expected, actual);
+    }
+
+    @Test
+    @DisplayName("")
+    void testDivideByZero() {
+        Calculator calc = new Calculator();
+
+        calc.pressDigitKey(1);
+        calc.pressDigitKey(3);
+        calc.pressBinaryOperationKey("/");
+        calc.pressDigitKey(0);
+
+        String expected = "Error";
         String actual = calc.readScreen();
 
         assertEquals(expected, actual);
