@@ -45,9 +45,13 @@ public class Calculator {
      * im Ursprungszustand ist.
      */
     public void pressClearKey() {
-        screen = "0";
-        latestOperation = "";
-        latestValue = 0.0;
+        if(latestValue != 0) {
+            screen = "0";
+        }
+        else {
+            latestOperation = "";
+            latestValue = 0.0;
+        }
     }
 
     /**
