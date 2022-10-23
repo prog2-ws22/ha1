@@ -38,7 +38,7 @@ public class Calculator {
             if (screen.equals("0") || latestValue.compareTo(new BigDecimal(screen)) == 0) screen = "";
         }
         catch(Exception e) {
-            System.out.println("if first call of methode this is expected... i guess"); //latestValue is NULL at the start
+            System.out.println("if first call of method this is expected... i guess"); //latestValue is NULL at the start
         }
         System.out.println("Press Digit Screen after: " + screen);
         //BigDecimal screenbd = new BigDecimal(screen);
