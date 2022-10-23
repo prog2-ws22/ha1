@@ -96,6 +96,7 @@ public class Calculator {
         if(!screen.endsWith(".")) screen = screen + ".";
     }
 
+
     /**
      * Empfängt den Befehl der gedrückten Vorzeichenumkehrstaste ("+/-").
      * Zeigt der Bildschirm einen positiven Wert an, so wird ein "-" links angehängt, der Bildschirm
@@ -104,7 +105,14 @@ public class Calculator {
      * entfernt und der Inhalt fortan als positiv interpretiert.
      */
     public void pressNegativeKey() {
-        screen = screen.startsWith("-") ? screen.substring(1) : "-" + screen;
+
+            boolean myNegativeValue;
+
+            if (screen == "+/-" ) {
+                myNegativeValue = true;
+
+                screen = screen.startsWith("-") ? screen.substring(1) : "-" + screen;
+            }
     }
 
     /**
@@ -127,5 +135,9 @@ public class Calculator {
         screen = Double.toString(result);
         if(screen.endsWith(".0")) screen = screen.substring(0,screen.length()-2);
         if(screen.contains(".") && screen.length() > 11) screen = screen.substring(0, 10);
+        if(screen == "Infinity") {
+            screen = "Error";
+        }
+
     }
 }

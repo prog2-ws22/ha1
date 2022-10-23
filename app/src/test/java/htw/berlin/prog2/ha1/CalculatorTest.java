@@ -68,7 +68,8 @@ class CalculatorTest {
         calc.pressDigitKey(0);
         calc.pressEqualsKey();
 
-        String expected = "Infinity";
+        String expected = "Error";
+
         String actual = calc.readScreen();
 
         assertEquals(expected, actual);
@@ -80,7 +81,7 @@ class CalculatorTest {
     void testNegativSubtraction() {
         Calculator calc = new Calculator();
 
-        calc.pressBinaryOperationKey("-");
+        calc.pressNegativeKey();
         calc.pressDigitKey(2);
         calc.pressDigitKey(5);
         calc.pressBinaryOperationKey("-");
@@ -88,7 +89,7 @@ class CalculatorTest {
         calc.pressDigitKey(5);
         calc.pressEqualsKey();
 
-        String expected = "50";
+        String expected = "-50";
         String actual = calc.readScreen();
 
         assertEquals(expected, actual);
