@@ -82,6 +82,7 @@ public class Calculator {
         };
         screen = Double.toString(result);
         if(screen.contains(".") && screen.length() > 11) screen = screen.substring(0, 10);
+        if(latestOperation.equals("1/x") && latestValue == 0) screen = "Error";
 
     }
 
@@ -93,7 +94,7 @@ public class Calculator {
      * Beim zweimaligem Drücken, oder wenn bereits ein Trennzeichen angezeigt wird, passiert nichts.
      */
     public void pressDotKey() {
-        if(!screen.endsWith(".")) screen = screen + ".";
+        if(!screen.contains(".")) screen = screen + ".";
     }
 
     /**
