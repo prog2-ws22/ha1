@@ -61,15 +61,20 @@ class CalculatorTest {
 
 
 
+    @Test
+    @DisplayName ("display result should show Error")
+    void testDividedByZero () {
+        Calculator calc = new Calculator();
 
+        calc.pressDigitKey(2);
+        calc.pressBinaryOperationKey("/" );
+        calc.pressDigitKey(0);
+        calc.pressEqualsKey();
 
-
-
-
-
-
-
-
+        String actual = calc.readScreen();
+        String expected = "Error";
+        assertEquals(expected, actual);
 
 }
 
+}
