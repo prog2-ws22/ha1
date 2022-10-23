@@ -130,11 +130,13 @@ public class Calculator {
      */
     public void pressEqualsKey() {
         BigDecimal bdscreen = new BigDecimal(screen);
+        System.out.println("BDScreen before: " + bdscreen);
         var result = switch(latestOperation) {
             case "+" -> latestValue.add(bdscreen);
             case "-" -> latestValue.subtract(bdscreen);
             case "x" -> latestValue.multiply(bdscreen);
-            case "/" -> latestValue.divide(bdscreen);
+            case "/" -> (bdscreen.compareTo(new BigDecimal(0))==0) ? screen="Error":latestValue.divide(bdscreen);
+
             default -> throw new IllegalArgumentException();
         };
         System.out.println("BDScreen: " + bdscreen + "     Screen: " + screen + "     Result: " + result);
