@@ -9,7 +9,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 class CalculatorTest
 {
     @Test
-    @DisplayName("should display result after adding two positive multi-digit numbers")
+    @DisplayName("Should display result after adding two positive multi-digit numbers")
     void testPositiveAddition()
     {
         Calculator calc = new Calculator();
@@ -43,7 +43,7 @@ class CalculatorTest
     }
 
     @Test
-    @DisplayName("should display result after dividing two positive single-digit numbers")
+    @DisplayName("Should display result after dividing two positive single-digit numbers")
     void testPositiveDivision()
     {
         Calculator calc = new Calculator();
