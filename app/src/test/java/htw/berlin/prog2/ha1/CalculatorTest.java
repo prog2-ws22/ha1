@@ -9,7 +9,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 class CalculatorTest {
 
     @Test
-    @DisplayName("should display first value after clear entry") //Mistake clearkey deletes entire entry or shows Error
+    @DisplayName("should display first value after clear entry") //löscht alle eintrage, nicht nur den zuletzt eingegebenen
     void testClearKey() {
         Calculator calc = new Calculator();
 
@@ -26,7 +26,7 @@ class CalculatorTest {
         assertEquals(expected, actual);
     }
 
-    /*
+
     @Test
     @DisplayName("should display Error after dividing by 0") //Mistake Division 0
     void testDivisionByZero() {
@@ -45,25 +45,26 @@ class CalculatorTest {
         assertEquals(expected, actual);
 
      }
-     */
 
-/*
+
+
     @Test
     @DisplayName("should display result after getting the square root of two") // direkt grün
-    void testSquareRoot() {
+    void testAddition() {
         Calculator calc = new Calculator();
 
         calc.pressDigitKey(2);
-        calc.pressUnaryOperationKey("√");
+        calc.pressBinaryOperationKey("+");
+        calc.pressDigitKey(2);
         calc.pressEqualsKey();
 
 
-        String expected = "1.41421356";
+        String expected = "4";
         String actual = calc.readScreen();
 
         assertEquals(expected, actual);
     }
-*/
+
 
 
         //TODO hier weitere Tests erstellen
