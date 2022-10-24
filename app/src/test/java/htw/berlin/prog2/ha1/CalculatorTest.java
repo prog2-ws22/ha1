@@ -58,5 +58,16 @@ class CalculatorTest {
         assertEquals("-78.2", calc.readScreen());
     }
 
+    @Test
+    @DisplayName("should display an error message when trying to find the square root of a negative number")
+    void testSquareRootOfNegativeNumber() {
+        Calculator calc = new Calculator();
+
+        calc.pressDigitKey(3);
+        calc.pressNegativeKey();
+        calc.pressUnaryOperationKey("√");
+
+        assertEquals("Error", calc.readScreen());
+    }
 }
 
