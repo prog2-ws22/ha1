@@ -45,9 +45,13 @@ public class Calculator {
      * im Ursprungszustand ist.
      */
     public void pressClearKey() {
+        if (Double.parseDouble(screen) == 0.0) {
+            screen = "0";
+            latestOperation = "";
+            latestValue = 0.0;
+            return;
+        }
         screen = "0";
-        latestOperation = "";
-        latestValue = 0.0;
     }
 
     /**
@@ -93,7 +97,7 @@ public class Calculator {
      * Beim zweimaligem Drücken, oder wenn bereits ein Trennzeichen angezeigt wird, passiert nichts.
      */
     public void pressDotKey() {
-        if(!screen.endsWith(".")) screen = screen + ".";
+        if(!screen.contains(".")) screen = screen + ".";
     }
 
     /**
@@ -122,6 +126,7 @@ public class Calculator {
             case "-" -> latestValue - Double.parseDouble(screen);
             case "x" -> latestValue * Double.parseDouble(screen);
             case "/" -> latestValue / Double.parseDouble(screen);
+            case "" -> latestValue;
             default -> throw new IllegalArgumentException();
         };
         screen = Double.toString(result);
