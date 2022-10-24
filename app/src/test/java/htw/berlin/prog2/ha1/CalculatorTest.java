@@ -56,18 +56,19 @@ class CalculatorTest {
     }
 
     @Test
-    @DisplayName("should display result after press repeatedly equals key")
-    void testPressEqualsKey(){
+    @DisplayName("should display result after press twice equals key")
+    void testPressTwiceEqualsKey(){
         Calculator calc = new Calculator();
         calc.pressDigitKey(1);
         calc.pressDigitKey(0);
         calc.pressBinaryOperationKey("x");
-        calc.pressDigitKey(3);
+        calc.pressDigitKey(4);
         calc.pressEqualsKey();
         calc.pressEqualsKey();
 
 
-        String expected = "90";
+
+        String expected = "160";
         String actual = calc.readScreen();
 
         assertEquals(expected, actual);
@@ -82,13 +83,29 @@ class CalculatorTest {
         calc.pressBinaryOperationKey("/");
         calc.pressDigitKey(2);
         calc.pressEqualsKey();
-        calc.pressDigitKey(2);
-        calc.pressBinaryOperationKey("+");
-        calc.pressDigitKey(4);
+        calc.pressDigitKey(1);
+        calc.pressBinaryOperationKey("-");
+        calc.pressDigitKey(6);
         calc.pressEqualsKey();
 
 
-        String expected = "6";
+        String expected = "-5";
+        String actual = calc.readScreen();
+
+        assertEquals(expected, actual);
+    }
+
+    @Test
+    @DisplayName("should display result of the operation after pressing twice dot key")
+    void testDotKey(){
+        Calculator calc = new Calculator();
+        calc.pressDigitKey(9);
+        calc.pressDotKey();
+        calc.pressDigitKey(7);
+        calc.pressDotKey();
+
+
+        String expected = "9.7";
         String actual = calc.readScreen();
 
         assertEquals(expected, actual);
