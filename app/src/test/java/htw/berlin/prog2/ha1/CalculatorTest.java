@@ -41,5 +41,53 @@ class CalculatorTest {
     }
 
     //TODO hier weitere Tests erstellen
+    @Test
+    @DisplayName("should display the result after multiplying with a negative multi-digit factor")
+    void testNegativeMultiplication() {
+        Calculator calc = new Calculator();
+
+        calc.pressDigitKey(2);
+        calc.pressDigitKey(3);
+        calc.pressBinaryOperationKey("x");
+        calc.pressDigitKey(3);
+        calc.pressDotKey();
+        calc.pressDigitKey(4);
+        calc.pressNegativeKey();
+        calc.pressEqualsKey();
+
+        assertEquals("-78.2", calc.readScreen());
+    }
+
+    @Test
+    @DisplayName("should display an error message when trying to find the square root of a negative number")
+    void testSquareRootOfNegativeNumber() {
+        Calculator calc = new Calculator();
+
+        calc.pressDigitKey(3);
+        calc.pressNegativeKey();
+        calc.pressUnaryOperationKey("√");
+
+        assertEquals("Error", calc.readScreen());
+    }
+
+    @Test
+    @DisplayName("should not perform any calculation when no operation was chosen")
+    void testDontPerformCalculationWithoutOperation() {
+        Calculator calc = new Calculator();
+
+        calc.pressDigitKey(9);
+        calc.pressDotKey();
+        calc.pressDigitKey(4);
+        calc.pressDigitKey(0);
+        calc.pressDigitKey(0);
+        calc.pressDigitKey(0);
+        calc.pressNegativeKey();
+
+        assertEquals("-9.4000", calc.readScreen());
+
+        calc.pressEqualsKey();
+
+        assertEquals("-9.4", calc.readScreen());
+    }
 }
 
