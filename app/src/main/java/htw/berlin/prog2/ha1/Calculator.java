@@ -31,8 +31,9 @@ public class Calculator {
     public void pressDigitKey(int digit) {
         if(digit > 9 || digit < 0) throw new IllegalArgumentException();
 
-        if(screen.equals("0") || latestValue == Double.parseDouble(screen)) screen = "";
-
+        if (!screen.equals("-0")) {
+            if (screen.equals("0") || latestValue == Double.parseDouble(screen)) screen = "";
+        }
         screen = screen + digit;
     }
 
@@ -107,6 +108,16 @@ public class Calculator {
         screen = screen.startsWith("-") ? screen.substring(1) : "-" + screen;
     }
 
+
+    public double divide() {
+
+        if(Double.parseDouble(screen) == 0.0) {
+            return 0.0;
+        }
+        else {
+            return latestValue / Double.parseDouble(screen);
+        }
+    }
     /**
      * Empfängt den Befehl der gedrückten "="-Taste.
      * Wurde zuvor keine Operationstaste gedrückt, passiert nichts.
@@ -121,10 +132,17 @@ public class Calculator {
             case "+" -> latestValue + Double.parseDouble(screen);
             case "-" -> latestValue - Double.parseDouble(screen);
             case "x" -> latestValue * Double.parseDouble(screen);
-            case "/" -> latestValue / Double.parseDouble(screen);
+            case "/" -> divide();//latestValue / Double.parseDouble(screen);
             default -> throw new IllegalArgumentException();
         };
-        screen = Double.toString(result);
+
+        if (Double.parseDouble(screen) == 0.0 && latestOperation.equals("/"))
+        {
+            screen = "Error";
+        }
+        else {
+            screen = Double.toString(result);
+        }
         if(screen.endsWith(".0")) screen = screen.substring(0,screen.length()-2);
         if(screen.contains(".") && screen.length() > 11) screen = screen.substring(0, 10);
     }
