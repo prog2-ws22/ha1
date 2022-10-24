@@ -76,6 +76,25 @@ class CalculatorTest {
 
     }
 
+    @Test
+    @DisplayName("Should display ERROR after getting the square root of a negative number")
+    void testNegativeSquare(){
+        Calculator calc = new Calculator();
+
+        calc.pressDigitKey(1);
+        calc.pressDigitKey(1);
+        calc.pressNegativeKey();
+        calc.pressUnaryOperationKey("√");
+
+        String expected = "ERROR";
+        String actual = calc.readScreen();
+
+        assertEquals(expected, actual);
+
+
+
+    }
+
 
 }
 
