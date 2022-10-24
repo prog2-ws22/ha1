@@ -41,7 +41,22 @@ class CalculatorTest {
     }
 
     //TODO hier weitere Tests erstellen
+    @Test
+    @DisplayName("should display the result after multiplying with a negative multi-digit factor")
+    void testNegativeMultiplication() {
+        Calculator calc = new Calculator();
 
+        calc.pressDigitKey(2);
+        calc.pressDigitKey(3);
+        calc.pressBinaryOperationKey("x");
+        calc.pressDigitKey(3);
+        calc.pressDotKey();
+        calc.pressDigitKey(4);
+        calc.pressNegativeKey();
+        calc.pressEqualsKey();
+
+        assertEquals("-78.2", calc.readScreen());
+    }
 
 }
 
