@@ -46,10 +46,10 @@ class CalculatorTest {
     void testNegativeAddition() {
         Calculator calc = new Calculator();
 
-        calc.pressDigitKey(5);
+        calc.pressDigitKey(4);
         calc.pressNegativeKey();
         calc.pressBinaryOperationKey("+");
-        calc.pressDigitKey(3);
+        calc.pressDigitKey(4);
         calc.pressNegativeKey();
         calc.pressEqualsKey();
 
@@ -75,6 +75,24 @@ class CalculatorTest {
 
         assertEquals(expected, actual);
 
+    }
+    @Test
+    @DisplayName("should display result after adding and divisiion three positive multi-digit numbers")
+    void testthreePositiveaddingdivi() {
+        Calculator calc = new Calculator();
+
+        calc.pressDigitKey(2);
+        calc.pressBinaryOperationKey("+");
+        calc.pressDigitKey(2);
+        calc.pressEqualsKey();
+        calc.pressBinaryOperationKey("/");
+        calc.pressDigitKey(8);
+        calc.pressEqualsKey();
+
+        String expected = "2.25";
+        String actual = calc.readScreen();
+
+        assertEquals(expected, actual);
     }
 }
 
