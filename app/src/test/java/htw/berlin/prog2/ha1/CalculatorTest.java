@@ -70,5 +70,32 @@ class CalculatorTest {
 
         assertEquals(expected, actual);
     }
+
+    @Test
+    @DisplayName("should delete only the current memorized value, not the whole construct")
+    void testPressClearKey() {
+        Calculator calc = new Calculator();
+
+        calc.pressDigitKey(5);
+        calc.pressBinaryOperationKey("+");
+        calc.pressDigitKey(1);
+        calc.pressDigitKey(0);
+        calc.pressClearKey();
+        calc.pressDigitKey(8);
+        calc.pressEqualsKey();
+
+        String actual = calc.readScreen();
+        String expected = "13";
+
+        assertEquals(expected, actual);
+    }
+
+
+
+
+
+
+
+
 }
 
