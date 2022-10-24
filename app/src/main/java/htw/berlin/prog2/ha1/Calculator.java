@@ -76,6 +76,9 @@ public class Calculator {
      * und diese durch die try-catch Konstruktion abgefangen.
      *
      * @param operation "√" für Quadratwurzel, "%" für Prozent, "1/x" für Inversion
+     *
+     * Alexander Bürklen: StackOverFlow-Link, der mir bei der Bearbeitung der Teilaufgabe 3 geholfen hat:
+     * https://stackoverflow.com/questions/5738243/what-is-the-right-way-to-handle-nan-in-java
      */
     public void pressUnaryOperationKey(String operation) {
         latestValue = Double.parseDouble(screen);
@@ -131,6 +134,9 @@ public class Calculator {
      * Alexander Büerklen: Die if-Schleife prüft, ob die Variable "result" "Infinity" als Ausgabe gibt
      * oder nicht. Wenn es "Infinity" ausgibt wird eine eigenständige "ArithmeticException" geworfen
      * und diese durch die try-catch Konstruktion abgefangen.
+     *
+     * Alexander Bürklen: StackOverFlow-Link, der mir bei der Bearbeitung der Teilaufgabe 3 geholfen hat:
+     * https://stackoverflow.com/questions/8311604/check-if-a-double-is-infinite-in-java
      */
 
     public void pressEqualsKey() {
