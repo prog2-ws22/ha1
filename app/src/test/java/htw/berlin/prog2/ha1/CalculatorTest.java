@@ -41,5 +41,19 @@ class CalculatorTest {
     }
 
     //TODO hier weitere Tests erstellen
-}
+    @Test
+    @DisplayName("should show an error for 0 of 1/x")
+    void testDivisionByZero() {
+        Calculator calc = new Calculator();
 
+        calc.pressDigitKey(0);
+        calc.pressUnaryOperationKey("1/x");
+
+        String expected = "Error";
+        String actual = calc.readScreen();
+
+        assertEquals(expected, actual);
+    }
+
+
+}
