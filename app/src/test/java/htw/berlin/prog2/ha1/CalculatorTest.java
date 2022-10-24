@@ -57,7 +57,54 @@ class CalculatorTest {
 
         assertEquals(expected, actual);
     }
+
+    //@Test
+    //@DisplayName("should display negative digit number")
+    //void printNegativeNumbers() {
+    //Calculator calc = new Calculator();
+
+      //  calc.pressNegativeKey();
+      //  calc.pressDigitKey(4);
+      //  calc.pressEqualsKey();
+
+       // String expected = "-4";
+        // String actual = calc.readScreen();
+
+        //assertEquals(expected, actual);
+    //}
+
+    @Test
+    @DisplayName("should display an error because dividing with zero is not possible")
+    void testDivisionWithZero() {
+        Calculator calc = new Calculator();
+
+        calc.pressDigitKey(4);
+        calc.pressBinaryOperationKey("/");
+        calc.pressDigitKey(0);
+        calc.pressEqualsKey();
+
+        String expected = "Error";
+        String actual = calc.readScreen();
+        assertEquals(expected, actual);
+    }
+
+    @Test
+    @DisplayName("should display an error because of logical error")
+    void testSquareRootOfNegativeNumber() {
+        Calculator calc = new Calculator();
+
+        calc.pressNegativeKey();
+        calc.pressDigitKey(3);
+        calc.pressUnaryOperationKey("√");
+
+        String expected = "Error";
+        String actual = calc.readScreen();
+        assertEquals(expected, actual);
+    }
+
 }
+
+
 
 
 
