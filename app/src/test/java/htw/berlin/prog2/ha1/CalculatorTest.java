@@ -58,6 +58,24 @@ class CalculatorTest {
 
     }
 
+    @Test
+    @DisplayName("Should display a ERROR after divide a Number with zero")  // Erste rote Test
+    void testDivisionZero(){
+        Calculator calc = new Calculator();
+
+        calc.pressDigitKey(1);
+        calc.pressDigitKey(8);
+        calc.pressBinaryOperationKey("/");
+        calc.pressDigitKey(0);
+        calc.pressEqualsKey();
+
+        String expected = "ERROR";
+        String actual = calc.readScreen();
+
+        assertEquals(expected, actual);
+
+    }
+
 
 }
 
