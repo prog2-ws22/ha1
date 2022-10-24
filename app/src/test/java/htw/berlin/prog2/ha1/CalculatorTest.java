@@ -78,7 +78,7 @@ class CalculatorTest
 
     @Test
     @DisplayName("should display Error-Message after calculating the multiplicative inverse for zero")
-    void testInverseZero()
+    void testInverseByZero()
     {
         Calculator calc = new Calculator();
 
