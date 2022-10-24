@@ -43,8 +43,8 @@ class CalculatorTest {
     //TODO hier weitere Tests erstellen
     @Test
     @DisplayName("Should display result after substracting 2 numbers")
-    void  testSubstraction(){
-        Calculator calc =new Calculator();
+    void testSubstraction() {
+        Calculator calc = new Calculator();
 
         calc.pressDigitKey(3);
         calc.pressBinaryOperationKey("-");
@@ -57,20 +57,7 @@ class CalculatorTest {
         assertEquals(expected, actual);
 
     }
-    @Test
-    @DisplayName("should show an error after division of a number by zero")
-    void testDivisionByZero() {
-        Calculator calc = new Calculator();
 
-        calc.pressDigitKey(5);
-        calc.pressBinaryOperationKey("/");
-        calc.pressDigitKey(0);
-        calc.pressEqualsKey();
 
-        String expected = "Error";
-        String actual = calc.readScreen();
 
-        assertEquals(expected, actual);
-    }
 }
-
