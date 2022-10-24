@@ -66,7 +66,7 @@ class CalculatorTest {
 
     @Test
     @DisplayName("should display the result after subtracting a negative from a positive one-digit number")
-    void test() {
+    void testSubtractNegative() {
         Calculator calc = new Calculator();
         calc.pressDigitKey(4);
         calc.pressBinaryOperationKey("-");
@@ -74,6 +74,19 @@ class CalculatorTest {
         calc.pressDigitKey(2);
         calc.pressEqualsKey();
         String expected = "6";
+        String actual = calc.readScreen();
+        assertEquals(expected, actual);
+    }
+
+    @Test
+    @DisplayName("should display 'Error' after dividing by zero")
+    void testDivideByZero() {
+        Calculator calc = new Calculator();
+        calc.pressDigitKey(6);
+        calc.pressBinaryOperationKey("/");
+        calc.pressDigitKey(0);
+        calc.pressEqualsKey();
+        String expected = "Error";
         String actual = calc.readScreen();
         assertEquals(expected, actual);
     }
