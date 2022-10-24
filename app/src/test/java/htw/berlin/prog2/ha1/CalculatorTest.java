@@ -62,20 +62,56 @@ class CalculatorTest {
         String actual = calc.readScreen();
         assertEquals(expected, actual);
     }
+/**
     @Test
     @DisplayName("pressDotKey doesn't add multiple dots")
     void testDotKey(){
-
         Calculator calc = new Calculator();
 
+        calc.pressDigitKey(1);
         calc.pressDotKey();
-        calc.pressDigitKey(0);
+        calc.pressDigitKey(1);
         calc.pressDotKey();
+        calc.pressEqualsKey();
 
-        String expected = "0.";
+        String expected = "1.1";
         String actual = calc.readScreen();
         assertEquals(expected,actual);
     }
 
+    //Teilaufgabe 2
+    @Test
+    @DisplayName("error after dividing 0 through 0")
+    void testDividingThroughZero(){
+
+        Calculator calc = new Calculator();
+
+        calc.pressDigitKey(5);
+        calc.pressBinaryOperationKey("/");
+        calc.pressDigitKey(0);
+        calc.pressEqualsKey();
+
+        String expected = "Error";
+        String actual = calc.readScreen();
+        assertEquals(expected,actual);
+    }
+
+    @Test
+    @DisplayName("root from a negative number")
+    void testRootFromNegativeNumber(){
+
+        Calculator calc = new Calculator();
+
+        calc.pressDigitKey(5);
+        calc.pressBinaryOperationKey("-");
+        calc.pressDigitKey(9);
+        calc.pressEqualsKey();
+        calc.pressUnaryOperationKey("√");
+
+        String expected = "Error";
+        String actual = calc.readScreen();
+        assertEquals(expected,actual);
+    }
+    */
 }
 
