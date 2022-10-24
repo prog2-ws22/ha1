@@ -78,7 +78,7 @@ class CalculatorTest {
         String actual = calc.readScreen();
         assertEquals(expected,actual);
     }
-
+*/
     //Teilaufgabe 2
     @Test
     @DisplayName("error after dividing 0 through 0")
@@ -112,6 +112,6 @@ class CalculatorTest {
         String actual = calc.readScreen();
         assertEquals(expected,actual);
     }
-    */
+
 }
 
