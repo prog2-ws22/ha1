@@ -84,7 +84,7 @@ public class Calculator {
             case "1/x" -> 1 / Double.parseDouble(screen);
             default -> throw new IllegalArgumentException();};
         screen = Double.toString(result);
-        //if(latestValue < 0 && latestOperation == ("√")) screen = "Error"; //@DANIELBAIL
+        if(latestValue < 0 && latestOperation == ("√")) screen = "Error"; //@DANIELBAIL
         if (screen.contains(".") && screen.length() > 11) screen = screen.substring(0, 10);
 
     }
@@ -133,6 +133,6 @@ public class Calculator {
 
         if (screen.contains(".") && screen.length() > 11) screen = screen.substring(0, 10);
         //if (screen.equals("Infinity")) {screen = "Error";} //@DANIELBAIL
-        //if(screen.endsWith("Infinity")) screen = "Error"; //@DANIELBAIL
+        if(screen.endsWith("Infinity")) screen = "Error"; //@DANIELBAIL
         }
     }
