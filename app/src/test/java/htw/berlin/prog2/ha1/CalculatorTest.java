@@ -68,7 +68,6 @@ class CalculatorTest {
         n.pressEqualsKey();
         String expected = "Error";
         String actual = n.readScreen();
-
         assertEquals(expected,actual);
     }
     @Test
@@ -85,7 +84,6 @@ class CalculatorTest {
 
     String expected ="Error";
     String actual = h.readScreen();
-
     assertEquals(expected, actual);
     }
 }
