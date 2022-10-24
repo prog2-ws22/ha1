@@ -57,5 +57,23 @@ class CalculatorTest {
 
         assertEquals(expected, actual);
     }
+
+    @Test
+    @DisplayName("should display result after adding more than one dot key only one dot in our screen")
+    void testPressDotKey() {
+        Calculator calc = new Calculator();
+
+        calc.pressDigitKey(2);
+        calc.pressDotKey();
+        calc.pressDigitKey(7);
+        calc.pressDotKey();
+        calc.pressDigitKey(8);
+        calc.pressDotKey();
+
+        String expected = "2.78";
+        String actual = calc.readScreen();
+
+        assertEquals(expected, actual);
+    }
 }
 
