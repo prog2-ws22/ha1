@@ -79,4 +79,18 @@ class CalculatorTest {
 
     }
 
+    //Fehlerhafter Test 2.
+    @Test
+    @DisplayName("should show errors after taking the negative square root of 9")
+    void testNegativeSquareRoot() {
+        Calculator calc = new Calculator();
+        calc.pressDigitKey(9);
+        calc.pressNegativeKey();
+        calc.pressUnaryOperationKey("√");
+
+        String expected = "Error";
+        String actual = calc.readScreen();
+
+        assertEquals(expected, actual);
+    }
 }
