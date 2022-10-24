@@ -36,11 +36,7 @@ public class Calculator {
         screen = screen + digit;
 
     }
-    public void imFallInfinity() {
-        if (screen.equals("Infinity"))
-        screen = "Error";
 
-    }
 
 
     /**
@@ -95,7 +91,7 @@ public class Calculator {
     /**
      * Empfängt den Befehl der gedrückten Dezimaltrennzeichentaste, im Englischen üblicherweise "."
      * Fügt beim ersten Mal Drücken dem aktuellen Bildschirminhalt das Trennzeichen auf der rechten
-     * Seite hinzu und aktualisiert den Bildschirm. Daraufhin eingegebene Zahlen werden rechts vom
+     * Seite hinzu und aktualisiert den Bildschirm . Daraufhin eingegebene Zahlen werden rechts vom
      * Trennzeichen angegeben und daher als Dezimalziffern interpretiert.
      * Beim zweimaligem Drücken, oder wenn bereits ein Trennzeichen angezeigt wird, passiert nichts.
      */
@@ -107,7 +103,7 @@ public class Calculator {
      * Empfängt den Befehl der gedrückten Vorzeichenumkehrstaste ("+/-").
      * Zeigt der Bildschirm einen positiven Wert an, so wird ein "-" links angehängt, der Bildschirm
      * aktualisiert und die Inhalt fortan als negativ interpretiert.
-     * Zeigt der Bildschirm bereits einen negativen Wert mit führendem Minus an, dann wird dieses
+     * Zeigt der Bildschirm  bereits einen negativen Wert mit führendem Minus an, dann wird dieses
      * entfernt und der Inhalt fortan als positiv interpretiert.
      */
     public void pressNegativeKey() {
@@ -130,10 +126,25 @@ public class Calculator {
             case "x" -> latestValue * Double.parseDouble(screen);
             case "/" -> latestValue / Double.parseDouble(screen);
             default -> throw new IllegalArgumentException();
+
+
+
+
+
+
+
         };
+
+
+
+
         screen = Double.toString(result);
         if(screen.endsWith(".0")) screen = screen.substring(0,screen.length()-2);
         if(screen.contains(".") && screen.length() > 11) screen = screen.substring(0, 10);
+
+            if (screen.equals("Infinity"))
+                screen = "Error";
+
 
     }
 }

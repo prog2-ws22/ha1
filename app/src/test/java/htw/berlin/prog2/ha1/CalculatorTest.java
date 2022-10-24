@@ -66,7 +66,6 @@ class CalculatorTest {
         n.pressBinaryOperationKey("/");
         n.pressDigitKey(0);
         n.pressEqualsKey();
-        n.imFallInfinity();
         String expected = "Error";
         String actual = n.readScreen();
 
@@ -81,9 +80,8 @@ class CalculatorTest {
         h.pressDigitKey(2);
         h.pressBinaryOperationKey("/");
         h.pressDigitKey(0);
-
         h.pressEqualsKey();
-        h.imFallInfinity();
+
 
     String expected ="Error";
     String actual = h.readScreen();
