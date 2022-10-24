@@ -28,7 +28,7 @@ class CalculatorTest
     }
 
     @Test
-    @DisplayName("should display result after getting the square root of two")
+    @DisplayName("Should display result after getting the square root of two")
     void testSquareRoot()
     {
         Calculator calc = new Calculator();
@@ -60,7 +60,7 @@ class CalculatorTest
     }
 
     @Test
-    @DisplayName("should display Error-Message after dividing a positive single-digit number with zero")
+    @DisplayName("Should display Error-Message after dividing a positive single-digit number with zero")
     void testDivisionByZero()
     {
         Calculator calc = new Calculator();
@@ -77,7 +77,7 @@ class CalculatorTest
     }
 
     @Test
-    @DisplayName("should display Error-Message after calculating the multiplicative inverse for zero")
+    @DisplayName("Should display Error-Message after calculating the multiplicative inverse for zero")
     void testInverseByZero()
     {
         Calculator calc = new Calculator();
