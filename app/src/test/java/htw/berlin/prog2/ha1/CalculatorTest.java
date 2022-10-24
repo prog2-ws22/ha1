@@ -40,6 +40,22 @@ class CalculatorTest {
         assertEquals(expected, actual);
     }
 
-    //TODO hier weitere Tests erstellen
+    @Test
+    @DisplayName("Should")
+    void testDot(){
+
+        Calculator calc = new Calculator();
+
+        calc.pressDigitKey(2);
+        calc.pressDotKey();
+        calc.pressDigitKey(4);
+
+        String expected = "2.4";
+        String actual = calc.readScreen();
+
+        assertEquals(expected, actual);
+    }
+
+
 }
 
