@@ -62,17 +62,15 @@ class CalculatorTest {
 
     @Test
     @DisplayName("should display result after adding two negative numbers ")
-    void FailurtestNegativeAddition() {
+    void Division() {
         Calculator calc = new Calculator();
 
-        calc.pressDigitKey(4);
-        calc.pressNegativeKey();
-        calc.pressBinaryOperationKey("+");
-        calc.pressDigitKey(4);
-        calc.pressNegativeKey();
+        calc.pressDigitKey(8);
+        calc.pressBinaryOperationKey("/");
+        calc.pressDigitKey(3);
         calc.pressEqualsKey();
 
-        String expected = "-6";
+        String expected = "2.6666667";
         String actual = calc.readScreen();
 
         assertEquals(expected, actual);
