@@ -1,5 +1,6 @@
 package htw.berlin.prog2.ha1;
 
+import org.checkerframework.checker.units.qual.C;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
@@ -41,7 +42,7 @@ class CalculatorTest {
     }
 
     @Test
-    @DisplayName("Should")
+    @DisplayName("Should set a dot between two numbers")
     void testDot(){
 
         Calculator calc = new Calculator();
@@ -56,6 +57,39 @@ class CalculatorTest {
         assertEquals(expected, actual);
     }
 
+    @Test
+    @DisplayName("should display result after adding two positive multi-digit numbers")
+    void testAdditionWithZero() {
+        Calculator calc = new Calculator();
+
+        calc.pressDigitKey(2);
+        calc.pressDigitKey(0);
+        calc.pressBinaryOperationKey("/");
+        calc.pressDigitKey(0);
+        calc.pressEqualsKey();
+
+        String expected = "Error";
+        String actual = calc.readScreen();
+
+        assertEquals(expected, actual);
+    }
+
+    @Test
+    @DisplayName("should show the percentage of a number")
+    void testPercentage(){
+
+        Calculator calc = new Calculator();
+
+        calc.pressDigitKey(1);
+        calc.pressDigitKey(0);
+        calc.pressUnaryOperationKey("%");
+
+        String expected = "6";
+        String actual = calc.readScreen();
+
+        assertEquals(expected,actual);
+
+    }
 
 }
 
