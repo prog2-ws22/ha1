@@ -128,6 +128,8 @@ public class Calculator {
         if(screen.endsWith(".0")) screen = screen.substring(0,screen.length()-2);
         if(screen.contains(".") && screen.length() > 11) screen = screen.substring(0, 10);
 
+        if(screen.contains("Infinity"))  screen = "Error";
+
 
     }
 }
