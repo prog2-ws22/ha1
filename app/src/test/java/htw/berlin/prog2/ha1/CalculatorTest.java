@@ -62,25 +62,22 @@ class CalculatorTest {
     }
 
 
-
     @Test
-    @DisplayName("should display result after subtracting two multi-digit numbers")
-    void testNegativeSubtraction(){
+    @DisplayName("should display the same entered digit number")
+    void testEqualsKey(){
         Calculator calc = new Calculator();
 
-
-        calc.pressNegativeKey();
-        calc.pressDigitKey(2);
-        calc.pressBinaryOperationKey("-");
-        calc.pressDigitKey(6);
+        calc.pressDigitKey(3);
         calc.pressEqualsKey();
 
-        String expected = "-8";
+        String expected = "3";
         String actual = calc.readScreen();
 
         assertEquals(expected, actual);
-
     }
+
+
+
     @Test
     @DisplayName("should display 'Error' after dividing a digit number with 0")
     void testDivisionWithNull(){
@@ -97,7 +94,6 @@ class CalculatorTest {
 
         assertEquals(expected,actual);
     }
-
 
 }
 
