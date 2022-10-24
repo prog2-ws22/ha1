@@ -5,41 +5,69 @@ import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-@DisplayName("Retro calculator")
+@DisplayName("Retro Online-Calculator")
 class CalculatorTest {
 
     @Test
-    @DisplayName("should display result after adding two positive multi-digit numbers")
-    void testPositiveAddition() {
+    @DisplayName("should display first value after clear entry") //löscht alle eintrage, nicht nur den zuletzt eingegebenen
+    void testClearKey() {
         Calculator calc = new Calculator();
 
         calc.pressDigitKey(2);
-        calc.pressDigitKey(0);
         calc.pressBinaryOperationKey("+");
         calc.pressDigitKey(2);
+        calc.pressClearKey();
+        calc.pressEqualsKey();
+
+
+        String expected = "2";
+        String actual = calc.readScreen();
+
+        assertEquals(expected, actual);
+    }
+
+
+    @Test
+    @DisplayName("should display Error after dividing by 0") //Mistake Division 0
+    void testDivisionByZero() {
+        Calculator calc = new Calculator();
+
+        calc.pressDigitKey(8);
+        calc.pressBinaryOperationKey("/");
         calc.pressDigitKey(0);
         calc.pressEqualsKey();
 
-        String expected = "40";
+
+
+        String expected = "Error";
         String actual = calc.readScreen();
 
         assertEquals(expected, actual);
-    }
+
+     }
+
+
 
     @Test
-    @DisplayName("should display result after getting the square root of two")
-    void testSquareRoot() {
+    @DisplayName("should display result after getting the square root of two") // direkt grün
+    void testAddition() {
         Calculator calc = new Calculator();
 
         calc.pressDigitKey(2);
-        calc.pressUnaryOperationKey("√");
+        calc.pressBinaryOperationKey("+");
+        calc.pressDigitKey(2);
+        calc.pressEqualsKey();
 
-        String expected = "1.41421356";
+
+        String expected = "4";
         String actual = calc.readScreen();
 
         assertEquals(expected, actual);
     }
 
-    //TODO hier weitere Tests erstellen
-}
+
+
+        //TODO hier weitere Tests erstellen
+
+    }
 
