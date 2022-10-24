@@ -14,6 +14,8 @@ public class Calculator {
 
     private String latestOperation = "";
 
+    private boolean nextNegative = false;
+
     /**
      * @return den aktuellen Bildschirminhalt als String
      */
@@ -32,7 +34,10 @@ public class Calculator {
         if(digit > 9 || digit < 0) throw new IllegalArgumentException();
 
         if(screen.equals("0") || latestValue == Double.parseDouble(screen)) screen = "";
-
+        if(nextNegative) {
+            digit *= -1;
+            nextNegative = false;
+        }
         screen = screen + digit;
     }
 
@@ -104,7 +109,7 @@ public class Calculator {
      * entfernt und der Inhalt fortan als positiv interpretiert.
      */
     public void pressNegativeKey() {
-        screen = screen.startsWith("-") ? screen.substring(1) : "-" + screen;
+        nextNegative = !nextNegative;
     }
 
     /**
@@ -127,5 +132,6 @@ public class Calculator {
         screen = Double.toString(result);
         if(screen.endsWith(".0")) screen = screen.substring(0,screen.length()-2);
         if(screen.contains(".") && screen.length() > 11) screen = screen.substring(0, 10);
+        if(screen.equals("Infinity")) screen = "Error";
     }
 }
