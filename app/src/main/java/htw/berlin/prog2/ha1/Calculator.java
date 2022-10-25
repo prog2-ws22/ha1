@@ -50,10 +50,16 @@ public class Calculator {
      * im Ursprungszustand ist.
      */
     public void pressClearKey() {
-
         screen = "0";
-        latestOperation = "";
-        latestValue = 0.0;
+        int count = 0;
+        count = count + 1;
+
+        if (count == 2) {
+            latestOperation = "";
+            latestValue = 0.0;
+            count = 0;
+
+        }
 
 
 
@@ -120,6 +126,15 @@ public class Calculator {
         screen = screen.startsWith("-") ? screen.substring(1) : "-" + screen;
     }
 
+    public String DivZero() {
+
+        if (Double.parseDouble(screen) == 0) {
+
+            return "Error";
+
+        }
+        return Double.toString(latestValue / Double.parseDouble(screen));
+    }
 
 
     /**
@@ -133,14 +148,15 @@ public class Calculator {
      */
     public void pressEqualsKey() {
 
-        var result = switch (latestOperation) {
-            case "+" -> latestValue + Double.parseDouble(screen);
-            case "-" -> latestValue - Double.parseDouble(screen);
-            case "x" -> latestValue * Double.parseDouble(screen);
-            case "/" -> latestValue / Double.parseDouble(screen);
+        String result = switch (latestOperation) {
+            case "+" -> Double.toString(latestValue + Double.parseDouble(screen));
+            case "-" -> Double.toString(latestValue - Double.parseDouble(screen));
+            case "x" -> Double.toString(latestValue * Double.parseDouble(screen));
+            case "/" -> DivZero();
+
             default -> throw new IllegalArgumentException();
         };
-        screen = String.valueOf(result);
+        screen = result;
         if (screen.contains(".") && screen.length() > 11) screen = screen.substring(0, 10);
         if (screen.endsWith(".0")) screen = screen.substring(0, screen.length() - 2);
 
