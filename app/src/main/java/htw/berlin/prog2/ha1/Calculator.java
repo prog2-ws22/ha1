@@ -18,9 +18,6 @@ public class Calculator {
      * @return den aktuellen Bildschirminhalt als String
      */
     public String readScreen() {
-    	if (screen=="Infinity") {
-    		screen="Error";
-    	}
         return screen;
     }
 
@@ -96,7 +93,7 @@ public class Calculator {
      * Beim zweimaligem Drücken, oder wenn bereits ein Trennzeichen angezeigt wird, passiert nichts.
      */
     public void pressDotKey() {
-        if(!screen.endsWith(".")&&!screen.contains(".")) {
+        if(!screen.endsWith(".")) {
         	screen = screen + ".";
         	
     }
