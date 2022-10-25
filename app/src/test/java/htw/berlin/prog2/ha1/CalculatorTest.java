@@ -6,6 +6,7 @@ import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 @DisplayName("Retro calculator")
+// Zusammenarbeit mit Ägidius Hasslauer
 class CalculatorTest {
 
     @Test
@@ -41,5 +42,71 @@ class CalculatorTest {
     }
 
     //TODO hier weitere Tests erstellen
+
+    @Test
+    @DisplayName("should display result after dividing two positive digit numbers")
+    void testDivision() {
+        Calculator calc = new Calculator();
+
+        calc.pressDigitKey(4);
+        calc.pressBinaryOperationKey("/");
+        calc.pressDigitKey(2);
+        calc.pressEqualsKey();
+
+        String expected = "2";
+        String actual = calc.readScreen();
+
+        assertEquals(expected, actual);
+    }
+
+    //@Test
+    //@DisplayName("should display negative digit number")
+    //void printNegativeNumbers() {
+    //Calculator calc = new Calculator();
+
+      //  calc.pressNegativeKey();
+      //  calc.pressDigitKey(4);
+      //  calc.pressEqualsKey();
+
+       // String expected = "-4";
+        // String actual = calc.readScreen();
+
+        //assertEquals(expected, actual);
+    //}
+
+    @Test
+    @DisplayName("should display an error because dividing with zero is not possible")
+    void testDivisionWithZero() {
+        Calculator calc = new Calculator();
+
+        calc.pressDigitKey(4);
+        calc.pressBinaryOperationKey("/");
+        calc.pressDigitKey(0);
+        calc.pressEqualsKey();
+
+        String expected = "Error";
+        String actual = calc.readScreen();
+        assertEquals(expected, actual);
+    }
+
+    @Test
+    @DisplayName("should display an error because of logical error")
+    void testSquareRootOfNegativeNumber() {
+        Calculator calc = new Calculator();
+
+        calc.pressNegativeKey();
+        calc.pressDigitKey(3);
+        calc.pressUnaryOperationKey("√");
+
+        String expected = "Error";
+        String actual = calc.readScreen();
+        assertEquals(expected, actual);
+    }
+
 }
+
+
+
+
+
 
