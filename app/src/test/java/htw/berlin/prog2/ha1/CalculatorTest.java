@@ -39,7 +39,6 @@ class CalculatorTest {
 
         assertEquals(expected, actual);
     }
-
     @Test
     @DisplayName("should display result after adding two positive multi-digit numbers")
     void testPositiveAddition1() {
