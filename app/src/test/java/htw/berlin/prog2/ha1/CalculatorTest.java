@@ -43,13 +43,14 @@ class CalculatorTest {
     //TODO hier weitere Tests erstellen
 
     @Test
-    @DisplayName("should display result")
+    @DisplayName("should display result (Subtract)")
     void testSub() {
         Calculator calc = new Calculator();
 
         calc.pressDigitKey(2);
-        calc.pressUnaryOperationKey("-");
+        calc.pressBinaryOperationKey("-");
         calc.pressDigitKey(2);
+        calc.pressEqualsKey();
 
         String expected = "0";
         String actual = calc.readScreen();
@@ -58,39 +59,26 @@ class CalculatorTest {
     }
 
     @Test
-    @DisplayName("Should display result")
-    void testMulti() {
+    @DisplayName("Should display result (DivideZero)")
+    void testDivideZero() {
+
         Calculator calc = new Calculator();
+
 
         calc.pressDigitKey(5);
-        calc.pressUnaryOperationKey("*");
-        calc.pressDigitKey(4);
+        calc.pressBinaryOperationKey("/");
+        calc.pressDigitKey(0);
+        calc.pressEqualsKey(); // benötigte EqualsKey()
 
-        String expected = "20";
+        String expected  = "Error";
         String actual = calc.readScreen();
-
         assertEquals(expected, actual);
 
     }
 
-    @Test
-    @DisplayName("Should display result")
-        void testDivi () {
-
-        Calculator calc = new Calculator();
-
-        calc.pressDigitKey(27);
-        calc.pressUnaryOperationKey("/");
-        calc.pressDigitKey(9);
-
-        String expected = "3";
-        String actual = calc.readScreen();
-
-        assertEquals(expected, actual);
 
 
 
-
-    }
 }
+
 
