@@ -70,12 +70,12 @@ class CalculatorTest {
         calc.pressDigitKey(2);
         calc.pressBinaryOperationKey("+");
         calc.pressDigitKey(8);
-        calc.pressBinaryOperationKey("-");
+        calc.pressBinaryOperationKey("+");
         calc.pressDigitKey(5);
         calc.pressEqualsKey();
 
 
-        String expected = "5";
+        String expected = "15";
         String actual = calc.readScreen();
 
         assertEquals(expected, actual);
@@ -87,17 +87,14 @@ class CalculatorTest {
         Calculator calc = new Calculator();
 
         calc.pressNegativeKey();
-        calc.pressDigitKey(1);
-        calc.pressDigitKey(0);
-        calc.pressDigitKey(0);
-        calc.pressBinaryOperationKey("/");
-        calc.pressDigitKey(1);
-        calc.pressDigitKey(0);
-        calc.pressDigitKey(0);
+        calc.pressDigitKey(5);
+        calc.pressBinaryOperationKey("+");
+        calc.pressDigitKey(10);
+
         calc.pressEqualsKey();
 
 
-        String expected = "-1";
+        String expected = "5";
         String actual = calc.readScreen();
 
         assertEquals(expected, actual);
