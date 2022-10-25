@@ -82,7 +82,8 @@ class CalculatorTest {
     void testDivisionByNull() {
         Calculator calc = new Calculator();
 
-        calc.pressDigitKey(25);
+        calc.pressDigitKey(2);
+        calc.pressDigitKey(5);
         calc.pressBinaryOperationKey("/");
         calc.pressDigitKey(0);
         calc.pressEqualsKey();
