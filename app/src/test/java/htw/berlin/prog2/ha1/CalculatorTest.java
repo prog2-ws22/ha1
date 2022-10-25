@@ -81,11 +81,10 @@ class CalculatorTest {
     void testNumberEquals(){
         Calculator calc = new Calculator();
 
-        calc.pressDigitKey(5);
-        calc.pressDigitKey(5);
+        calc.pressDigitKey(9);
         calc.pressEqualsKey();
 
-        String expected = "55";
+        String expected = "9";
         String actual = calc.readScreen();
 
         assertEquals(expected, actual);
