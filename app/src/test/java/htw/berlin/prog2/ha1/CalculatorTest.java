@@ -41,5 +41,37 @@ class CalculatorTest {
     }
 
     //TODO hier weitere Tests erstellen
-}
 
+    void testRoot() {
+        Calculator calc = new Calculator();
+
+        calc.pressDigitKey(3);
+        calc.pressUnaryOperationKey("√");
+
+        String expected = "1.73205081";
+        String actual = calc.readScreen();
+
+        assertEquals(expected, actual);
+}
+    @Test
+    @DisplayName("")
+    void greentest() {
+        Calculator calc = new Calculator();
+        calc.pressDigitKey(2);
+        calc.pressUnaryOperationKey("1/x");
+        String expected = "0.5";
+        String actual = calc.readScreen();
+        assertEquals(expected, actual);
+    }
+    @Test
+    @DisplayName("")
+    void redtest() {
+        Calculator calc = new Calculator();
+        calc.pressDigitKey(2);
+        calc.pressBinaryOperationKey("/");
+        calc.pressDigitKey(0);
+        calc.pressEqualsKey();
+        String expected = "Error";
+        String actual = calc.readScreen();
+        assertEquals(expected, actual);
+    }
