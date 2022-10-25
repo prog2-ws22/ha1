@@ -59,7 +59,7 @@ class CalculatorTest {
 
     }
     @Test
-    @DisplayName("should display result after getting root of zero")
+    @DisplayName("should display result after getting root of negative numbers")
     void testRootOfNegativeNumbers() {
         Calculator calc = new Calculator();calc.pressNegativeKey();
 
