@@ -72,7 +72,7 @@ class CalculatorTest {
         assertEquals(expected, actual);
     }
     @Test
-    @DisplayName("should display after division by 0")
+    @DisplayName("should display result after division by 0")
     void testDivisionByZero () {
         Calculator calc = new Calculator();
         calc.pressDigitKey(2);
@@ -85,8 +85,6 @@ class CalculatorTest {
         assertEquals(expected, actual);
 
     }
-
-
 
 
 
