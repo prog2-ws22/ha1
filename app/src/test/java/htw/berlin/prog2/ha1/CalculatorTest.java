@@ -70,7 +70,7 @@ class CalculatorTest {
         calc.pressDigitKey(3);
         calc.pressEqualsKey();
 
-        String expected = "2.6666667";
+        String expected = "2.66666667";
         String actual = calc.readScreen();
 
         assertEquals(expected, actual);
@@ -81,15 +81,15 @@ class CalculatorTest {
     void testthreePositiveaddingdivi() {
         Calculator calc = new Calculator();
 
-        calc.pressDigitKey(2);
+        calc.pressDigitKey(7);
         calc.pressBinaryOperationKey("+");
-        calc.pressDigitKey(2);
+        calc.pressDigitKey(3);
         calc.pressEqualsKey();
         calc.pressBinaryOperationKey("/");
-        calc.pressDigitKey(8);
+        calc.pressDigitKey(3);
         calc.pressEqualsKey();
 
-        String expected = "2.25";
+        String expected = "8";
         String actual = calc.readScreen();
 
         assertEquals(expected, actual);
