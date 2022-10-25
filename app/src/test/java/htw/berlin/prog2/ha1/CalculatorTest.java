@@ -16,11 +16,11 @@ class CalculatorTest {
         calc.pressDigitKey(2);
         calc.pressDigitKey(0);
         calc.pressBinaryOperationKey("+");
-        calc.pressDigitKey(2);
+        calc.pressDigitKey(3);
         calc.pressDigitKey(0);
         calc.pressEqualsKey();
 
-        String expected = "40";
+        String expected = "50";
         String actual = calc.readScreen();
 
         assertEquals(expected, actual);
@@ -33,7 +33,6 @@ class CalculatorTest {
 
         calc.pressDigitKey(2);
         calc.pressUnaryOperationKey("√");
-
         String expected = "1.41421356";
         String actual = calc.readScreen();
 
@@ -41,5 +40,71 @@ class CalculatorTest {
     }
 
     //TODO hier weitere Tests erstellen
+
+
+    @Test
+    @DisplayName("should display result after clearing the screen")
+    void testPressClearKey() {
+
+        Calculator calc = new Calculator();
+
+        calc.pressDigitKey(3);
+        calc.pressBinaryOperationKey("+");
+        calc.pressDigitKey(2);
+        calc.pressEqualsKey();
+        calc.pressClearKey();
+
+        String expected = "0";
+        String actual = calc.readScreen();
+
+        assertEquals(expected, actual);
+    }
+
+    @Test
+    @DisplayName("should display result after dividing with zero ")
+    void testPressBinaryKey() {
+
+        Calculator calc = new Calculator();
+
+        calc.pressDigitKey(1);
+        calc.pressBinaryOperationKey("/");
+        calc.pressDigitKey(0);
+        calc.pressEqualsKey();
+
+
+        String expected = "Error";
+        String actual = calc.readScreen();
+
+        assertEquals(expected, actual);
+    }
+
+    @Test
+    @DisplayName("should display result after subtracting two negative digit numbers")
+    void testPressNegativeKey() {
+
+        Calculator calc = new Calculator();
+
+        calc.pressNegativeKey();
+        calc.pressDigitKey(5);
+        calc.pressDigitKey(0);
+        calc.pressBinaryOperationKey("-");
+        calc.pressDigitKey(3);
+        calc.pressDigitKey(0);
+        calc.pressEqualsKey();
+
+        String expected = "-80";
+        String actual = calc.readScreen();
+
+        assertEquals(expected, actual);
+    }
+
 }
+
+
+
+
+
+
+
+
 
