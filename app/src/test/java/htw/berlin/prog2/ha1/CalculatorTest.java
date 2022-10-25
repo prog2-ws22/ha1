@@ -41,5 +41,71 @@ class CalculatorTest {
     }
 
     //TODO hier weitere Tests erstellen
+
+    @Test
+    @DisplayName ("should display result after adding two positive multi-digit numbers")
+    void testsubtraction () {
+        Calculator calc = new Calculator();
+
+        calc.pressDigitKey(3);
+        calc.pressDigitKey(0);
+        calc.pressBinaryOperationKey("-");
+        calc.pressDigitKey(2);
+        calc.pressDigitKey(0);
+        calc.pressEqualsKey();
+
+        String actual = calc.readScreen();
+        String expected = "10";
+        assertEquals(expected, actual);
+    }
+
+
+
+    @Test
+    @DisplayName ("display result should show Error")
+    void testDividedByZero () {
+        Calculator calc = new Calculator();
+
+        calc.pressDigitKey(2);
+        calc.pressBinaryOperationKey("/" );
+        calc.pressDigitKey(0);
+        calc.pressEqualsKey();
+
+        String actual = calc.readScreen();
+        String expected = "Error";
+        assertEquals(expected, actual);
+    }
+
+
+
+    @Test
+    @DisplayName ("the negative number on screen should become positive")
+    void testNegativeKeyOnNegativeNumber () {
+        Calculator calc = new Calculator();
+
+        calc.pressDigitKey(2);
+        calc.pressNegativeKey();
+        String actual = calc.readScreen();
+        calc.pressNegativeKey ();
+
+        String expected = "2";
+        assertEquals(expected, actual);
+    }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
