@@ -53,7 +53,7 @@ public class Calculator {
     /**
      * Empfängt den Wert einer gedrückten binären Operationstaste, also eine der vier Operationen
      * Addition, Substraktion, Division, oder Multiplikation, welche zwei Operanden benötigen.
-     * Beim ersten Drücken der Taste wird der Bildschirminhalt nicht verändert, sondern nur der
+     * Beim ersten Drücken der Taste wird der Bildschirminhalt auf 0 gesetzt und der
      * Rechner in den passenden Operationsmodus versetzt.
      * Beim zweiten Drücken nach Eingabe einer weiteren Zahl wird direkt des aktuelle Zwischenergebnis
      * auf dem Bildschirm angezeigt. Falls hierbei eine Division durch Null auftritt, wird "Error" angezeigt.
@@ -62,6 +62,7 @@ public class Calculator {
     public void pressBinaryOperationKey(String operation)  {
         latestValue = Double.parseDouble(screen);
         latestOperation = operation;
+        screen = "0";
     }
 
     /**
@@ -82,7 +83,6 @@ public class Calculator {
         };
         screen = Double.toString(result);
         if(screen.contains(".") && screen.length() > 11) screen = screen.substring(0, 10);
-
     }
 
     /**
@@ -118,13 +118,13 @@ public class Calculator {
      */
     public void pressEqualsKey() {
         var result = switch(latestOperation) {
-            case "+" -> latestValue + Double.parseDouble(screen);
-            case "-" -> latestValue - Double.parseDouble(screen);
-            case "x" -> latestValue * Double.parseDouble(screen);
-            case "/" -> latestValue / Double.parseDouble(screen);
+            case "+" -> Double.toString(latestValue + Double.parseDouble(screen));
+            case "-" -> Double.toString(latestValue - Double.parseDouble(screen));
+            case "x" -> Double.toString(latestValue * Double.parseDouble(screen));
+            case "/" -> Double.parseDouble(screen) == 0 ? "Error" : Double.toString(latestValue / Double.parseDouble(screen));
             default -> throw new IllegalArgumentException();
         };
-        screen = Double.toString(result);
+        screen = result;
         if(screen.endsWith(".0")) screen = screen.substring(0,screen.length()-2);
         if(screen.contains(".") && screen.length() > 11) screen = screen.substring(0, 10);
     }
