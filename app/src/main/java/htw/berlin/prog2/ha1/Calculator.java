@@ -12,6 +12,8 @@ public class Calculator {
 
     private double latestValue;
 
+    private int PressedCounter = 0;
+
     private String latestOperation = "";
 
     /**
@@ -37,6 +39,19 @@ public class Calculator {
     }
 
     /**
+     * Liest die letze Ziffer die eingegeben wurde und speichert sie in eine String Variable.
+     * @return Gibt die "latestValueString" Variable wieder zurück
+     */
+    public String readLatestValue() {
+
+        String latestValueString = Double.toString(latestValue);
+
+        if(latestValueString.endsWith(".0")) latestValueString = latestValueString.substring(0,latestValueString.length()-2);
+
+        return latestValueString;
+    }
+
+    /**
      * Empfängt den Befehl der C- bzw. CE-Taste (Clear bzw. Clear Entry).
      * Einmaliges Drücken der Taste löscht die zuvor eingegebenen Ziffern auf dem Bildschirm
      * so dass "0" angezeigt wird, jedoch ohne zuvor zwischengespeicherte Werte zu löschen.
@@ -45,9 +60,19 @@ public class Calculator {
      * im Ursprungszustand ist.
      */
     public void pressClearKey() {
-        screen = "0";
-        latestOperation = "";
-        latestValue = 0.0;
+        boolean WasPressed = true;
+        if (WasPressed && PressedCounter == 0) {
+            PressedCounter += 1;
+            latestValue = Double.parseDouble(readLatestValue());
+            screen = "0";
+            WasPressed = false;
+        } else if (WasPressed && PressedCounter == 1) {
+            screen = "0";
+            latestOperation = "";
+            latestValue = 0.0;
+            PressedCounter = 0;
+            WasPressed = false;
+        }
     }
 
     /**
@@ -122,10 +147,17 @@ public class Calculator {
             case "-" -> latestValue - Double.parseDouble(screen);
             case "x" -> latestValue * Double.parseDouble(screen);
             case "/" -> latestValue / Double.parseDouble(screen);
+
             default -> throw new IllegalArgumentException();
         };
-        screen = Double.toString(result);
+        if (latestOperation.equals("/") && (latestValue == 0 || Double.parseDouble(screen) == 0)) {
+            screen = "Error";
+        } else {
+            screen = Double.toString(result);
+        }
         if(screen.endsWith(".0")) screen = screen.substring(0,screen.length()-2);
         if(screen.contains(".") && screen.length() > 11) screen = screen.substring(0, 10);
     }
+
+
 }
