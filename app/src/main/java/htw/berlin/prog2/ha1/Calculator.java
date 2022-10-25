@@ -122,6 +122,7 @@ public class Calculator {
             case "-" -> Double.toString(latestValue - Double.parseDouble(screen));
             case "x" -> Double.toString(latestValue * Double.parseDouble(screen));
             case "/" -> divide(latestValue);
+            case "" -> Double.toString(latestValue + Double.parseDouble(screen));
             default -> throw new IllegalArgumentException();
         };
         screen = result;
