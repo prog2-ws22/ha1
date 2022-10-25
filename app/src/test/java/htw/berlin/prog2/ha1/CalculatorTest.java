@@ -122,6 +122,20 @@ class CalculatorTest {
         assertEquals(expected, actual);
     }
 
+    //red test
+    @Test
+    @DisplayName("should display '-' before the first number")
+    void testMinus() {
+        Calculator calc = new Calculator();
+
+        calc.pressNegativeKey();
+        calc.pressDigitKey(9);
+
+        String expected = "-9";
+        String actual = calc.readScreen();
+
+        assertEquals(expected, actual);
+    }
 
 }
 
