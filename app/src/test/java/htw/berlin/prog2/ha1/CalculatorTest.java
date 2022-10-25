@@ -73,6 +73,22 @@ class CalculatorTest {
          assertEquals(expected, actual);	
     
     }
+    //Teilaufgabe2.2
+    @Test
+    @DisplayName("after the dot")
+    void testAfterTheDot() {
+    	 Calculator calc = new Calculator();
+    	 calc.pressDigitKey(1);
+    	 calc.pressDotKey();
+         calc.pressDigitKey(1);
+         calc.pressDotKey();
+         String expected = "1.1";
+         String actual = calc.readScreen();
+
+         assertEquals(expected, actual);	
+    
+    }
+    
     
     
     
