@@ -30,12 +30,30 @@ public class Calculator {
      *
      * @param digit Die Ziffer, deren Taste gedrückt wurde
      */
+
     public void pressDigitKey(int digit) {
+
+        System.out.println("press DK " + screen + " latest value DK" + latestValue);
+
+
         if (digit > 9 || digit < 0) throw new IllegalArgumentException();
 
-        if (screen.equals("0") || latestValue == Double.parseDouble(screen)) screen = "";
+        if (screen.equals("-0")) {
+
+            screen = screen.substring(0,screen.length()-1);
+
+        }else{
+
+            if (screen.equals("0") || latestValue == Double.parseDouble(screen)) screen = "";
+
+        }
+
+
+
 
         screen = screen + digit;
+
+        System.out.println("press DK after " + screen);
     }
 
     /**
@@ -46,10 +64,16 @@ public class Calculator {
      * Werte sowie der aktuelle Operationsmodus zurückgesetzt, so dass der Rechner wieder
      * im Ursprungszustand ist.
      */
-    screen ="0";
-    latestOperation ="";
-    latestValue =0.0;
-}
+
+    public void pressClearKey() {
+        screen = "0";
+        latestOperation = "";
+        latestValue = 0.0;
+
+        screen = "0";
+        latestOperation = "";
+        latestValue = 0.0;
+    }
 
     /**
      * Empfängt den Wert einer gedrückten binären Operationstaste, also eine der vier Operationen
@@ -106,7 +130,10 @@ public class Calculator {
      */
     public void pressNegativeKey() {
         screen = screen.startsWith("-") ? screen.substring(1) : "-" + screen;
+
+        System.out.println("screen PNK " + screen);
     }
+
 
     /**
      * Empfängt den Befehl der gedrückten "="-Taste.

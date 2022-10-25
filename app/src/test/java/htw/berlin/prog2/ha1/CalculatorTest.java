@@ -76,6 +76,27 @@ class CalculatorTest {
 
     }
 
+    @Test
+    @DisplayName ("Should display result ")
+    void testNegativeSub(){
+
+        Calculator calc = new Calculator();
+
+        calc.pressNegativeKey();
+        calc.pressDigitKey(5);
+        calc.pressBinaryOperationKey("-");
+        calc.pressDigitKey(5);
+        calc.pressEqualsKey();
+
+        String expected = "-10";
+
+        String actual = calc.readScreen();
+        assertEquals(expected, actual);
+
+
+    }
+
+
 
 
 
