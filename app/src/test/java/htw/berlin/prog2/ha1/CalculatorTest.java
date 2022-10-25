@@ -88,15 +88,12 @@ class CalculatorTest {
 
 
         calc.pressDigitKey(6);
-        calc.pressBinaryOperationKey("x");
-        calc.pressDigitKey(2);
-        calc.pressUnaryOperationKey("√");
+        calc.pressBinaryOperationKey("/");
+        calc.pressDigitKey(0);
+        calc.pressEqualsKey();
 
 
-
-
-
-        String expected = "3.46410161";
+        String expected = "Error";
         String actual = calc.readScreen();
 
         assertEquals(expected, actual);
