@@ -95,7 +95,7 @@ public class Calculator {
      * Trennzeichen angegeben und daher als Dezimalziffern interpretiert.
      * Beim zweimaligem Drücken, oder wenn bereits ein Trennzeichen angezeigt wird, passiert nichts.
      */
-    public void pressDotKey() {
+    public void pressDotKey(){
         if(!screen.endsWith(".")) screen = screen + ".";
     }
 

@@ -32,7 +32,8 @@ class CalculatorTest {
     void testSquareRoot() {
         Calculator calc = new Calculator();
 
-        calc.pressDigitKey(2);
+        calc.pressDigitKey(4);
+        calc.pressDigitKey(9);
         calc.pressUnaryOperationKey("√");
 
         String expected = "1.41421356";
@@ -74,7 +75,24 @@ class CalculatorTest {
         assertEquals(expected, actual);
     }
 
+    @Test
+    @DisplayName("Should Clear the values")
+    void testTwoDots(){
 
+        Calculator calc = new Calculator();
+
+        calc.pressDigitKey(2);
+        calc.pressDotKey();
+        calc.pressDigitKey(3);
+        calc.pressDotKey();
+
+
+        String expected = "2.3";
+        String actual = calc.readScreen();
+
+        assertEquals(expected, actual);
+
+    }
 
 }
 
