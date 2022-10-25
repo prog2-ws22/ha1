@@ -41,5 +41,58 @@ class CalculatorTest {
     }
 
     //TODO hier weitere Tests erstellen
+  //Teilaufgabe1
+    @Test
+    @DisplayName("should display result after multiplying two positive digit numbers")
+    void testPositiveMultiplication() {
+    	 Calculator calc = new Calculator();
+    	 calc.pressDigitKey(5);
+    	 calc.pressBinaryOperationKey("x");
+         calc.pressDigitKey(4);
+         calc.pressEqualsKey();
+         
+         String expected = "20";
+         String actual = calc.readScreen();
+
+         assertEquals(expected, actual);	
+    
+    }
+    //Teilaufgabe2.1
+    
+    @Test
+    @DisplayName("divide by 0")
+    void testDivideBy0() {
+    	 Calculator calc = new Calculator();
+    	 calc.pressDigitKey(5);
+    	 calc.pressBinaryOperationKey("/");
+         calc.pressDigitKey(0);
+         calc.pressEqualsKey();
+         String expected = "Error";
+         String actual = calc.readScreen();
+
+         assertEquals(expected, actual);	
+    
+    }
+    //Teilaufgabe2.2
+    @Test
+    @DisplayName("after the dot")
+    void testAfterTheDot() {
+    	 Calculator calc = new Calculator();
+    	 calc.pressDigitKey(1);
+    	 calc.pressDotKey();
+         calc.pressDigitKey(1);
+         calc.pressDotKey();
+         String expected = "1.1";
+         String actual = calc.readScreen();
+
+         assertEquals(expected, actual);	
+    
+    }
+    
+    
+    
+    
+    
+    
 }
 
