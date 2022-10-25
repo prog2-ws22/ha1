@@ -74,21 +74,36 @@ class CalculatorTest {
     }
 
     @Test
-    @DisplayName("Should follow the dot before dash calculation")
-    void testMathRule() {
+    @DisplayName("latestValue will still be saved when pressing once the clear key")
+    void testClearKeyOnce() {
         Calculator calc = new Calculator();
 
         calc.pressDigitKey(3);
         calc.pressBinaryOperationKey("+");
-        calc.pressDigitKey(4);
-        calc.pressEqualsKey();
-        calc.readScreen();
-        calc.pressBinaryOperationKey("x");
         calc.pressDigitKey(5);
-        calc.pressEqualsKey();
+        calc.pressClearKey();
+        calc.readLatestValue();
 
-        String expected = "23";
-        String actual = calc.readScreen();
+        String expected = "3";
+        String actual = calc.readLatestValue();
+
+        assertEquals(expected, actual);
+    }
+
+    @Test
+    @DisplayName("latestValue will not be saved when pressing the ClearKey twice")
+    void testClearKeyTwice() {
+        Calculator calc = new Calculator();
+
+        calc.pressDigitKey(3);
+        calc.pressBinaryOperationKey("+");
+        calc.pressDigitKey(5);
+        calc.pressClearKey();
+        calc.pressClearKey();
+        calc.readLatestValue();
+
+        String expected = "0";
+        String actual = calc.readLatestValue();
 
         assertEquals(expected, actual);
     }
