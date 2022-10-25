@@ -6,6 +6,7 @@ import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 @DisplayName("Retro calculator")
+// Abgabe erfolgte in Zusammenarbeit mit Mohamed Moussa 
 class CalculatorTest {
 
     @Test
