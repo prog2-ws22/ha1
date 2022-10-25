@@ -74,7 +74,38 @@ class CalculatorTest {
         String actual = calc.readScreen();
         String expected = "Error";
         assertEquals(expected, actual);
+    }
 
+
+
+    @Test
+    @DisplayName ("the negative number on screen should become positive")
+    void testNegativeKeyOnNegativeNumber () {
+        Calculator calc = new Calculator();
+
+        calc.pressDigitKey(2);
+        calc.pressNegativeKey();
+        String actual = calc.readScreen();
+        calc.pressNegativeKey ();
+
+        String expected = "2";
+        assertEquals(expected, actual);
+    }
 }
 
-}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
