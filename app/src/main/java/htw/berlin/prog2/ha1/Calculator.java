@@ -26,13 +26,21 @@ public class Calculator {
      * drücken kann muss der Wert positiv und einstellig sein und zwischen 0 und 9 liegen.
      * Führt in jedem Fall dazu, dass die gerade gedrückte Ziffer auf dem Bildschirm angezeigt
      * oder rechts an die zuvor gedrückte Ziffer angehängt angezeigt wird.
+     * Wenn vor dem dem Drücken der Zifferntaste ein Minus eingegeben wurde, wird die eingegebe Zahl zu einer negativen Zahl
      * @param digit Die Ziffer, deren Taste gedrückt wurde
      */
     public void pressDigitKey(int digit) {
         if(digit > 9 || digit < 0) throw new IllegalArgumentException();
 
-        if(screen.equals("0") || latestValue == Double.parseDouble(screen)) screen = "";
+        if(screen.equals("-0")){
+            digit = digit * (-1);
 
+        }
+        if(screen.equals("0") || latestValue == Double.parseDouble(screen)){
+
+            screen = "";
+        }
+        
         screen = screen + digit;
     }
 
@@ -74,17 +82,21 @@ public class Calculator {
     public void pressUnaryOperationKey(String operation) {
         latestValue = Double.parseDouble(screen);
         latestOperation = operation;
-        var result = switch(operation) {
-            case "√" -> Math.sqrt(Double.parseDouble(screen));
-            case "%" -> Double.parseDouble(screen) / 100;
-            case "1/x" -> 1 / Double.parseDouble(screen);
-            default -> throw new IllegalArgumentException();
+
+        var result = switch(operation){
+            case "√"-> Math.sqrt(Double.parseDouble(screen));               
+            case "%"-> Double.parseDouble(screen) / 100;
+            case "1/x"-> 1 / Double.parseDouble(screen);
+            default-> throw new IllegalArgumentException();
         };
-        screen = Double.toString(result);
-        if(screen.contains(".") && screen.length() > 11) screen = screen.substring(0, 10);
+            screen = Double.toString(result);  
+            if(latestOperation.equals("√") && latestValue < 0.0){
+                screen = "Error";
+        }
+            if(screen.contains(".") && screen.length() > 11) screen = screen.substring(0, 10);
 
-    }
-
+        }
+        
     /**
      * Empfängt den Befehl der gedrückten Dezimaltrennzeichentaste, im Englischen üblicherweise "."
      * Fügt beim ersten Mal Drücken dem aktuellen Bildschirminhalt das Trennzeichen auf der rechten
@@ -117,14 +129,27 @@ public class Calculator {
      * und das Ergebnis direkt angezeigt.
      */
     public void pressEqualsKey() {
+
+        double dividend = 0.0;
+        dividend = Double.parseDouble(screen);
+
         var result = switch(latestOperation) {
-            case "+" -> latestValue + Double.parseDouble(screen);
-            case "-" -> latestValue - Double.parseDouble(screen);
-            case "x" -> latestValue * Double.parseDouble(screen);
-            case "/" -> latestValue / Double.parseDouble(screen);
+            case "+"-> latestValue + Double.parseDouble(screen);
+                        
+            case "-"-> latestValue - Double.parseDouble(screen);
+                        
+            case "x"-> latestValue * Double.parseDouble(screen);
+                        
+            case "/"-> latestValue / Double.parseDouble(screen);
+                    
             default -> throw new IllegalArgumentException();
         };
-        screen = Double.toString(result);
+
+        screen = Double.toString(result);  
+        if(latestOperation == "/" && dividend == 0.0){
+            screen = "Error";
+        }
+        
         if(screen.endsWith(".0")) screen = screen.substring(0,screen.length()-2);
         if(screen.contains(".") && screen.length() > 11) screen = screen.substring(0, 10);
     }
