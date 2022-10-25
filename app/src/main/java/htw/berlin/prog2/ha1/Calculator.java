@@ -45,9 +45,13 @@ public class Calculator {
      * im Ursprungszustand ist.
      */
     public void pressClearKey() {
-        screen = "0";
-        latestOperation = "";
-        latestValue = 0.0;
+        if(screen == "0") {
+            latestValue = 0.0;
+            latestOperation = "";
+        }
+            screen = "0";
+
+
     }
 
     /**
@@ -82,6 +86,9 @@ public class Calculator {
         };
         screen = Double.toString(result);
         if(screen.contains(".") && screen.length() > 11) screen = screen.substring(0, 10);
+        if(screen =="NaN"){
+            screen="Error";
+        }
 
     }
 
@@ -127,5 +134,9 @@ public class Calculator {
         screen = Double.toString(result);
         if(screen.endsWith(".0")) screen = screen.substring(0,screen.length()-2);
         if(screen.contains(".") && screen.length() > 11) screen = screen.substring(0, 10);
+        if(screen =="Infinity"){
+            screen="Error";
+        }
+
     }
 }
