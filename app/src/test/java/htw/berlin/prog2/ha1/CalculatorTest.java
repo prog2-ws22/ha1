@@ -87,11 +87,31 @@ class CalculatorTest {
         calc.pressDotKey();
 
 
+
         String expected = "2.3";
         String actual = calc.readScreen();
 
         assertEquals(expected, actual);
 
+    }
+
+    @Test
+    @DisplayName("should show Error when dividing a number by a negative number")
+    void testDivisionNegativeNumber(){
+
+        Calculator calc = new Calculator();
+
+        calc.pressDigitKey(1);
+        calc.pressDigitKey(0);
+        calc.pressBinaryOperationKey("x");
+        calc.pressDigitKey(2);
+        calc.pressNegativeKey();
+        calc.pressEqualsKey();
+
+        String expected = "-20";
+        String actual = calc.readScreen();
+
+        assertEquals(expected, actual);
     }
 
 }
