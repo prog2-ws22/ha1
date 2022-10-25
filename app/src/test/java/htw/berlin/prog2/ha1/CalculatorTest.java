@@ -76,7 +76,7 @@ class CalculatorTest {
     }
 
     @Test
-    @DisplayName("Should Clear the values")
+    @DisplayName("should ignore the second dot at the end")
     void testTwoDots(){
 
         Calculator calc = new Calculator();
