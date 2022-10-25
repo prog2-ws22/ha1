@@ -14,6 +14,8 @@ public class Calculator {
 
     private String latestOperation = "";
 
+    private int clearKeyCounter = 0;
+
     /**
      * @return den aktuellen Bildschirminhalt als String
      */
@@ -28,11 +30,10 @@ public class Calculator {
      * oder rechts an die zuvor gedrückte Ziffer angehängt angezeigt wird.
      * @param digit Die Ziffer, deren Taste gedrückt wurde
      */
-    public void pressDigitKey(int digit) {
+    public void pressDigitKey(double digit) {
         if(digit > 9 || digit < 0) throw new IllegalArgumentException();
-
-        if(screen.equals("0") || latestValue == Double.parseDouble(screen)) screen = "";
-
+        if(screen.equals("0.")) screen = "0.";
+        else if(screen.equals("0") || latestValue == Double.parseDouble(screen)) screen = "";
         screen = screen + digit;
     }
 
@@ -45,10 +46,20 @@ public class Calculator {
      * im Ursprungszustand ist.
      */
     public void pressClearKey() {
-        screen = "0";
-        latestOperation = "";
-        latestValue = 0.0;
+        clearKeyCounter += 1;
+        clearEntry();
     }
+
+    public void clearEntry(){
+        if(clearKeyCounter >= 2){
+            screen = "0";
+            latestOperation = "";
+            latestValue = 0.0;
+        }
+        else if(clearKeyCounter == 1) screen = "0";
+    }
+
+    public String showLatestOperationAndValue(){return latestValue + "" + latestOperation;}
 
     /**
      * Empfängt den Wert einer gedrückten binären Operationstaste, also eine der vier Operationen
