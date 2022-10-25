@@ -15,12 +15,12 @@ class CalculatorTest {
 
         calc.pressDigitKey(2);
         calc.pressDigitKey(0);
-        calc.pressBinaryOperationKey("-");
+        calc.pressBinaryOperationKey("+");
         calc.pressDigitKey(3);
         calc.pressDigitKey(0);
         calc.pressEqualsKey();
 
-        String expected = "-10";
+        String expected = "50";
         String actual = calc.readScreen();
 
         assertEquals(expected, actual);
@@ -33,10 +33,7 @@ class CalculatorTest {
 
         calc.pressDigitKey(2);
         calc.pressUnaryOperationKey("√");
-        calc.pressBinaryOperationKey("x");
-        calc.pressDigitKey(2);
-        calc.pressEqualsKey();
-        String expected = "2.82842712";
+        String expected = "1.41421356";
         String actual = calc.readScreen();
 
         assertEquals(expected, actual);
@@ -64,12 +61,12 @@ class CalculatorTest {
     }
 
     @Test
-    @DisplayName("should display result after dividing two positiv digit numbers ")
+    @DisplayName("should display result after dividing with zero ")
     void testPressBinaryKey() {
 
         Calculator calc = new Calculator();
 
-        calc.pressDigitKey(2);
+        calc.pressDigitKey(1);
         calc.pressBinaryOperationKey("/");
         calc.pressDigitKey(0);
         calc.pressEqualsKey();
@@ -88,19 +85,18 @@ class CalculatorTest {
         Calculator calc = new Calculator();
 
         calc.pressNegativeKey();
-        calc.pressDigitKey(2);
+        calc.pressDigitKey(5);
         calc.pressDigitKey(0);
         calc.pressBinaryOperationKey("-");
         calc.pressDigitKey(3);
         calc.pressDigitKey(0);
         calc.pressEqualsKey();
 
-        String expected = "-50";
+        String expected = "-80";
         String actual = calc.readScreen();
 
         assertEquals(expected, actual);
     }
-
 
 }
 
