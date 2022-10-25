@@ -109,7 +109,7 @@ class CalculatorTest {
         String expected = "1";
         String actual = calc.readScreen();
         assertEquals(expected, actual);
-        //ignoriert vorgestelltes Minus vor dem ersten Wert
+        //ignoriert vorgestelltes Minus vor dem ersten Wert.
     }
 
     //was Red, but is fixed now:
