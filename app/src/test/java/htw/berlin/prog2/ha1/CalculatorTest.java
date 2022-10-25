@@ -71,14 +71,14 @@ class CalculatorTest {
         assertEquals(expected, actual);
     }
     @Test
-    @DisplayName("should display result after multiply two positive multi-digit numbers")
+    @DisplayName("should display result after divide two positive multi-digit numbers")
     void testDivision(){
         Calculator calc = new Calculator();
-        calc.pressDigitKey(4);
+        calc.pressDigitKey(6);
         calc.pressBinaryOperationKey("/");
         calc.pressDigitKey(3);
         calc.pressEqualsKey();
-        String expected = "1.33333333";
+        String expected = "2";
         String actual = calc.readScreen();
         assertEquals(expected, actual);
     }
@@ -95,6 +95,43 @@ class CalculatorTest {
         calc.pressDigitKey(0);
         calc.pressEqualsKey();
         String expected = "9.6";
+        String actual = calc.readScreen();
+        assertEquals(expected, actual);
+    }
+
+
+    @Test
+    @DisplayName("Divion with 0")
+    void testClearAll(){
+        Calculator calc = new Calculator();
+        calc.pressDigitKey(4);
+        calc.pressBinaryOperationKey("/");
+        calc.pressDigitKey(0);
+        calc.pressEqualsKey();
+
+        String expected = "Error";
+        String actual = calc.readScreen();
+        assertEquals(expected, actual);
+
+    }
+
+
+    @Test
+    @DisplayName("Clear screen")
+    void testClearDisplay(){
+        Calculator calc = new Calculator();
+        calc.pressDigitKey(5);
+        calc.pressDigitKey(2);
+        calc.pressBinaryOperationKey("x");
+        calc.pressDigitKey(2);
+        calc.pressEqualsKey();
+        calc.pressBinaryOperationKey("-");
+        calc.pressDigitKey(5);
+        calc.pressDigitKey(2);
+        calc.pressClearKey();
+        calc.pressDigitKey(4);
+        calc.pressEqualsKey();
+        String expected = "100";
         String actual = calc.readScreen();
         assertEquals(expected, actual);
     }
