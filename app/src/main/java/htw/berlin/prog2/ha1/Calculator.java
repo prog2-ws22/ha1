@@ -124,8 +124,33 @@ public class Calculator {
             case "/" -> latestValue / Double.parseDouble(screen);
             default -> throw new IllegalArgumentException();
         };
+        //Zwei fehlgeschlagene Versuche für einen Bugfix aus Teilaufgabe 2 (für testDivid0)
+        //if(latestOperation.contains("/")){
+        //    if (screen.contains("0")){
+        //        screen="Error";
+        //    }
+        //}
+        //if (screen/0){
+        //    screen = "Error";
+        // }
+
         screen = Double.toString(result);
+
+        //Für den Bugfix bezüglich den Test für die Kettenaufgabe mit Punkt vor Strich habe ich mir einige Gedanken gemacht,
+        //jedoch komme ich auf keine vernünftige Lösung, unter Umständen könnte es auch an der fehlenden Memory Funktion
+        //(erwähnt im Java-Doc in Zeile 5 "(ohne die Memory-Funktion)") liegen.
+        //Mein Gedankengang wäre ein Array mit variabler Länge zu nutzen, in der die erste Berechnung der Kettenaufgabe
+        //zwischengespeichert wird und mit der dann weitergerechnet wird, aber dann würde
+        //die Punkt-vor-Strich Regel nicht beachtet werden.
+        //Ggfs. könnte man die Eingaben als String speichern ohne sie berechnen zu lassen, und könnte dann
+        //mit Überprüfungen, bzw. mit "if und else if" oder einer while Schleife ständig prüfen, ob da
+        //ein "+", "-", "/" oder "x" vorhanden ist und entsprechend diese vorher berechnen lassen. Hierfür unterscheiden
+        //sich leider meine Gedanken mit der Machbarkeit dieser Umsetzung.
+
+
+
         if(screen.endsWith(".0")) screen = screen.substring(0,screen.length()-2);
         if(screen.contains(".") && screen.length() > 11) screen = screen.substring(0, 10);
+        if(screen.contains("Infinity")){screen="Error";}        //ein Bugfix für einen Test aus Teilaufgabe 2 (für testDivid0)
     }
 }
