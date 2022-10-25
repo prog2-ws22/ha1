@@ -57,6 +57,22 @@ class CalculatorTest {
          assertEquals(expected, actual);	
     
     }
+    //Teilaufgabe2.1
+    
+    @Test
+    @DisplayName("divide by 0")
+    void testDivideBy0() {
+    	 Calculator calc = new Calculator();
+    	 calc.pressDigitKey(5);
+    	 calc.pressBinaryOperationKey("/");
+         calc.pressDigitKey(0);
+         calc.pressEqualsKey();
+         String expected = "Error";
+         String actual = calc.readScreen();
+
+         assertEquals(expected, actual);	
+    
+    }
     
     
     
