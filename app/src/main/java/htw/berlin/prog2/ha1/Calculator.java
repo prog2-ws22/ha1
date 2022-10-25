@@ -82,7 +82,7 @@ public class Calculator {
         };
         screen = Double.toString(result);
         if(screen.contains(".") && screen.length() > 11) screen = screen.substring(0, 10);
-
+        if(screen.contains("NaN")) screen = ("Error"); // In Aufgabe 3. Fehler bei der Rückgabe = NaN
     }
 
     /**
@@ -117,7 +117,7 @@ public class Calculator {
      * und das Ergebnis direkt angezeigt.
      */
     public void pressEqualsKey() {
-        var result = switch(latestOperation) {
+        var result = switch(latestOperation){
             case "+" -> latestValue + Double.parseDouble(screen);
             case "-" -> latestValue - Double.parseDouble(screen);
             case "x" -> latestValue * Double.parseDouble(screen);
@@ -127,5 +127,6 @@ public class Calculator {
         screen = Double.toString(result);
         if(screen.endsWith(".0")) screen = screen.substring(0,screen.length()-2);
         if(screen.contains(".") && screen.length() > 11) screen = screen.substring(0, 10);
+        if(screen.contains("Infinity")) screen = ("Error"); // In Aufgabe 2. Fehler bei der Rückgabe = Infinity
     }
 }

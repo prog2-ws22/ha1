@@ -41,5 +41,55 @@ class CalculatorTest {
     }
 
     //TODO hier weitere Tests erstellen
-}
+    @Test
+    @DisplayName("should display result after substring two positive multi-digit numbers")
+    void testPositiveSubtraction() {
+        Calculator calc = new Calculator();
 
+        calc.pressDigitKey(5);
+        calc.pressDigitKey(5);
+        calc.pressBinaryOperationKey("-");
+        calc.pressDigitKey(5);
+        calc.pressDigitKey(5);
+        calc.pressEqualsKey();
+
+        String expected = "0";
+        String actual = calc.readScreen();
+
+        assertEquals(expected, actual);
+
+    }
+
+    //Fehlerhafter Test 1.
+    @Test
+    @DisplayName("should display result after to divide two positive multi-digit numbers")
+    void testPositiveDivision() {
+        Calculator calc = new Calculator();
+
+        calc.pressDigitKey(8);
+        calc.pressBinaryOperationKey("/");
+        calc.pressDigitKey(0);
+        calc.pressEqualsKey();
+
+        String expected = "Error";
+        String actual = calc.readScreen();
+
+        assertEquals(expected, actual);
+
+    }
+
+    //Fehlerhafter Test 2.
+    @Test
+    @DisplayName("should show errors after taking the negative square root of 9")
+    void testNegativeSquareRoot() {
+        Calculator calc = new Calculator();
+        calc.pressDigitKey(9);
+        calc.pressNegativeKey();
+        calc.pressUnaryOperationKey("√");
+
+        String expected = "Error";
+        String actual = calc.readScreen();
+
+        assertEquals(expected, actual);
+    }
+}
