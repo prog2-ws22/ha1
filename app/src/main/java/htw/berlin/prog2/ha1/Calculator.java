@@ -32,11 +32,14 @@ public class Calculator {
      */
     public void pressDigitKey(int digit) {
         if(digit > 9 || digit < 0) throw new IllegalArgumentException();
+        if (screen.startsWith("-0")) {
+            screen = "-" + String.valueOf(digit);
+        }else{
+                if (screen.equals("0") || latestValue == Double.parseDouble(screen)) screen = "";
 
-        if(screen.equals("0") || latestValue == Double.parseDouble(screen)) screen = "";
-
-        screen = screen + digit;
-    }
+                screen = screen + digit;
+            }
+        }
     /**
      * Empfängt den Befehl der C- bzw. CE-Taste (Clear bzw. Clear Entry).
      * Einmaliges Drücken der Taste löscht die zuvor eingegebenen Ziffern auf dem Bildschirm
@@ -132,6 +135,8 @@ public class Calculator {
         screen = Double.toString(result);
         if(screen.endsWith(".0")) screen = screen.substring(0,screen.length()-2);
         if(screen.contains(".") && screen.length() > 11) screen = screen.substring(0, 10);
-
+        if(screen.equals("Infinity")){
+            screen ="Error";
+        }
     }
 }
