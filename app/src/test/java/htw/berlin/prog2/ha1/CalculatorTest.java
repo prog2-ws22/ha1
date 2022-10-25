@@ -66,13 +66,12 @@ class CalculatorTest {
     void testPositiveDivision() {
         Calculator calc = new Calculator();
 
-        calc.pressDigitKey(5);
+        calc.pressDigitKey(8);
         calc.pressBinaryOperationKey("/");
-        calc.pressDigitKey(5);
-        calc.pressEqualsKey();
+        calc.pressDigitKey(0);
         calc.pressEqualsKey();
 
-        String expected = "0.2";
+        String expected = "0";
         String actual = calc.readScreen();
 
         assertEquals(expected, actual);
