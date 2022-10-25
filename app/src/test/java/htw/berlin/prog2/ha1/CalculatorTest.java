@@ -40,8 +40,6 @@ class CalculatorTest {
         assertEquals(expected, actual);
     }
 
-    //TODO hier weitere Tests erstellen
-
     //Green Test
     @Test
     @DisplayName("only registers one dot for a number, even if dot is entered multiple time in a row")
@@ -76,13 +74,12 @@ class CalculatorTest {
         String actual = calc.readScreen();
 
         assertEquals(expected, actual);
-        // Funktion war korrekt implementiert
     }
-//Red Tests
 
+//Red Tests
     @Test
     @DisplayName("'='-Key should be able to start operations multiple times in a row")
-    void testMultipleOperations(){
+    void testMultipleEqualsOperations(){
         Calculator calc = new Calculator();
 
         calc.pressDigitKey(2);
@@ -112,6 +109,7 @@ class CalculatorTest {
         String expected = "1";
         String actual = calc.readScreen();
         assertEquals(expected, actual);
+        //ignoriert vorgestelltes Minus vor dem ersten Wert
     }
 
     //was Red, but is fixed now:
