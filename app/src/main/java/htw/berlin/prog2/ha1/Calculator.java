@@ -116,7 +116,7 @@ public class Calculator {
         }
 
         if(isNegative = true){
-            //Ich möchte das - Speichern aber ich finde nichts dazu
+            //Man kann nicht mit Negativen Zahlen rechnen, weil das "-" nicht gespeichert wird
         }
 
 
@@ -140,6 +140,12 @@ public class Calculator {
             default -> throw new IllegalArgumentException();
         };
         screen = Double.toString(result);
+
+        //Fix
+        if(screen.equals("Infinity")){
+            screen = "Error";
+
+        }
         if(screen.endsWith(".0")) screen = screen.substring(0,screen.length()-2);
         if(screen.contains(".") && screen.length() > 11) screen = screen.substring(0, 10);
     }

@@ -40,7 +40,7 @@ class CalculatorTest {
         assertEquals(expected, actual);
     }
 
-    //Tests hier
+
 
     @Test
     @DisplayName("should display result after subtracting two positive multi-digit numbers")
@@ -79,21 +79,20 @@ class CalculatorTest {
 
     }
 
+    //Roter test
     @Test
-    @DisplayName("should get the square root of a negative number")
-    void testNegativeSquareRoot(){
+    @DisplayName("should Divide a number by 0")
+    void testDividedByZero(){
 
         Calculator calc = new Calculator();
 
-        calc.pressNegativeKey();
-        calc.pressDigitKey(1);
+        calc.pressDigitKey(6);
+        calc.pressBinaryOperationKey("/");
         calc.pressDigitKey(0);
-        calc.pressBinaryOperationKey("√");
-
-        //Er speichert das Minus nicht, ich finde leider keine Lösung dafür, das - zu speichern
+        calc.pressEqualsKey();
 
 
-        String expected = "ERROR";
+        String expected = "Error";
         String actual = calc.readScreen();
 
         assertEquals(expected,actual);
