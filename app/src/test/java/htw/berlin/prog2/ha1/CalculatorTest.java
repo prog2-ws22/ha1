@@ -59,7 +59,37 @@ class CalculatorTest {
         assertEquals(expected, actual);
     }
 
+    @Test
+    @DisplayName("should display result after dividing with null")
+    void testdividingwithnull() {
+        Calculator calc = new Calculator();
 
+        calc.pressDigitKey(1);
+        calc.pressDigitKey(2);
+        calc.pressBinaryOperationKey("/");
+        calc.pressDigitKey(0);
+        calc.pressEqualsKey();
 
+        String expected = "Error";
+        String actual = calc.readScreen();
+
+        assertEquals(expected, actual);
+
+    }
+
+    @Test
+    @DisplayName("should display result after getting the square root of minus 9")
+    void testSquareRootnegative() {
+        Calculator calc = new Calculator();
+
+        calc.pressDigitKey(9);
+        calc.pressNegativeKey();
+        calc.pressUnaryOperationKey("√");
+
+        String expected = "Error";
+        String actual = calc.readScreen();
+
+        assertEquals(expected, actual);
+    }
 }
 
