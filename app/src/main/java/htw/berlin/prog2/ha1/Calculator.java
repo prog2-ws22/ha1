@@ -83,6 +83,7 @@ public class Calculator {
         screen = Double.toString(result);
         if(screen.contains(".") && screen.length() > 11) screen = screen.substring(0, 10);
 
+
     }
 
     /**
@@ -92,9 +93,9 @@ public class Calculator {
      * Trennzeichen angegeben und daher als Dezimalziffern interpretiert.
      * Beim zweimaligem Drücken, oder wenn bereits ein Trennzeichen angezeigt wird, passiert nichts.
      */
-    public void pressDotKey() {
-        if(!screen.endsWith(".")) screen = screen + ".";
-    }
+
+    public void pressDotKey() //{if(!screen.endsWith(".")) screen = screen + ".";} //Alter Code
+    {if (!screen.contains(".")) screen = screen + ".";} // Bugfix neuer Code, erkennt wenn kein Punkt im screen vohanden ist und vermeidet extra punkte
 
     /**
      * Empfängt den Befehl der gedrückten Vorzeichenumkehrstaste ("+/-").
@@ -127,5 +128,6 @@ public class Calculator {
         screen = Double.toString(result);
         if(screen.endsWith(".0")) screen = screen.substring(0,screen.length()-2);
         if(screen.contains(".") && screen.length() > 11) screen = screen.substring(0, 10);
+        if(screen.contains("Infinity")) screen = "Error"; // Infinity wird auf dem Screen durch Error ersetzt
     }
 }
