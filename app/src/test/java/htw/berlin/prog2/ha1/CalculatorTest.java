@@ -59,7 +59,7 @@ class CalculatorTest {
     }
 
     @Test
-    @DisplayName("should display result after adding two positive multi-digit numbers")
+    @DisplayName("should show Error when dividing a number by zero")
     void testAdditionWithZero() {
         Calculator calc = new Calculator();
 
