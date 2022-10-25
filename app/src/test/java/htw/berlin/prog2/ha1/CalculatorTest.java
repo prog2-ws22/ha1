@@ -6,6 +6,7 @@ import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 @DisplayName("Retro calculator")
+// Zusammenarbeit mit Ägidius Hasslauer
 class CalculatorTest {
 
     @Test

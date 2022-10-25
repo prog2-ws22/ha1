@@ -134,7 +134,7 @@ public class Calculator {
          */
         public void pressEqualsKey() {
 
-            double division = 0.0;
+            double division;
             division = Double.parseDouble(screen);
 
             var result = switch (latestOperation) {
