@@ -84,17 +84,16 @@ class CalculatorTest {
 
 
     @Test
-    @DisplayName("test pressing negative before digit")
+    @DisplayName("divide by 0 test")
     void testNegativeBtn() {
         Calculator calc = new Calculator();
 
-        calc.pressNegativeKey();
         calc.pressDigitKey(2);
-        calc.pressBinaryOperationKey("+");
-        calc.pressDigitKey(2);
+        calc.pressBinaryOperationKey("/");
+        calc.pressDigitKey(0);
         calc.pressEqualsKey();
 
-        String expected = "0";
+        String expected = "Error";
         String actual = calc.readScreen();
 
         assertEquals(expected, actual);

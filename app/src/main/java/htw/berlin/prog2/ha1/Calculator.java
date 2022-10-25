@@ -18,6 +18,9 @@ public class Calculator {
      * @return den aktuellen Bildschirminhalt als String
      */
     public String readScreen() {
+        if (screen == "Infinity") {
+            screen = "Error";
+        }
         return screen;
     }
 
