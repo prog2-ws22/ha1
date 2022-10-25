@@ -86,17 +86,17 @@ class CalculatorTest {
     void testCleartest(){
 
         Calculator calc = new Calculator();
-        calc.pressDigitKey(1);
-        calc.pressDigitKey(8);
-        calc.pressBinaryOperationKey("+");
-        calc.pressDigitKey(1);
-        calc.pressDigitKey(2);
-        calc.pressEqualsKey();
-        calc.pressBinaryOperationKey("-");
-        calc.pressDigitKey(5);
-        calc.pressClearKey();
-        calc.pressDigitKey(2);
-        calc.pressEqualsKey();
+       calc.pressDigitKey(1);
+       calc.pressDigitKey(8);
+       calc.pressBinaryOperationKey("+");
+       calc.pressDigitKey(1);
+       calc.pressDigitKey(2);
+       calc.pressEqualsKey();
+       calc.pressBinaryOperationKey("-");
+       calc.pressDigitKey(5);
+       calc.pressClearKey();
+       calc.pressDigitKey(2);
+       calc.pressEqualsKey();
 
 
         String expected = "28";
