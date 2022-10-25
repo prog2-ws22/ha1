@@ -15,6 +15,7 @@ public class Calculator {
     private String latestOperation = "";
 
     /**
+     * Bei Infinity wird Error ausgeben
      * @return den aktuellen Bildschirminhalt als String
      */
     public String readScreen() {
@@ -55,7 +56,7 @@ public class Calculator {
     }
 
     /**
-     * fragt das Zwischenergebnis ab
+     * fragt das Zwischenergebnis ab und setzt verkettung fort
      *
      * Empfängt den Wert einer gedrückten binären Operationstaste, also eine der vier Operationen
      * Addition, Substraktion, Division, oder Multiplikation, welche zwei Operanden benötigen.
@@ -76,7 +77,7 @@ public class Calculator {
     }
 
     /**
-     * setzt verkettung fort
+     * fragt das Zwischenergebnis ab und setzt verkettung fort
      * Empfängt den Wert einer gedrückten unären Operationstaste, also eine der drei Operationen
      * Quadratwurzel, Prozent, Inversion, welche nur einen Operanden benötigen.
      * Beim Drücken der Taste wird direkt die Operation auf den aktuellen Zahlenwert angewendet und
