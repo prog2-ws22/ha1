@@ -1,5 +1,8 @@
 package htw.berlin.prog2.ha1;
 
+import java.text.DecimalFormat;
+import java.util.Scanner;
+
 /**
  * Eine Klasse, die das Verhalten des Online Taschenrechners imitiert, welcher auf
  * https://www.online-calculator.com/ aufgerufen werden kann (ohne die Memory-Funktionen)
@@ -62,6 +65,7 @@ public class Calculator {
     public void pressBinaryOperationKey(String operation)  {
         latestValue = Double.parseDouble(screen);
         latestOperation = operation;
+
     }
 
     /**
@@ -82,6 +86,8 @@ public class Calculator {
         };
         screen = Double.toString(result);
         if(screen.contains(".") && screen.length() > 11) screen = screen.substring(0, 10);
+        if(screen.contains("NaN")) screen="Error";
+        if(screen.contains("Infinity")) screen="Error";
 
     }
 
@@ -93,7 +99,10 @@ public class Calculator {
      * Beim zweimaligem Drücken, oder wenn bereits ein Trennzeichen angezeigt wird, passiert nichts.
      */
     public void pressDotKey() {
-        if(!screen.endsWith(".")) screen = screen + ".";
+        if(!screen.endsWith(".")) screen = screen + "." ;
+
+
+
     }
 
     /**
@@ -125,7 +134,13 @@ public class Calculator {
             default -> throw new IllegalArgumentException();
         };
         screen = Double.toString(result);
-        if(screen.endsWith(".0")) screen = screen.substring(0,screen.length()-2);
+        //DecimalFormat df = new DecimalFormat();
+
         if(screen.contains(".") && screen.length() > 11) screen = screen.substring(0, 10);
+
+        if(screen.endsWith(".0")) screen = screen.substring(0,screen.length() -2);
+        //if(screen.endsWith(".0")) screen= df.format(screen);
+        if(screen.contains("Infinity")) screen="Error";
+
     }
 }
