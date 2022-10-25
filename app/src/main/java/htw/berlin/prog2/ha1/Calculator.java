@@ -74,6 +74,7 @@ public class Calculator {
     }
 
     /**
+     * setzt verkettung fort
      * Empfängt den Wert einer gedrückten unären Operationstaste, also eine der drei Operationen
      * Quadratwurzel, Prozent, Inversion, welche nur einen Operanden benötigen.
      * Beim Drücken der Taste wird direkt die Operation auf den aktuellen Zahlenwert angewendet und
@@ -82,6 +83,8 @@ public class Calculator {
      * @param operation "√" für Quadratwurzel, "%" für Prozent, "1/x" für Inversion
      */
     public void pressUnaryOperationKey(String operation) {
+        pressEqualsKey();
+
         latestValue = Double.parseDouble(screen);
         latestOperation = operation;
         var result = switch (operation) {

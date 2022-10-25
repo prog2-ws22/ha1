@@ -86,15 +86,17 @@ class CalculatorTest {
     void testKommaMultiplikation() {
         Calculator calc = new Calculator();
 
-        calc.pressNegativeKey();
-        calc.pressDigitKey(5);
-        calc.pressBinaryOperationKey("+");
-        calc.pressDigitKey(10);
 
-        calc.pressEqualsKey();
+        calc.pressDigitKey(6);
+        calc.pressBinaryOperationKey("x");
+        calc.pressDigitKey(2);
+        calc.pressUnaryOperationKey("√");
 
 
-        String expected = "5";
+
+
+
+        String expected = "3.46410161";
         String actual = calc.readScreen();
 
         assertEquals(expected, actual);
