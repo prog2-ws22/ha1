@@ -76,14 +76,14 @@ class CalculatorTest {
     }
 
     @Test
-    @DisplayName("should display result after pressing 5 and times")
+    @DisplayName("should display result after pressing 5 than Equals")
     void testNumberTimes(){
         Calculator calc = new Calculator();
 
         calc.pressDigitKey(5);
         calc.pressEqualsKey();
 
-        String expected = "25";
+        String expected = "5";
         String actual = calc.readScreen();
 
         assertEquals(expected, actual);
