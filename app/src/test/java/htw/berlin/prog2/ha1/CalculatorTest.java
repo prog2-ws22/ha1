@@ -75,5 +75,18 @@ class CalculatorTest {
 
         assertEquals(expected, actual);
     }
+    @Test
+    @DisplayName("Should display only one dot.")
+    void testDot(){
+        Calculator calc = new Calculator();
+        calc.pressDigitKey(8);
+        calc.pressDotKey();
+        calc.pressDigitKey(5);
+        calc.pressDotKey();
+        calc.readScreen();
+        String expected = "3.5";
+        String actual = calc.readScreen();
+        assertEquals(expected, actual);
+    }
 }
 
