@@ -61,35 +61,31 @@ class CalculatorTest {
     }
 
     @Test
-    @DisplayName("should display result after adding two negative numbers ")
-    void Division() {
+    @DisplayName("should display result after getting the square root of two")
+    void testnegativSquareRoot() {
         Calculator calc = new Calculator();
 
-        calc.pressDigitKey(8);
-        calc.pressBinaryOperationKey("/");
-        calc.pressDigitKey(3);
-        calc.pressEqualsKey();
+        calc.pressDigitKey(9);
+        calc.pressNegativeKey();
+        calc.pressUnaryOperationKey("√");
 
-        String expected = "2.66666667";
+        String expected = "Error";
         String actual = calc.readScreen();
 
         assertEquals(expected, actual);
-
     }
     @Test
-    @DisplayName("should display result after adding and divisiion three positive multi-digit numbers")
-    void testthreePositiveaddingdivi() {
+    @DisplayName("should display result of divisiion with null")
+    void testdivisionwithnull() {
         Calculator calc = new Calculator();
 
+
         calc.pressDigitKey(7);
-        calc.pressBinaryOperationKey("+");
-        calc.pressDigitKey(3);
-        calc.pressEqualsKey();
         calc.pressBinaryOperationKey("/");
-        calc.pressDigitKey(3);
+        calc.pressDigitKey(0);
         calc.pressEqualsKey();
 
-        String expected = "8";
+        String expected = "Error";
         String actual = calc.readScreen();
 
         assertEquals(expected, actual);

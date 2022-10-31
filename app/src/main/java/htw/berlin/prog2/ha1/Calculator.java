@@ -82,8 +82,11 @@ public class Calculator {
         };
         screen = Double.toString(result);
         if(screen.contains(".") && screen.length() > 11) screen = screen.substring(0, 10);
+        if(screen.contains("NaN")){screen="Error";}//bugfix für die wurzel einer Negativen zahl
 
     }
+
+
 
     /**
      * Empfängt den Befehl der gedrückten Dezimaltrennzeichentaste, im Englischen üblicherweise "."
@@ -127,7 +130,8 @@ public class Calculator {
         screen = Double.toString(result);
         if(screen.endsWith(".0")) screen = screen.substring(0,screen.length()-2);
         if(screen.contains(".") && screen.length() > 11) screen = screen.substring(0, 10);
-        if(screen.equals("3.33333333")){screen = "8";}
-        if(screen.equals("2.66666666")){screen = "2.66666667";}
+        if(screen.contains("Infinity")){screen="Error";}//bugfix für division mit Null
+
     }
+
 }
