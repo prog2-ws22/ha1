@@ -92,5 +92,20 @@ class CalculatorTest {
 
         assertEquals(expected, actual);
     }
+
+    //Teilaufgabe 2, Test für Wurzel aus negativer Zahl
+    @Test
+    @DisplayName("Die Wurzel aus einer negativen Zahl sollte Error auswerfen")
+    void testSqrtNegative(){
+        Calculator calc = new Calculator();
+        calc.pressDigitKey(9);
+        calc.pressNegativeKey();
+        calc.pressUnaryOperationKey("√");
+
+        String expected = "Error";
+        String actual = calc.readScreen();
+
+        assertEquals(expected, actual);
+    }
 }
 
