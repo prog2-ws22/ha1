@@ -117,6 +117,12 @@ public class Calculator {
      * und das Ergebnis direkt angezeigt.
      */
     public void pressEqualsKey() {
+
+        // fängt den Fall einer division durch 0 ab und gibt "Error" stad "Infinity" im Testfall aus
+        if(latestOperation == "/" && Double.parseDouble(screen) == 0){
+            screen = "Error";
+            return;
+        }
         var result = switch(latestOperation) {
             case "+" -> latestValue + Double.parseDouble(screen);
             case "-" -> latestValue - Double.parseDouble(screen);
@@ -124,7 +130,18 @@ public class Calculator {
             case "/" -> latestValue / Double.parseDouble(screen);
             default -> throw new IllegalArgumentException();
         };
+
+        /*in following pressing the equal key again if the first latest Value was 0 then the second time it will
+        remember the 9 as the intedet next operation
+        WARNNING: it will only work the first ti... oder auch nicht lol
+         */
+        latestValue = Double.parseDouble(screen);
+
+
         screen = Double.toString(result);
+
+
+
         if(screen.endsWith(".0")) screen = screen.substring(0,screen.length()-2);
         if(screen.contains(".") && screen.length() > 11) screen = screen.substring(0, 10);
     }
