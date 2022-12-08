@@ -40,6 +40,73 @@ class CalculatorTest {
         assertEquals(expected, actual);
     }
 
-    //TODO hier weitere Tests erstellen
+    @Test
+    @DisplayName("should display result after subtracting one multi digit number from the other one")
+    void testSubtraction(){
+        Calculator calc = new Calculator();
+
+        calc.pressDigitKey(9);
+        calc.pressDigitKey(0);
+        calc.pressBinaryOperationKey("-");
+        calc.pressDigitKey(4);
+        calc.pressDigitKey(0);
+        calc.pressEqualsKey();
+
+        String expected = "50";
+        String actual = calc.readScreen();
+
+        assertEquals(expected,actual);
+    }
+
+    @Test
+    @DisplayName("should display result after adding 3 multi digit numbers")
+    void testMultipleBinaryOperation(){
+        Calculator calc = new Calculator();
+
+        calc.pressDigitKey(9);
+        calc.pressDigitKey(0);
+        calc.pressBinaryOperationKey("+");
+        calc.pressDigitKey(1);
+        calc.pressDigitKey(0);
+        calc.pressBinaryOperationKey("+");
+        calc.pressDigitKey(5);
+        calc.pressDigitKey(0);
+        calc.pressEqualsKey();
+
+        String expected = "150";
+        String actual = calc.readScreen();
+
+        assertEquals(expected,actual);
+    }
+
+    @Test
+    @DisplayName("should display error after trying to divide by 0")
+    void testDivisionByZeroError(){
+        Calculator calc = new Calculator();
+        calc.pressDigitKey(9);
+        calc.pressDigitKey(0);
+        calc.pressBinaryOperationKey("/");
+        calc.pressDigitKey(0);
+        calc.pressEqualsKey();
+        String expected = "Error";
+        String actual = calc.readScreen();
+
+        assertEquals(expected,actual);
+    }
+
+    @Test
+    @DisplayName("should display error after trying to divide by 0 without pressing equals button")
+    void testDivisionByZeroErrorBinaryKey(){
+        Calculator calc = new Calculator();
+        calc.pressDigitKey(9);
+        calc.pressDigitKey(0);
+        calc.pressBinaryOperationKey("/");
+        calc.pressDigitKey(0);
+        calc.pressBinaryOperationKey("+");
+        String expected = "Error";
+        String actual = calc.readScreen();
+
+        assertEquals(expected,actual);
+    }
 }
 
